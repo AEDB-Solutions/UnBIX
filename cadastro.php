@@ -9,8 +9,47 @@
  </head>
 
  <body>
+ 
+<script language="text/javascript" type="text/javascript">
+ function validar() {
+
+	var mat = document.forms["cad"]["matricula"].value;
+	var soNumeros = /^[0-9]+$/;
+
+    if (document.forms["cad"]["nome"].value == "") {
+        alert("Campo Obrigatorio: Nome");
+        return false;
+    }
+	if (document.forms["cad"]["email"].value == "") {
+	alert("Campo Obrigatorio: e-mail");
+        return false;
+    }
+	if (mat.length < 9) {
+        alert("Campo Matricula: deve conter 9 caracteres numericos");
+        return false;
+    }
+	if (document.forms["cad"]["genero"].value == "") {
+        alert("Campo Obrigatorio: Genero");
+        return false;
+    }
+	if (!mat.match(soNumeros)) {
+	document.forms["cad"]["matricula"].value="";
+        alert("Campo Matricula: Utilizar somente numeros");
+        return false;
+    }
+	if (document.forms["cad"]["senha"].value != document.forms["cad"]["confsenha"].value) {
+	alert("Campo senha diferente de campo confirma senha");
+        return false;
+    }
+ 	if (document.forms["cad"]["senha"].value == "") {
+        alert("Campo Obrigatorio: Senha");
+        return false;
+    }
+}
+
+</script>
   
-<form action="confirma.php" method="post">
+<form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
 
 
 <img src="http://i.imgur.com/U0xokZd.jpg" alt="UNBIX - Logo" style="width:700px; height:400px;">
@@ -66,7 +105,7 @@
     <label for="login">Matr&iacute;cula: </label>
    </td>
    <td align="left">
-    <input type="text" name="matricula">
+    <input type="text" maxlength="9" name="matricula">
    </td>
   </tr>
   <tr>
@@ -104,7 +143,8 @@
 <br />
 <input type="submit">
 <input type="reset" value="Limpar">
-</form>
 
+</form>
+<br /><br /><br />
  </body>
 </html>
