@@ -5,6 +5,7 @@
 
  <title> UNBIX - Cadastro </title>
  <meta name="description" content="Faça aqui seu cadastro no UnBix!">
+  <link href="cadastro.css" rel="stylesheet">
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
  <link href="menu.css" rel="stylesheet">
  </head>

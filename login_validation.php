@@ -43,8 +43,14 @@ $db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nasci
 if($erros['matriculaErr'] == ' ' && $erros['passErr'] != "Please insert a pass!") //&& $erros['passErr'] == ' ')
 {
 	if(validate_all_info($matricula, $pass, $db_colluns))
-	echo "sucesso!";
-	
+	{
+	echo '<html>
+		<head>
+		<meta http-equiv="Refresh" content="1;mapa.html">
+		</head>
+		</html>';
+		exit;
+	}
 	else
 	$passErr = "pass Invalid!";//a senha e o login fazem sentido mas nao para uma mesma linha do banco
 
