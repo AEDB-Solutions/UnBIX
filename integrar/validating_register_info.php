@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 
 header("Content-Type: text/html; charset=ISO-8859-1", true);
 
@@ -86,8 +86,8 @@ header("Content-Type: text/html; charset=ISO-8859-1", true);
 	{
 		$db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
 
-		if(strlen($matricula) != 9)// && is_numeric($matricula))
-		$erros[$key] = "Register can only have nine numbers!";
+		if(strlen($matricula) != 9 || is_numeric($matricula) == false)
+		$erros[$key] = "registered can only have nine numbers!";
 
 		else if(check_on_database($matricula, $db_colluns[3]))
 		$erros[$key] = "Register already registered!";
@@ -96,15 +96,10 @@ header("Content-Type: text/html; charset=ISO-8859-1", true);
 	
 	function validating_pass($pass,&$erros,$key)
 	{
-		//verificar se colocou a senha
 
 		if(!empty($_POST['confsenha']))
 			if($pass != $_POST['confsenha'])
 				$erros['confsenha'] = "Confirmation password not equal to pass"; 
-
-		// se colocou entao verificar se tambem tem uma conf pass colocada
-
-		//se a conf pass existir comparar as duas
 
 	}
 
