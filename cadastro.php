@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- 
+
 <html>
  <head>
  <title> UNBIX - Cadastro </title>
@@ -9,24 +9,23 @@
  </head>
 
  <body>
- 
 <script language="text/javascript" type="text/javascript">
  function validar() {
 
 	var mat = document.forms["cad"]["matricula"].value;
 	var soNumeros = /^[0-9]+$/;
 
-    if (document.forms["cad"]["nome"].value == "") {
-        alert("Campo Obrigatorio: Nome");
-        return false;
-    }
+        if (document.forms["cad"]["nome"].value == "") {
+           alert("Campo Obrigatorio: Nome");
+           return false;
+        }
 	if (document.forms["cad"]["email"].value == "") {
-	alert("Campo Obrigatorio: e-mail");
-        return false;
-    }
+	   alert("Campo Obrigatorio: e-mail");
+           return false;
+        }
 	if (mat.length < 9) {
-        alert("Campo Matricula: deve conter 9 caracteres numericos");
-        return false;
+           alert("Campo Matricula: deve conter 9 caracteres numericos");
+           return false;
     }
 	if (document.forms["cad"]["genero"].value == "") {
         alert("Campo Obrigatorio: Genero");
@@ -48,7 +47,6 @@
 }
 
 </script>
-  
 <form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
 
 
@@ -96,7 +94,7 @@
           ?>
 	</select>
 
-   
+
 
    </td>
   </tr>
@@ -115,7 +113,7 @@
   	<td align="left">
  	 <input type="radio" name="genero" value="M"> M
  	 <input type="radio" name="genero" value="F"> F
- 	 <input type="radio" name="genero" value="Outro"> Outro  
+ 	 <input type="radio" name="genero" value="Outro"> Outro
   	</td>
   </tr>
 

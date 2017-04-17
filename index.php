@@ -44,7 +44,6 @@
 <div class="parallax2"></div>
 
 </div>
-
 </body>
 </html>
 
