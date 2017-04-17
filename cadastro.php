@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- 
+
 <html>
  <head>
  <title> UNBIX - Cadastro </title>
@@ -9,46 +9,75 @@
  </head>
 
  <body>
- 
+
 <script language="text/javascript" type="text/javascript">
  function validar() {
 
 	var mat = document.forms["cad"]["matricula"].value;
 	var soNumeros = /^[0-9]+$/;
 
+  var = a,b,c,d,e,f, g = 1;
+
     if (document.forms["cad"]["nome"].value == "") {
         alert("Campo Obrigatorio: Nome");
         return false;
-    }
+        a = 1;
+    } else{
+        a = 0;
+      }
+
 	if (document.forms["cad"]["email"].value == "") {
 	alert("Campo Obrigatorio: e-mail");
         return false;
+        b = 1;
+    } else {
+        b = 0;
     }
 	if (mat.length < 9) {
         alert("Campo Matricula: deve conter 9 caracteres numericos");
         return false;
+        c = 1;
+    } else{
+        c = 0;
     }
 	if (document.forms["cad"]["genero"].value == "") {
         alert("Campo Obrigatorio: Genero");
         return false;
+        d = 1;
+    } else{
+        d = 0;
     }
 	if (!mat.match(soNumeros)) {
 	document.forms["cad"]["matricula"].value="";
         alert("Campo Matricula: Utilizar somente numeros");
         return false;
+        e =1
+    } else {
+        e = 0;
     }
 	if (document.forms["cad"]["senha"].value != document.forms["cad"]["confsenha"].value) {
 	alert("Campo senha diferente de campo confirma senha");
         return false;
+        f = 1;
+    } else{
+        f = 0;
     }
  	if (document.forms["cad"]["senha"].value == "") {
         alert("Campo Obrigatorio: Senha");
         return false;
+        g = 1;
+    } else{
+        g = 0;
+    }
+
+    if(a == '0' && b == '0' && c == '0' && d =='0' && e =='0' && f == '0' && g =='0')
+    {
+      <a href="entrar.html"></a>
     }
 }
 
 </script>
-  
+
 <form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
 
 
@@ -96,7 +125,7 @@
           ?>
 	</select>
 
-   
+
 
    </td>
   </tr>
@@ -115,7 +144,7 @@
   	<td align="left">
  	 <input type="radio" name="genero" value="M"> M
  	 <input type="radio" name="genero" value="F"> F
- 	 <input type="radio" name="genero" value="Outro"> Outro  
+ 	 <input type="radio" name="genero" value="Outro"> Outro
   	</td>
   </tr>
 
