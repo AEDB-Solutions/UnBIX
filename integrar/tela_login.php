@@ -32,13 +32,6 @@
     <input type="text" name="matricula">
    </td>
   </tr>
-   <tr>
-  <td> 
-  <font color="FF0000">Senha inválida.</font>
-
-  </td>    
-
-  </tr>
 
   <tr>
    <td>

@@ -4,7 +4,7 @@
 <style>
 .parallax1 {
     /* The image used */
-    background-image: url("unbprimeiro.jpg");
+    background-image: url("http://imgur.com/ZFM8TI0");
 
     /* Set a specific height */
     min-height: 500px;
@@ -18,7 +18,7 @@
 
 .parallax2 {
     /* The image used */
-    background-image: url("Unbsegundo.jpg");
+    background-image: url("http://imgur.com/dfYQtCX");
 
     /* Set a specific height */
     min-height: 500px;
@@ -34,8 +34,6 @@
 </head>
 <body>
 
-<img src="http://i.imgur.com/U0xokZd.jpg" alt="UNBIX - Logo" style="width:280px; height:160px;">
-
 <div class="parallax1"></div>
 
 <div style="height:90px;background-color:white;font-size:36px">
@@ -45,8 +43,7 @@
 
 <div class="parallax2"></div>
 </div>
-
   <div style="height:250px;background-color:008941;font-size:36px">
-
 </body>
 </html>
+

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-
+ 
 <html>
  <head>
+
  <title> UNBIX - Cadastro </title>
- <meta name="description" content="Faça aqui seu login no UnBix!">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <link href="cadastro.css" rel="stylesheet">
+ <meta name="description" content="Faça aqui seu cadastro no UnBix!">
+  <link href="cadastro.css" rel="stylesheet">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+ <link href="menu.css" rel="stylesheet">
  </head>
 
  <body>
-<img src="http://i.imgur.com/U0xokZd.jpg" alt="UNBIX - Logo" style="width:700px; height:400px;">
-<form action="entrar.php" method="post">
+<img src="http://i.imgur.com/U0xokZd.jpg" alt="UNBIX - Logo" style="width:700px; height:400px;">  
+<form action="login_validation.php" method="post">
 
 
 
@@ -31,6 +33,7 @@
     <input type="text" name="matricula">
    </td>
   </tr>
+
   <tr>
    <td>
     <label for="pass">Senha: </label>
@@ -40,8 +43,8 @@
    </td>
   </tr>
   <tr>
-
-
+   
+   
   </tr>
  </table>
 </fieldset>
@@ -49,6 +52,6 @@
 <input type="submit">
 <input type="reset" value="Limpar">
 </form>
-<br /><br /><br />
+
  </body>
 </html>
