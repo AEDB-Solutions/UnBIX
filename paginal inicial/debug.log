@@ -1,0 +1,9 @@
+[0417/124809.854:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files\temp\reports: Acesso negado. (0x5)
+[0417/124810.184:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
+[0417/124811.549:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
+[0417/124822.064:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files\temp\reports: Acesso negado. (0x5)
+[0417/124822.254:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: O pipe foi finalizado. (0x6D)
+[0417/124822.964:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
+[0417/134427.676:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files\temp\reports: Acesso negado. (0x5)
+[0417/134429.055:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files\temp\reports: Acesso negado. (0x5)
+[0417/141418.065:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files\temp\reports: Acesso negado. (0x5)
