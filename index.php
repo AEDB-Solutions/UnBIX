@@ -40,7 +40,7 @@
 
 <div style="height:90px;background-color:white;font-size:36px">
 <center><a href="cadastro.php"> Cadastro </a> </br></center>
-<center><a href="entrar.html"> Login </a></center>
+<center><a href="tela_login.php"> Login </a></center>
 </div>
 
 <div class="parallax2"></div>
