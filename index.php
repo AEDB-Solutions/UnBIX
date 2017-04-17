@@ -4,7 +4,7 @@
 <style>
 .parallax1 {
     /* The image used */
-    background-image: url("http://imgur.com/ZFM8TI0");
+    background-image: url("unbprimeiro.jpg");
 
     /* Set a specific height */
     min-height: 500px;
@@ -18,7 +18,7 @@
 
 .parallax2 {
     /* The image used */
-    background-image: url("http://imgur.com/dfYQtCX");
+    background-image: url("Unbsegundo.jpg");
 
     /* Set a specific height */
     min-height: 500px;
@@ -44,8 +44,9 @@
 </div>
 
 <div class="parallax2"></div>
-
 </div>
+
+  <div style="height:250px;background-color:008941;font-size:36px">
 
 </body>
 </html>
