@@ -4,34 +4,8 @@ include("validating_login_info.php");
 
 $erros = array('matriculaErr' => ' ','passErr' => ' ');
 
-function analysing_post($type, $db_collun, &$erros)
-{
-		$key = $type."Err";
-
-	if(empty($_POST[$type]))
-	{
-		$Err = "Please insert a $type!";
-		$erros[$key] = $Err;
-	}
-
-	else
-	{
-		$search = $_POST[$type];
-
-		if(!validate_login_information($search,$db_collun))
-		{
-			if($erros['matriculaErr'] == ' ')//so vai dizer que a matricula é invalida mesmo se a senha existir
-			{
-				$Err = "$type Invalid!";
-				$erros[$key] = $Err;
-			}
-		}
-	}
-}
-
-
-analysing_post('matricula','Matricula', $erros);
-analysing_post('pass','Senha', $erros);
+analysing_post_empty('matricula','Matricula', $erros);
+analysing_post_empty('pass','Senha', $erros);
 
 $matriculaErr = $erros['matriculaErr'];
 $passErr = $erros['passErr'];
@@ -39,31 +13,25 @@ $passErr = $erros['passErr'];
 $pass = $_POST['pass'];
 $matricula = $_POST['matricula'];
 $db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
+$generalErr = ' ';
 
-if($erros['matriculaErr'] == ' ' && $erros['passErr'] != "Please insert a pass!") //&& $erros['passErr'] == ' ')
-{
 	if(validate_all_info($matricula, $pass, $db_colluns))
 	{
-	echo '<html>
-		<head>
-		<meta http-equiv="Refresh" content="1;mapa.html">
-		</head>
-		</html>';
+		echo '<html><head><meta http-equiv="Refresh" content="1;mapa.html"></head></html>';
 		exit;
 	}
-	else
-	$passErr = "pass Invalid!";//a senha e o login fazem sentido mas nao para uma mesma linha do banco
 
-}
+	else if($passErr == ' ' && $matriculaErr == ' ')
+	$generalErr = 'Matricula ou senha Inválida!';
 
-if($passErr != ' ')
-{
-	echo "<script>alert('$passErr');</script>";
-}
-if($matriculaErr != ' ')
-{
+if($generalErr != ' ')
+	echo "<script>alert('$generalErr');</script>";
+
+else if($matriculaErr != ' ')
 	echo "<script>alert('$matriculaErr');</script>";
-}
+
+else if($passErr != ' ')
+	echo "<script>alert('$passErr');</script>";
 
 ?>
 

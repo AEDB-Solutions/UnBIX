@@ -4,52 +4,36 @@ header("Content-Type: text/html; charset=ISO-8859-1", true);
 
 include("database.php");
 
-//$db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
 
-function validate_login_information($to_validate, $collun_database)//to_validate(algo que deve ser verificado no banco de dados)//collundatabase(nome da coluna do banco)
+function analysing_post_empty($type, $db_collun, &$erros)
 {
-	//$pdo = new Database;//objet database//nao funciona?
-	$db = Database::connect();
-	
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$key = $type."Err";
 
-	$query = "select ".$collun_database." from Users;";
-
-	foreach($db->query($query) as $row)
-	{	
-		if($to_validate == $row[$collun_database])
-		{
-			Database::disconnect();
-			return true;
-		}
+	if(empty($_POST[$type]))
+	{
+		$Err = "Campo Obrigatório: $type";
+		$erros[$key] = $Err;
 	}
-			
-			Database::disconnect();
-			return false;
-
 }
 
 function validate_all_info($matricula, $senha, $db_colluns)
 {
 	//$pdo = new Database;//objet database//nao funciona?
-	$db = Database::connect();
+	$db = Database::connect();	
 
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$cript_senha= hash('sha256',$senha);
 
-	$query = "select *from Users;";
-	$choosens = $db->query($query);
+	$query = "Select * from Users where {$db_colluns[3]} = '{$matricula}' and {$db_colluns[5]} = '{$cript_senha}';";
+	$finds = $db->prepare($query);
+	$finds->execute();
+	$rows = $finds->rowCount();
 
-	foreach($choosens as $row)
+	if($rows > 0)
 	{
-		$senha = $_POST['pass'];
-		$senha_comp = hash('sha256', $senha);
-		if( ($matricula == $row[$db_colluns[3]]) && ($senha_comp == $row[$db_colluns[5]]) )
-		{
-			Database::disconnect();
+		Database::disconnect();
 			return true;
-		}	
-	}		
-		
+	}
 		Database::disconnect();
 		return false;
 }
