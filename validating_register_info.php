@@ -41,14 +41,13 @@ header("Content-Type: text/html; charset=ISO-8859-1", true);
 		 $rows = $finds->rowCount();
 
 		 if($rows > 0)
+		 {
+		 	Database::disconnect();
 		 	return true;
-		 
-		else
+		 }
+
+		Database::disconnect();
  		return false;
-
- 		Database::disconnect();
-
-
 	}
 
 
