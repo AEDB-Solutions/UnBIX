@@ -29,7 +29,9 @@
       <a href="quemsomos.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Quem somos</a>
       <a href="http://www.unb.br/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">UnB</a>
   </div>
-      <img src="http://imgur.com/UzU7KBX" alt="UNBIX - Logo" style="auto; height:auto;">
+   <div align="center">
+      <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="auto; height:auto;">
+   </div>
       <form action="login_validation.php" method="post" id="frmLogin">
 
 
@@ -37,7 +39,7 @@
 <!-- DADOS DE LOGIN -->
 <form action="login_validation.php" method="post">
 <hgroup>
-  <h1>login</h1>
+  <h1>Login</h1>
 </hgroup>
 <form>
   <div class="group">
