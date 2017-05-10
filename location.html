@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="getLocation()">Inserir reclamação na minha localização atual</button> 
+
+<p id="demo"></p>
+
+<form action="savelocation.php" method="post">
+<input type="hidden" name="latitude" id="lat"><br>
+<input type="hidden" name="longitude" id="long"><br>
+<input type="text" name="reclamacao" id="reclam"><br>
+<input type="submit" value="Relame!"> --AQI TEM QUE VIM JA A CAIXA DA RECLAMAÇÃO PRA COLOCR NO BANCO TUDO JUNTO
+</form>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() 
+{
+    if (navigator.geolocation) 
+    {
+        navigator.geolocation.getCurrentPosition(savePosition);
+    } else 
+    { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function savePosition(position) 
+{
+    document.getElementById('lat').value = position.coords.latitude;
+    document.getElementById('long').value = position.coords.longitude;
+}
+
+</script>
+
+</body>
+</html>
+
+
+function boasvindas() {
+   var nome = document.getElementById('nome').value;
+   var msg = 'Seja bemvindo(a) ' + nome + '!';
+   document.getElementById('ola').value = msg;
+}
+
+<?php
+
+window.onload = function()
+{ //window.onload determina que a funçao so sera executada quando toda a pagian for carregada
+  var startPos;
+  var geoSuccess = function(position) 
+  { //se for permitido usar a localização
+    startPos = position;
+    document.getElementById('latitude').innerHTML = startPos.coords.latitude; //ao clicar, transforma latitude em starrpos.coords.latitude 
+    document.getElementById('longitude').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+}
+  //se não permitir, ...
+
+
+?>
+
+var watchId = navigator.geolocation.watchPosition(function(position) { 
+document.getElementById('currentLat').innerHTML = position.coords.latitude; 
+document.getElementById('currentLon').innerHTML = position.coords.longitude; });
