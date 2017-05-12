@@ -12,76 +12,71 @@ function initMap() {
       minZoom: 17
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'), options)
+  var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-  function createEditableMarker(options) {
-      var marker = new google.maps.Marker(options);
-
-      marker.set("editing", false);
-
-      var htmlBox = document.createElement("div");
-      htmlBox.innerHTML = options.html || "";
-      htmlBox.style.width = "300px";
-      htmlBox.style.height = "100px";
-
-      var textBox = document.createElement("textarea");
-      textBox.innerText = options.html || "";
-      textBox.style.width = "300px";
-      textBox.style.height = "100px";
-      textBox.style.display = "none";
-
-      var container = document.createElement("div");
-      container.style.position = "relative";
-      container.appendChild(htmlBox);
-      container.appendChild(textBox);
+  var marker;
+  var infowindow;
+  var messagewindow;
 
 
-      var editBtn = document.createElement("button");
-      editBtn.innerText = "Reclame";
-      container.appendChild(editBtn);
+      infowindow = new google.maps.InfoWindow({
+        content: document.getElementById('form')
+      })
 
-
-      var infoWnd = new google.maps.InfoWindow({
-        content : container
+      messagewindow = new google.maps.InfoWindow({
+        content: document.getElementById('message')
       });
 
-      google.maps.event.addListener(marker, "click", function() {
-          setTimeout(function() { infoWnd.open(marker.getMap(), marker) }, 1000);
-      });
+      google.maps.event.addListener(map, 'click', function(event) {
+        marker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          draggable: true
+        });
 
-        google.maps.event.addDomListener(editBtn, "click", function() {
-        marker.set("editing", !marker.editing);
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+          document.getElementById('form').style = 'display:block';
+        });
       });
-
-
-      google.maps.event.addListener(marker, "editing_changed", function(){
-        textBox.style.display = this.editing ? "block" : "none";
-        htmlBox.style.display = this.editing ? "none" : "block";
-      });
-
-      google.maps.event.addDomListener(textBox, "change", function(){
-        htmlBox.innerHTML = textBox.value;
-        marker.set("html", textBox.value);
-      });
-      return marker;
     }
 
-  function addMarker(location, map) {
-    var marker = createEditableMarker({
-      position: location,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      draggable: true
-    });
-  }
 
-  google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng, map);
+
+
+    var x = document.getElementById("demo");
+
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(savePosition);
+        } else
+        {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        return position;
+    }
+
+    function savePosition(position)
+   {
+    document.forms["lat"]["latitude"].value = position.coords.latitude;
+    document.forms["long"]["longitude"].value = position.coords.longitude;
+    }
+
+
+function markerlocal() {
+  var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
   });
 
-  google.maps.event.addListener(marker, "html_changed", function(){
-    console.log(this.html);
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
   });
-
-  google.maps.event.addDomListener(window, "load", initialize);
 }
