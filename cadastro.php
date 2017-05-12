@@ -3,85 +3,72 @@
 <html>
  <head>
  <title> UNBIX - Cadastro </title>
- <link href="cadastro.css" rel="stylesheet">
+ <link href="cadastrodef.css" rel="stylesheet">
  <meta name="description" content="Faça aqui seu cadastro no UnBix!">
  <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1" />
- </head>
 
- <body>
-<script language="text/javascript" type="text/javascript">
- function validar() {
+ <script language="text/javascript" type="text/javascript">
+  function validar() {
 
-	var mat = document.forms["cad"]["matricula"].value;
-	var soNumeros = /^[0-9]+$/;
+  var mat = document.forms["cad"]["matricula"].value;
+  var soNumeros = /^[0-9]+$/;
 
-        if (document.forms["cad"]["nome"].value == "") {
-           alert("Campo Obrigatorio: Nome");
-           return false;
-        }
-	if (document.forms["cad"]["email"].value == "") {
-	   alert("Campo Obrigatorio: e-mail");
-           return false;
-        }
-	if (mat.length < 9) {
-           alert("Campo Matricula: deve conter 9 caracteres numericos");
-           return false;
-    }
-	if (document.forms["cad"]["genero"].value == "") {
-        alert("Campo Obrigatorio: Genero");
-        return false;
-    }
-	if (!mat.match(soNumeros)) {
-	document.forms["cad"]["matricula"].value="";
-        alert("Campo Matricula: Utilizar somente numeros");
-        return false;
-    }
-	if (document.forms["cad"]["senha"].value != document.forms["cad"]["confsenha"].value) {
-	alert("Campo senha diferente de campo confirma senha");
-        return false;
-    }
- 	if (document.forms["cad"]["senha"].value == "") {
-        alert("Campo Obrigatorio: Senha");
-        return false;
-    }
-}
-
+         if (document.forms["cad"]["nome"].value == "") {
+            alert("Campo Obrigatorio: Nome");
+            return false;
+         }
+  if (document.forms["cad"]["email"].value == "") {
+     alert("Campo Obrigatorio: e-mail");
+            return false;
+         }
+  if (mat.length < 9) {
+            alert("Campo Matricula: deve conter 9 caracteres numericos");
+            return false;
+     }
+  if (document.forms["cad"]["genero"].value == "") {
+         alert("Campo Obrigatorio: Genero");
+         return false;
+     }
+  if (!mat.match(soNumeros)) {
+  document.forms["cad"]["matricula"].value="";
+         alert("Campo Matricula: Utilizar somente numeros");
+         return false;
+     }
+  if (document.forms["cad"]["senha"].value != document.forms["cad"]["confsenha"].value) {
+  alert("Campo senha diferente de campo confirma senha");
+         return false;
+     }
+    if (document.forms["cad"]["senha"].value == "") {
+         alert("Campo Obrigatorio: Senha");
+         return false;
+     }
+ }
 </script>
+</head>
+
+
+<body>
+  <img src="http://imgur.com/a/04mx6" alt="UNBIX - Logo" style="width:auto; height:auto;">
 <form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
+<!-- DADOS DE CADASTRO -->
+<hgroup>
+  <h1>Cadastro</h1>
+</hgroup>
+<form>
 
+  <div class="group">
+    <input type="text"><span class="highlight"></span><span class="bar"></span>
+    <label>Nome</label>
+  </div>
 
-<img src="http://i.imgur.com/U0xokZd.jpg" alt="UNBIX - Logo" style="width:700px; height:400px;">
-<h1> Fa&ccedil;a aqui seu cadastro! </h1>
+  <div class="group">
+    <input type="email"><span class="highlight"></span><span class="bar"></span>
+    <label>Email</label>
+  </div>
 
-<!-- DADOS DE LOGIN -->
-<fieldset>
- <legend>Dados de login</legend>
- <table cellspacing="10">
-  <tr>
-   <td>
-    <label for="Nome">Nome: </label>
-   </td>
-   <td align="left">
-    <input type="text" name="nome" />
-   </td>
-  </tr>
-
-  <tr>
-   <td>
-    <label for="Email">Email: </label>
-   </td>
-   <td align="left">
-    <input type="email" name="email" />
-   </td>
-  </tr>
-
-  <tr>
-   <td>
-    <label for="Curso">Curso:</label>
-   </td>
-   <td>
-
-  	<select name="curso">
+  <div class="group">
+  <td>
+  <select name="curso">
 	 <?php
 		       header("Content-Type: text/html; charset=ISO-8859-1", true);
                        include 'database.php';
@@ -93,19 +80,17 @@
                        Database::disconnect();
           ?>
 	</select>
-
-
-
    </td>
   </tr>
-  <tr>
-   <td>
-    <label for="login">Matr&iacute;cula: </label>
-   </td>
-   <td align="left">
-    <input type="text" maxlength="9" name="matricula">
-   </td>
-  </tr>
+</div>
+
+
+  <div class="group">
+    <input type="text" maxlength="9" name="matricula"><span class="highlight"></span><span class="bar"></span>
+    <label>Matricula</label>
+  </div>
+
+
   <tr>
   	<td>
   		<label for="genero">G&ecirc;nero: </label>
@@ -118,31 +103,37 @@
   </tr>
 
 
+  <div class="group">
+    <input type="password" name="senha"><span class="highlight"></span><span class="bar"></span>
+    <label>Senha</label>
+  </div>
 
+  <div class="group">
+    <input type="password" name="confsenha"><span class="highlight"></span><span class="bar"></span>
+    <label>Confirmar senha</label>
+  </div>
 
-  <tr>
-   <td>
-    <label for="pass">Senha: </label>
-   </td>
-   <td align="left">
-    <input type="password" name="senha">
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <label for="passconfirm">Confirme a senha: </label>
-   </td>
-   <td align="left">
-    <input type="password" name="confsenha">
-   </td>
-  </tr>
- </table>
-</fieldset>
-<br />
-<input type="submit">
-<input type="reset" value="Limpar">
+  <button type="submit" class="button buttonBlue">Enviar
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form>
 
 </form>
-<br /><br /><br />
+<!--    <footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+        <p>You Gotta Love <a href="http://www.polymer-project.org/" target="_blank">Google</a></p>
+        </footer>
+-->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-gears" style="font-size:36px;color:red"></i>
+    <i class="fa fa-terminal" style="font-size:36px;color:orange"></i>
+    <i class="fa fa-check" style="font-size:36px;color:yellow"></i>
+    <i class="fa fa-map-o" style="font-size:36px;color:green"></i>
+    <i class="fa fa-thumb-tack" style="font-size:36px;color:blue"></i>
+    <i class="fa fa-thumbs-up" style="font-size:36px;color:purple"></i>
+</form>
+
+
  </body>
 </html>
+
