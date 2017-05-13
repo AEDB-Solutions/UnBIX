@@ -56,27 +56,11 @@ function initMap() {
         {
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
-        return position;
     }
 
     function savePosition(position)
-   {
-    document.forms["lat"]["latitude"].value = position.coords.latitude;
-    document.forms["long"]["longitude"].value = position.coords.longitude;
+    {
+        document.getElementById('lat').value = position.coords.latitude;
+        document.getElementById('long').value = position.coords.longitude;
     }
-
-
-function markerlocal() {
-  var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-}
+        
