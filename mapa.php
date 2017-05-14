@@ -19,16 +19,19 @@
     </form>
 
     <form action="savelocation.php" id="form" style='display:none'>
-      <input type="hidden" name="latitude" id="lat"><br>
-      <input type="hidden" name="longitude" id="long"><br>
-      <tr><td>Reclamação:</td> <td><input type='text' id='reclam'/> </td> </tr>
-      <tr><td>Type:</td> <td><select id='type'> +
-
-                 <option value='infraestrutura' SELECTED>bar</option>
-                 <option value='outros'>restaurant</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
-      <input type ="text" name="reclamacao" id="reclam"><br>
+      
+    <input type="hidden" name="latitude" id="lat"><br>
+    <input type="hidden" name="longitude" id="long"><br>
+    <tr><td>Título:</td> <td><input type='text' name = "titulo" id= "titulo"/> </td> </tr><br>
+    <tr><td>Reclamação:</td> <td><input type='text' name = "reclam" id='reclam'/> </td> </tr><br>
+      
+    <tr><td>Type:</td> <td><select id ='categ'> +
+          <option value='infraestrutura' SELECTED>infraestrutura</option>
+          <option value='outros'>outro</option>
+          </select> </td></tr><br>
+                 
+    <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
+    
     </form>
 
             <div id="map-canvas"></div>
