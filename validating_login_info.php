@@ -98,9 +98,9 @@ function setting_basic_info($matricula, $senha)
 
 function picking_user_datas($matricula, $senha)
 {
-	$find_element = new db_query();
-	$find_element->set_find_row("Matricula,Email,Nome,Userid","Users","Matricula = ? and Senha = ?", array($matricula, hash('sha256',$senha)));
-	$row = $find_element->get_row();
+	$find_row = new db_query();
+	$find_row->set_find_row("select Matricula,Nome,Email,Userid from Users WHERE Matricula = ? and Senha = ?",array($matricula, hash('sha256',$senha)));
+	$row = $find_row->get_row();
 	
 	return $row;
 }
