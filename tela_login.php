@@ -43,11 +43,11 @@
 </hgroup>
 <form>
   <div class="group">
-    <input type="text"><span class="highlight"></span><span class="bar"></span>
+    <input type="text" name = 'matricula'><span class="highlight"></span><span class="bar"></span>
     <label>Matrícula</label>
   </div>
   <div class="group">
-    <input type="password"><span class="highlight"></span><span class="bar"></span>
+    <input type="password" name = 'pass'><span class="highlight"></span><span class="bar"></span>
     <label>Senha</label>
   </div>
   <button type="submit" class="button buttonBlue">Logar
@@ -61,3 +61,4 @@
 </form>
  </body>
 </html>
+

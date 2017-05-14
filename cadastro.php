@@ -17,11 +17,11 @@
             alert("Campo Obrigatorio: Nome");
             return false;
          }
-  if (document.forms["cad"]["email"].value == "") {
+        if (document.forms["cad"]["email"].value == "") {
      alert("Campo Obrigatorio: e-mail");
             return false;
          }
-  if (mat.length < 9) {
+        if (mat.length < 9) {
             alert("Campo Matricula: deve conter 9 caracteres numericos");
             return false;
      }
@@ -57,12 +57,12 @@
 <form>
 
   <div class="group">
-    <input type="text"><span class="highlight"></span><span class="bar"></span>
+    <input type="text" name = 'nome'><span class="highlight"></span><span class="bar"></span>
     <label>Nome</label>
   </div>
 
   <div class="group">
-    <input type="email"><span class="highlight"></span><span class="bar"></span>
+    <input type="email" name = 'email'><span class="highlight"></span><span class="bar"></span>
     <label>Email</label>
   </div>
 
@@ -136,4 +136,5 @@
 
  </body>
 </html>
+
 
