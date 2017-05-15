@@ -48,7 +48,7 @@
 
 
 <body>
-  <img src="http://imgur.com/a/04mx6" alt="UNBIX - Logo" style="width:auto; height:auto;">
+  <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="width:auto; height:auto;">
 <form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
 <!-- DADOS DE CADASTRO -->
 <hgroup>
