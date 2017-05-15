@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>UnBix</title>
+<title>UnBIX</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -32,11 +32,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">UnBIX</h1>
+<header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
+  <img src=" http://i.imgur.com/RJTalj1.png" alt="UNBIX - Logo" style="width:auto; height:auto;">
   <p class="w3-xlarge">Um novo jeito de ver a UnB</p>
-  <button onclick="window.location.href='tela_login.php'" class="w3-button w3-black w3-padding-large w3-large w3-margin-top"> Login </button></br>
-  <button onclick="window.location.href='cadastro.php'" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Cadastro</button>
+  <button onclick="window.location.href='tela_login.php'" class="w3-button w3-green w3-padding-large w3-large w3-margin-top"> Login </button></br>
+  <button onclick="window.location.href='cadastro.php'" class="w3-button w3-green w3-padding-large w3-large w3-margin-top">Cadastro</button>
 
 
 
