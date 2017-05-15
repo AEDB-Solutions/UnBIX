@@ -1,17 +1,14 @@
 <? php
-
-  include(mapa.html);
-
-      $search_input = $POST['busca'];
-
-
+  
+      $search_input = $_POST['busca'];
+      include 'database.php';
       use UnBix_database;
-      foreach ($pdo->query($sql) as $row)
-      {
+      $pdo = Database::connect();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = select * from Complaints where Categoria = $search_input;
+      $q = $pdo -> prepare($sql);
 
 
-
-      }
       Database::disconnect();
 
 
