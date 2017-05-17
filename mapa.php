@@ -34,7 +34,6 @@
   
     <h4><i> Busca por CATEGORIA:</i></h4>
         <select name="busca">
-          <option value="Categorias">Categorias</option>
           <option value="Infraestrutura">Infraestrutura</option>
           <option value="Segurança">Segurança</option>
           <option value="Iluminação">Iluminação</option>
