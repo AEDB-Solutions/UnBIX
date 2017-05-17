@@ -1,11 +1,12 @@
 <?php
-     
+
     require 'database.php';
-    var_dump($_POST); exit;
+   // var_dump($_POST); exit;
  
     if ( !empty($_POST)) 
     {
          
+        $id_user = 1;
         $lat = $_POST['lat'];
         $long = $_POST['long'];
         $reclam = $_POST['reclam'];
@@ -13,15 +14,26 @@
         $categ = $_POST['categ'];
         $titulo = $_POST['titulo'];
 
-
-
-
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO Complaints (IDuser, Titulo, Descriçao, Descriçao_adicional, Latitude, Longitude, Categoria) values (1, $titulo, $reclam, $adicional, $lat, $long, $categ);"; //O IDuser é temporario para testes enquanto nao temos sessão. 
-            $q = $pdo->prepare($sql);
-            $q->execute(array($lat, $long, $reclam, $categ, $titulo));
+
+
+            $q = $pdo->prepare("INSERT INTO Complaints (IDuser, Titulo, Descriçao, Descriçao_adicional, Latitude, Longitude, Categoria) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $q->bindParam(1, $id_user);
+            $q->bindParam(2, $titulo);
+            $q->bindParam(3, $reclam);
+            $q->bindParam(4, $adicional);
+            $q->bindParam(5, $lat);
+            $q->bindParam(6, $long);
+            $q->bindParam(7, $categ);
+
+
+            //$sql = "INSERT INTO Complaints (IDuser, Titulo, Descriçao, Descriçao_adicional, Latitude, Longitude, Categoria) values (?, ?, ?, ?, ?, ?, ?);"; 
+            //$q = $pdo->prepare($sql);
+            //$c = array($id_user, $titulo, $reclam, $adicional, $lat, $long, $categ);
+            $q->execute();
+            //$q->debugDumpParams();
             Database::disconnect();
-        }
+    }
     
 ?>
