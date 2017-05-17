@@ -6,6 +6,7 @@
  <link href="cadastrodef.css" rel="stylesheet">
  <meta name="description" content="Faça aqui seu cadastro no UnBix!">
  <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1" />
+ <meta charset="utf-8" />
 
  <script language="text/javascript" type="text/javascript">
   function validar() {
@@ -98,9 +99,15 @@
   		<label for="genero">G&ecirc;nero: </label>
   	</td>
   	<td align="left">
+    <select>
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+    <!-- Codigo antigo com botoes
  	 <input type="radio" name="genero" value="M"> M
  	 <input type="radio" name="genero" value="F"> F
- 	 <input type="radio" name="genero" value="Outro"> Outro
+ 	 <input type="radio" name="genero" value="Outro"> Outro -->
   	</td>
   </tr>
 
