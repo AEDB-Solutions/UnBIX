@@ -47,20 +47,50 @@ function initMap() {
 
     var x = document.getElementById("demo");
 
-    function getLocation()
-    {
-        if (navigator.geolocation)
-        {
-            navigator.geolocation.getCurrentPosition(savePosition);
-        } else
-        {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
+function geoFindMe() {
+  var output = document.getElementById("out");
 
-    function savePosition(position)
-    {
-        document.getElementById('lat').value = position.coords.latitude;
-        document.getElementById('long').value = position.coords.longitude;
-    }
-        
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    
+  //document.getElementById("lat").value = latitude; 
+  //document.getElementById("long").value = longitude; 
+    
+    var img = new Image();
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+    output.appendChild(img);
+  }
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+ // markerlocal(latitude, longitude);
+}
+
+function markerlocal() {
+  var myLatLng = {lat: latitude, lng: longitude};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
