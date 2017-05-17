@@ -31,6 +31,19 @@
         <div id="map-canvas"></div>
         <script src="script.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
+  
+    <h4><i> Busca por CATEGORIA:</i></h4>
+        <select name="busca">
+          <option value="Categorias">Categorias</option>
+          <option value="Infraestrutura">Infraestrutura</option>
+          <option value="Segurança">Segurança</option>
+          <option value="Iluminação">Iluminação</option>
+          <option value="Bebedouro">Bebedouro</option>
+          <option value="Banheiro">Banheiro</option>
+          <option value="Barulho">Barulho</option>
+          <option value="Outros">Outros</option>
+        </select>
+
   </body>
 
 </html>
