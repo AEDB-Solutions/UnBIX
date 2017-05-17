@@ -13,6 +13,7 @@
 <div id="out"></div>
 
   <p id="demo"></p>
+    <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU"></script>
 
 <form action="savelocation.php" method="post" id="form" style='display:none'>
       <tr><td></td> <td><input type="hidden" name="lat" id="lat" /> </td> </tr>
