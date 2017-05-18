@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `Complaints`;
 CREATE TABLE `Complaints` (
   `IDuser` bigint(20) DEFAULT NULL,
   `ComplaintID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Título` varchar(30) NOT NULL,
+  `Titulo` varchar(30) NOT NULL,
   `Descrição` varchar(140) NOT NULL,
   `Descrição_adicional` varchar(140) DEFAULT NULL,
   `Latitude` float NOT NULL,
@@ -71,6 +71,32 @@ INSERT INTO `Cursos` VALUES (1,'Administração'),(2,'Agronomia'),(3,'Arquiterur
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Localidades`
+--
+
+DROP TABLE IF EXISTS `Localidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Localidades` (
+  `localID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `descriçao` varchar(140) NOT NULL,
+  `keypoint` tinyint(1) NOT NULL,
+  PRIMARY KEY (`localID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Localidades`
+--
+
+LOCK TABLES `Localidades` WRITE;
+/*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Users`
 --
 
@@ -109,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-03 22:19:15
+-- Dump completed on 2017-05-18  9:15:11
