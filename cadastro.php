@@ -99,7 +99,7 @@
   		<label for="genero">G&ecirc;nero: </label>
   	</td>
   	<td align="left">
-    <select>
+    <select name="genero">
       <option value="M">Masculino</option>
       <option value="F">Feminino</option>
       <option value="Outro">Outro</option>
