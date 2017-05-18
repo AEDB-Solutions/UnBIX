@@ -23,17 +23,19 @@ DROP TABLE IF EXISTS `Complaints`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Complaints` (
-  `IDuser` bigint(20) DEFAULT NULL,
   `ComplaintID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `IDuser` bigint(20) NOT NULL,
+  `LocalID` bigint(20) NOT NULL,
   `Titulo` varchar(30) NOT NULL,
-  `Descrição` varchar(140) NOT NULL,
-  `Descrição_adicional` varchar(140) DEFAULT NULL,
-  `Latitude` float NOT NULL,
-  `Longitude` float NOT NULL,
-  `Categoria` enum('Infraestrutura','Mau-Funcionamento','Outro') DEFAULT NULL,
+  `Descriçao` varchar(140) NOT NULL,
+  `Categoria` enum('Iluminação','Banheiro','Bebedouro','Infraestrutura','Segurança','Barulho','Outro') NOT NULL,
+  `Emergencia` enum('1','2','3','4','5') DEFAULT NULL,
+  `Curtida` int(11) DEFAULT NULL,
   PRIMARY KEY (`ComplaintID`),
   KEY `IDuser` (`IDuser`),
-  CONSTRAINT `Complaints_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `Users` (`Userid`)
+  KEY `LocalID` (`LocalID`),
+  CONSTRAINT `Complaints_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `Users` (`Userid`),
+  CONSTRAINT `Complaints_ibfk_2` FOREIGN KEY (`LocalID`) REFERENCES `Localidades` (`localID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -135,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18  9:15:11
+-- Dump completed on 2017-05-18 13:33:20
