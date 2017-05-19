@@ -86,7 +86,7 @@ CREATE TABLE `Localidades` (
   `descriçao` varchar(140) NOT NULL,
   `keypoint` tinyint(1) NOT NULL,
   PRIMARY KEY (`localID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +95,7 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
+INSERT INTO `Localidades` VALUES (1,-15.7636,-47.873,'Banheiro F. Mecânica',1),(2,-15.7634,-47.8727,'Banheiro M. Mecânica',1),(3,-15.7635,-47.873,'Bebedouro Mecânica',1),(4,-15.7631,-47.8724,'Banheiro F. Civil',1);
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 13:33:20
+-- Dump completed on 2017-05-19 15:02:43
