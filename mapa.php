@@ -9,40 +9,30 @@
   </head>
 
   <body>
-<p><button onclick="geoFindMe()">Inserir reclamação na localização atual</button></p>
-<div id="out"></div>
+    
+    <button onclick="getLocation()">Inserir reclamação na localização atual</button>
 
-  <p id="demo"></p>
-    <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU"></script>
+    <p id="demo"></p>
 
-<form action="savelocation.php" method="post" id="form" style='display:none'>
-      <tr><td></td> <td><input type="hidden" name="lat" id="lat" /> </td> </tr>
-      <tr><td></td> <td><input type="hidden" name="long" id="long" /> </td> </tr>
-      <tr><td>Título:</td> <td><input type="text" name="titulo" /> </td> </tr>
-      <tr><td>Reclamação:</td> <td><input type="text" name="reclam" /> </td> </tr>
-      <tr><td>Categoria:</td> <td><select name="categ"> +
-      <option value="Infraestrutura" SELECTED>Infraestrutura</option>
-      <option value="Mau-Funcionamento">Mau-Funcionamento</option>
-      <option value="Outro">Outro</option>
-      </select> </td></tr>
-      <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
+    <form action="savelocation.php" method="post" id="form" style='display:none'>
+
+    <tr><td></td> <td><input type="text" name="lat" id="lat"> </td </tr>
+    <tr><td></td> <td><input type="text" name="long" id="long"><br> </td> </tr>
+    <tr><td>Título:</td> <td><input type="text" name = "titulo" id= "titulo"/> </td> </tr><br>
+    <tr><td>Reclamação:</td> <td><input type="text" name = "reclam" id='reclam'/> </td> </tr><br>
+    <tr><td>Type:</td> <td><select id ='categ'> +
+          <option value='infraestrutura' SELECTED>Infraestrutura</option>
+          <option value='mau-funcionamento' SELECTED> Mau-funcionamento</option>
+          <option value='outros'>outro</option>
+          </select> </td></tr><br>
+
+    <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
+
     </form>
 
-        <div id="map-canvas"></div>
+            <div id="map-canvas"></div>
         <script src="script.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
-  
-    <h4><i> Busca por CATEGORIA:</i></h4>
-        <select name="busca">
-          <option value="Infraestrutura">Infraestrutura</option>
-          <option value="Segurança">Segurança</option>
-          <option value="Iluminação">Iluminação</option>
-          <option value="Bebedouro">Bebedouro</option>
-          <option value="Banheiro">Banheiro</option>
-          <option value="Barulho">Barulho</option>
-          <option value="Outros">Outros</option>
-        </select>
-
   </body>
 
 </html>

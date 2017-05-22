@@ -28,13 +28,16 @@ function initMap() {
       });
 
       google.maps.event.addListener(map, 'click', function(event) {
+        var position = event.latLng;
+      console.log(position)
         marker = new google.maps.Marker({
-          position: event.latLng,
+          position: position,
           map: map,
           animation: google.maps.Animation.DROP,
           draggable: true
-        });
-
+          });
+        document.getElementById('lat').value = position.lat();
+        document.getElementById('long').value = position.lng();
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.open(map, marker);
           document.getElementById('form').style = 'display:block';
@@ -45,46 +48,33 @@ function initMap() {
 
 
 
-    
+    var x = document.getElementById("demo");
 
-function geoFindMe() {
-  // var output = document.getElementById("out");
-  var x = document.getElementById("demo");
-  if (navigator.geolocation){
-   navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    x.innerHTML = "Tente novamente em outro Browser com suporte a localização."
-  }
-}
 
-function showPosition(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    latlon = new google.maps.LatLng(lat, lon)
-   
-    var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
-}
 
-function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
-            break;
-        case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
-            break;
-        case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
-            break;
-        case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
-            break;
+    var savePosition = function (position)
+    {
+        console.log("oi parte 2")
+        document.getElementById('currentLat').value = position.coords.latitude;
+        document.getElementById('currentLon').value = position.coords.longitude;
+        marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          draggable: true
+        })
     }
-}
-  
-function CreateLocalMarker(latlon){
-  var marker = new google.maps.Marker({position: latlon,map: map,animation: google.maps.Animation.DROP})
 
+    function getLocation()
+    {
 
+        if (navigator.geolocation)
+        {
+            console.log("oi porra")
+            navigator.geolocation.getCurrentPosition(savePosition);
 
-}
+        } else
+        {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
