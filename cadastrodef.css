@@ -12,6 +12,11 @@ hgroup {
 }
 
 h1, h3 { font-weight: 300; }
+h2 { 
+	font-family: Helvetica;
+	color: #999;
+	font-size: 18px;
+	 }
 
 h1 { color: #636363; }
 
