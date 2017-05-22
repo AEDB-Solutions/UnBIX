@@ -93,7 +93,7 @@
       <h2>Genero</h2>
     
 <select name="genero">
-  <option value="Masculino">Masculino</option><option value="Feminino">Feminino</option><option value="Outro">Outro</option>  
+  <option value="M">Masculino</option><option value="F">Feminino</option><option value="Outro">Outro</option>  
 </select>
     
     </div>
