@@ -43,14 +43,12 @@
 </hgroup>
 <form>
   <div class="group">
- <h2>Matrícula</h2> 
     <input type="text" name = 'matricula'><span class="highlight"></span><span class="bar"></span>
-    <label></label>
+    <label>Matrícula</label>
   </div>
   <div class="group">
-  <h2>Senha</h2> 
     <input type="password" name = 'pass'><span class="highlight"></span><span class="bar"></span>
-    <label></label>
+    <label>Senha</label>
   </div>
   <button type="submit" class="button buttonBlue">Logar
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
