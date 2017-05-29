@@ -36,8 +36,55 @@ header("Content-Type: text/html; charset=ISO-8859-1", true);
             $q = $pdo->prepare($sql);
             $q->execute(array($nome,$curso,$email,$matricula,$genero,$senha_arm));
             Database::disconnect();
+        echo '<html><title>UnBIX | Cadastro Realizado com sucesso!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
 
-        echo '<html><p style=" text-align:center;">Registro feito com sucesso!</p><a href="index.php"> Voltar << </a> </html>';
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-green w3-card-2 w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Quem somos</a>
+    <a href="http://www.unb.br/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" target="_blank">UnB</a>
+  </div> 
+
+  <header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
+  <img src=" http://i.imgur.com/RJTalj1.png" alt="UNBIX - Logo" style="width:auto; height:auto;">
+  <p class="w3-xlarge">Cadastro Realizado com sucesso!</p>
+  <a href="index.php" class="w3-button w3-green w3-padding-large w3-large w3-margin-top">Voltar</a>
+  <!--<button onclick="window.location.href=index.php" class="w3-button w3-green w3-padding-large w3-large w3-margin-top">Voltar</button></br>-->
+
+</header>
+<!-- Fazer o Footer funcionar! -->
+<!--
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-gears" style="font-size:36px;color:red"></i>
+    <i class="fa fa-terminal" style="font-size:36px;color:orange"></i>
+    <i class="fa fa-check" style="font-size:36px;color:yellow"></i>
+    <i class="fa fa-map-o" style="font-size:36px;color:green"></i>
+    <i class="fa fa-thumb-tack" style="font-size:36px;color:blue"></i>
+    <i class="fa fa-thumbs-up" style="font-size:36px;color:purple"></i>
+
+ </div>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+-->
+
+</body>
+</html>';    
+        //echo '<html><p style=" text-align:center;">Registro feito com sucesso!</p><a href="index.php"> Voltar << </a> </html>';
 
 	}
 
