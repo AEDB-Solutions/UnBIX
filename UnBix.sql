@@ -27,7 +27,7 @@ CREATE TABLE `Complaints` (
   `IDuser` bigint(20) NOT NULL,
   `LocalID` bigint(20) NOT NULL,
   `Titulo` varchar(30) NOT NULL,
-  `Descriçao` varchar(140) NOT NULL,
+  `Descricao` varchar(140) NOT NULL,
   `Categoria` enum('Iluminação','Banheiro','Bebedouro','Infraestrutura','Segurança','Barulho','Outro') NOT NULL,
   `Emergencia` enum('1','2','3','4','5') DEFAULT NULL,
   `Curtida` int(11) DEFAULT NULL,
@@ -81,12 +81,12 @@ DROP TABLE IF EXISTS `Localidades`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Localidades` (
   `localID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `latitude` float NOT NULL,
-  `longitude` float NOT NULL,
-  `descriçao` varchar(140) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `descricao` varchar(140) NOT NULL,
   `keypoint` tinyint(1) NOT NULL,
   PRIMARY KEY (`localID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
-INSERT INTO `Localidades` VALUES (1,-15.7636,-47.873,'Banheiro F. Mecânica',1),(2,-15.7634,-47.8727,'Banheiro M. Mecânica',1),(3,-15.7635,-47.873,'Bebedouro Mecânica',1),(4,-15.7631,-47.8724,'Banheiro F. Civil',1);
+INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1),(4,-15.763463,-47.872682,'Banheiro F. Civil',1),(5,-15.76313,-47.87244,'Banheiro M. Civil',1),(6,-15.763412,-47.872575,'Bebedouro Civil',1),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1);
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-19 15:02:43
+-- Dump completed on 2017-05-29 17:38:16
