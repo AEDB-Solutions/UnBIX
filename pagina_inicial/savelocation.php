@@ -7,19 +7,12 @@
     {
          
         $id_user = 1;
-        //$lat = $_POST['lat'];
-        //$long = $_POST['long'];
-        //$reclam = $_POST['reclam'];
-        //$adicional = $_POST['adic'];
-        //$categ = $_POST['categ'];
-        //$titulo = $_POST['titulo'];
-
         $localID = 4;
-        $titulo = 'hsdcjk';
-        $desc = 'perto';
-        $cat = 'infraestrutura';
-        $eme = '1';
-        $cur = 10;
+        $titulo = $_POST['Titulo'];
+        $desc = $_POST['Descricao'];
+        $cat = $_POST['Categoria'];
+        $eme = $_POST['Emergencia'];
+        $cur = $_POST['Curtida'];
            
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
