@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Unbix</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+      <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="material.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+
+
+  <body>
+    <!--Barra de Cima-->
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--green-100 mdl-color-text--green-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title"><h3>Profile</h3></span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Pesquisar...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">view_list</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">Profile</li>
+            <li class="mdl-menu__item">Reclamações</li>
+            <li class="mdl-menu__item">Logout</li>
+          </ul>
+        </div>
+      </header>
+
+      <!--Parte do Profile-->
+      <div class="demo-drawer mdl-layout__drawer mdl-color--green-900 mdl-color-text--green-50">
+        <header class="demo-drawer-header">
+          <img src="images/usuario.png" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>Usuario</span>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </header>
+
+        <!--Barra Lateral-->
+        <nav class="demo-navigation mdl-navigation mdl-color--green-800">
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Profile</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">room</i>Mapa</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">description</i>Reclamações</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+        </nav>
+      </div>
+
+      <main >
+        <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p>
+        <div id="out"></div>
+
+          <p id="demo"></p>
+
+
+
+        <form action="savelocation.php" method="post" id="form" style='display:none'>
+          <tr><td></td> <td><input type="text" name="lat" id="lat"> </td </tr>
+          <tr><td></td> <td><input type="text" name="long" id="long"><br> </td> </tr>
+          <tr><td>Título:</td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr><br>
+          <tr><td>Descrição:</td> <td><input type="text" name = "Descriçao" id='Descriçao'/> </td> </tr><br>
+          <tr><td>Type:</td> <td><select id ='Categoria'> +
+                <option value='Iluminação' SELECTED>Iluminação</option>
+                <option value='Banheiro' SELECTED> Banheiro</option>
+                <option value='Bebedouro'>Bebedouro</option>
+                <option value='Infraestrutura'>Infraestrutura</option>
+                <option value='Segurança'>Segurança</option>
+                <option value='Barulho'>Barulho</option>
+                <option value='Outro'>Outro</option>
+                </select> </td></tr><br>
+            <tr><td>Emergencia:</td> <td><select id ='Emergencia'> +
+                <option value='1' SELECTED> 1 </option>
+                <option value='2' SELECTED> 2 </option>
+                <option value='3' SELECTED> 3 </option>
+                <option value='4' SELECTED> 4 </option>
+                <option value='5' SELECTED> 5 </option>
+            </select> </td></tr><br>
+          <tr><td>Curtida</td> <td><input type="text" name = "Curtida" id= "Curtida"/> </td> </tr><br>
+              <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
+            </form>
+
+            <div id="map-canvas"></div>
+            <script src="script.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
+
+            <h4><i  style=" position: absolute;left:300px; top:130px"> Busca por CATEGORIA:</i></h4>
+                <select name="busca">
+                  <option value="Infraestrutura">Infraestrutura</option>
+                  <option value="Segurança">Segurança</option>
+                  <option value="Iluminação">Iluminação</option>
+                  <option value="Bebedouro">Bebedouro</option>
+                  <option value="Banheiro">Banheiro</option>
+                  <option value="Barulho">Barulho</option>
+                  <option value="Outros">Outros</option>
+                </select>
+
+      </main>
+
+
+
+
+
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>

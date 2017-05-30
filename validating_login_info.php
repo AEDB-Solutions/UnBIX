@@ -17,7 +17,7 @@ function login_check_info()
 	$mat = $_POST['matricula'];
 
 	$db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
-	
+
 	try_login($mat, $password, $db_colluns, $erros);
 }
 
@@ -37,7 +37,7 @@ function try_login($matricula , $pass, $db_colluns, $erros)
 	if(validate_login_info($matricula, $pass, $db_colluns))
 	{
 		setting_basic_info($matricula, $pass);
-		echo '<html><head><meta http-equiv="Refresh" content="1;mapa.php"></head></html>';
+		echo '<html><head><meta http-equiv="Refresh" content="1;pagina_inicial/index1.html"></head></html>';
 		exit;
 	}
 
@@ -50,14 +50,14 @@ function try_login($matricula , $pass, $db_colluns, $erros)
 
 function printing_erros($erros)
 {
-	foreach ($erros as $term) 
+	foreach ($erros as $term)
 	{
 		if($term != ' ')
 		{
 				echo "<script>alert('$term');</script>";
 				echo '<html><head><meta http-equiv="Refresh" content="1;tela_login.php"></head></html>';
 				break;
-		}	
+		}
 		//header()
 	}
 }
@@ -65,10 +65,10 @@ function printing_erros($erros)
 function validate_login_info($matricula, $senha, $db_colluns)
 {
 	//$pdo = new Database;//objet database//nao funciona?
-	$db = Database::connect();	
+	$db = Database::connect();
 
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
+
 
 	$cript_senha= hash('sha256',$senha);
 	$query = "Select * from Users where {$db_colluns[3]} = ?  and {$db_colluns[5]} = ?;";
@@ -81,7 +81,7 @@ function validate_login_info($matricula, $senha, $db_colluns)
 		return true;
 	}
 
-	return false;	
+	return false;
 }
 
 function setting_basic_info($matricula, $senha)
@@ -93,7 +93,7 @@ function setting_basic_info($matricula, $senha)
 	$_SESSION['matricula'] = $row['Matricula'];
 	$_SESSION['email'] = $row['Email'];
 
-	
+
 }
 
 function picking_user_datas($matricula, $senha)
@@ -101,7 +101,7 @@ function picking_user_datas($matricula, $senha)
 	$find_row = new db_query();
 	$find_row->set_find_row("select Matricula,Nome,Email,Userid from Users WHERE Matricula = ? and Senha = ?",array($matricula, hash('sha256',$senha)));
 	$row = $find_row->get_row();
-	
+
 	return $row;
 }
 

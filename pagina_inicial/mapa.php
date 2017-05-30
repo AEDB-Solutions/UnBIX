@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    
     <button onclick="getLocation()">Inserir reclamação na localização atual</button>
 
     <p id="demo"></p>
