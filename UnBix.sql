@@ -28,7 +28,7 @@ CREATE TABLE `Complaints` (
   `LocalID` bigint(20) NOT NULL,
   `Titulo` varchar(30) NOT NULL,
   `Descricao` varchar(140) NOT NULL,
-  `Categoria` enum('Iluminação','Banheiro','Bebedouro','Infraestrutura','Segurança','Barulho','Outro') NOT NULL,
+  `Categoria` enum('Iluminacao','Banheiro','Bebedouro','Infraestrutura','Seguranca','Barulho','Outro') NOT NULL,
   `Emergencia` enum('1','2','3','4','5') DEFAULT NULL,
   `Curtida` int(11) DEFAULT NULL,
   PRIMARY KEY (`ComplaintID`),

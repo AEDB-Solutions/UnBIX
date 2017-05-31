@@ -18,9 +18,9 @@
 
     <tr><td></td> <td><input type="text" name="lat" id="lat"> </td </tr>
     <tr><td></td> <td><input type="text" name="long" id="long"><br> </td> </tr>
-    <tr><td>Título:</td> <td><input type="text" name = "titulo" id= "titulo"/> </td> </tr><br>
-    <tr><td>Reclamação:</td> <td><input type="text" name = "reclam" id='reclam'/> </td> </tr><br>
-    <tr><td>Type:</td> <td><select id ='categ'> +
+    <tr><td>Título: </td> <td><input type="text" name = "titulo" id= "titulo"/> </td> </tr>
+    <tr><td>Reclamação: </td> <td><input type="text" name = "reclam" id='reclam'/> </td> </tr>
+    <tr><td>Tipo: </td> <td><select id ='categ'> +
           <option value='infraestrutura' SELECTED>Infraestrutura</option>
           <option value='mau-funcionamento' SELECTED> Mau-funcionamento</option>
           <option value='outros'>outro</option>
@@ -31,7 +31,9 @@
     </form>
 
             <div id="map-canvas"></div>
-        <script src="script.js"></script>
+        <script src="script.js">
+
+	</script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
   </body>
 
