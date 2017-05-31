@@ -6,18 +6,18 @@ include("class_database_query.php");
 
 function save_info_on_db()
 {
-	$lat = $_POST['lat'];
-	$long = $_POST['long'];
-	
-	insert_location($lat,$long);
-	insert_into_complaints($lat,$long);
+    $lat = $_POST['lat'];
+    $long = $_POST['long'];
+    
+    insert_location($lat,$long);
+    insert_into_complaints($lat,$long);
 
 }
 
 function insert_location($lat,$long)
 {
-	$key_point = 0;
-	$desc = $_POST['Descricao'];
+    $key_point = 0;
+    $desc = $_POST['Descricao'];
 
 
             $pdo = Database::connect();
@@ -41,13 +41,13 @@ function insert_into_complaints($lat,$long)
             $desc = $_POST['Descricao'];
             $cat = $_POST['Categoria'];
             $eme = $_POST['Emergencia'];
-            $cur = $_POST['Curtida'];
+            //$cur = $_POST['Curtida'];
            
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $sql = "INSERT INTO Complaints (IDuser, LocalID, Titulo, Descricao, Categoria, Emergencia, Curtida) values(?, ?, ?, ?, ?, ?, ?);";
+            $sql = "INSERT INTO Complaints (IDuser, LocalID, Titulo, Descricao, Categoria, Emergencia) values(?, ?, ?, ?, ?, ?);";
             $q = $pdo->prepare($sql);
-            $a = array($id_user, $localID, $titulo, $desc, $cat, $eme, $cur);
+            $a = array($id_user, $localID, $titulo, $desc, $cat, $eme);
             //var_dump($pdo);
             $q->execute($a);
             //var_dump($q); exit;
@@ -58,13 +58,13 @@ function insert_into_complaints($lat,$long)
 
 function get_local_id($lat,$long)
 {
-	$find_row = new db_query();
-	$find_row->set_find_row("select localID from Localidades where latitude = ? and longitude = ?",array($lat,$long));
-	$row = $find_row->get_row();
+    $find_row = new db_query();
+    $find_row->set_find_row("select localID from Localidades where latitude = ? and longitude = ?",array($lat,$long));
+    $row = $find_row->get_row();
 
-	 $localid = $row["localID"];
+     $localid = $row["localID"];
 
-	return $localid;
+    return $localid;
 }
 
 ?>
