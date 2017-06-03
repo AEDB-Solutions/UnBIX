@@ -55,7 +55,7 @@ function map_events(map)
 
 }
 
-//------------------------------------------pegar localização----------------------------------
+//------------------------------------------PEGAR LOCALIZAÇÃO----------------------------------
 
 
 function user_current_location(map)
@@ -132,7 +132,7 @@ function getLocation()
     }
 
 
-//-------------------botar em outro arquivo as requests----------------------------------------------------------
+//-------------------INICIO REQUESTS----------------------------------------------------------
 
 function requests(host, method = "GET") 
 {
@@ -189,4 +189,22 @@ function create_marker_and_info_window(row_obj,map)
 
   marker.setMap(map); 
 }
+
+//----------------------------------------------------fim das requests------------------------------
+
+
+function pass_js_variables_to_php(host,array_keys,array_values)
+{
+  var string = host+"?";
+
+  for(i = 0; i < array_values.length; i++)
+  {
+    string+= array_keys[i] + "=" + array_values[i];
+
+    if(i != array_values.length-1)
+    string += "&";
+  }
+
+  window.location = string;
+}//EXEMPLO: pass_js_variables_to_php("http://localhost/UNBIX/get/passing_with_get.php",["name","idade"],["pedro",18]);EECUTADA ESSA FUNÇÃO A PAGINA É REDIRECIONADA PARA UM .PHP ESCOLHIDO NO HOST
 
