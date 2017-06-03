@@ -1,5 +1,6 @@
 
-function initMap() {
+function initMap() 
+{
   var options = {
       center: {
         lat: -15.764114,
@@ -14,12 +15,20 @@ function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-  var marker;
-  var infowindow;
-  var messagewindow;
-  var wind;
+    load_on_map(map,"http://localhost/UNBIX/chega2/pagina_inicial/key_points_json.php");
+    //load_on_map(map,"http://localhost/UNBIX/chega2/pagina_inicial/all_complaints.php")
+    map_events(map);
+    //user_current_location(map);
 
+}
 
+function map_events(map)
+{
+        var marker;
+        var infowindow;
+        var messagewindow;
+        var wind;
+    
       infowindow = new google.maps.InfoWindow({
         content: document.getElementById('form')
       })
@@ -30,7 +39,6 @@ function initMap() {
 
       google.maps.event.addListener(map, 'click', function(event) {
         var position = event.latLng;
-      console.log(position)
         marker = new google.maps.Marker({
           position: position,
           map: map,
@@ -44,8 +52,21 @@ function initMap() {
           document.getElementById('form').style = 'display:block';
         });
       });
-    }
-      function getLocation() {
+
+}
+
+//------------------------------------------pegar localização----------------------------------
+
+
+function user_current_location(map)
+{
+        //dica para integrar os dois mapas em um .Usem a linha abaixo e tentem mudar o index;
+        //document.getElementById("user_pos").addEventListener("click",getLocation(map));
+}
+
+
+function getLocation() 
+{
         console.log("oi");
         var options = {
             center: {
@@ -91,11 +112,10 @@ function initMap() {
                                  'Error: Your browser doesnt support geolocation.');
          }
 
-       }
+}
 
 
-    var x = document.getElementById("demo");
-
+    var x = document.getElementById("demo");//para que que serve issa linha??
 
 
     var savePosition = function (position)
@@ -110,3 +130,63 @@ function initMap() {
           draggable: true
         })
     }
+
+
+//-------------------botar em outro arquivo as requests----------------------------------------------------------
+
+function requests(host, method = "GET") 
+{
+    var content = null
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+     content = this.responseText
+    }
+    };
+
+    xhttp.open(method, host, false)
+    xhttp.send()
+    return content;
+}
+
+function requestasync(host, callback, method = "GET") 
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         callback(this.responseText)
+      }
+    }
+
+    xhttp.open(method, host, true)
+    xhttp.send()
+}
+
+function getting_db_info(host)
+{
+  var server_awnser = requests(host);
+
+  console.log("hola", JSON.parse(server_awnser));
+  
+  return JSON.parse(server_awnser);
+
+}
+
+function load_on_map(map,host)
+{
+  var row_objs = getting_db_info(host);
+  for(i = 0; i < row_objs.length; i++)
+  create_marker_and_info_window(row_objs[i],map);
+}
+
+function create_marker_and_info_window(row_obj,map)
+{
+  var key_point_location = new google.maps.LatLng(row_obj.latitude,row_obj.longitude);
+  var marker = new google.maps.Marker({position: key_point_location});
+  //var info_window = 
+
+  marker.setMap(map); 
+}
+
