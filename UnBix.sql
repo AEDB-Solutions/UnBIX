@@ -28,9 +28,11 @@ CREATE TABLE `Complaints` (
   `LocalID` bigint(20) NOT NULL,
   `Titulo` varchar(30) NOT NULL,
   `Descricao` varchar(140) NOT NULL,
-  `Categoria` enum('Iluminacao','Banheiro','Bebedouro','Infraestrutura','Seguranca','Barulho','Outro') NOT NULL,
+  `Categoria` enum('Iluminação','Banheiro','Bebedouro','Infraestrutura','Segurança','Barulho','Outro') NOT NULL,
   `Emergencia` enum('1','2','3','4','5') DEFAULT NULL,
-  `Curtida` int(11) DEFAULT NULL,
+  `Likes` int(11) DEFAULT NULL,
+  `Dislikes` int(11) DEFAULT NULL,
+  `Averiguado` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`ComplaintID`),
   KEY `IDuser` (`IDuser`),
   KEY `LocalID` (`LocalID`),
@@ -114,6 +116,7 @@ CREATE TABLE `Users` (
   `Email` varchar(500) NOT NULL,
   `Senha` text NOT NULL,
   `Genero` enum('M','F','Outro') DEFAULT NULL,
+  `Power` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`Userid`),
   KEY `Curso` (`Curso`),
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`Curso`) REFERENCES `Cursos` (`Cursoid`)
@@ -138,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-29 17:38:16
+-- Dump completed on 2017-06-05 13:02:16
