@@ -3,8 +3,8 @@ class Database
 {
     private static $dbName = 'UnBix_database' ;
     private static $dbHost = '127.0.0.1' ;
-    private static $dbUsername = 'andregalencar';
-    private static $dbUserPassword = '0l9k8j7h';
+    private static $dbUsername = 'root';
+    private static $dbUserPassword = 'senha';
 
     private static $cont  = null;
 
@@ -18,7 +18,8 @@ class Database
        {
         try
         {
-          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
+          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName.";charset=utf8", self::$dbUsername, self::$dbUserPassword);
+          self::$cont->exec("set names utf8");
         }
         catch(PDOException $e)
         {

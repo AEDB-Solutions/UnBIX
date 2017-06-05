@@ -14,6 +14,32 @@ function save_info_on_db()
 
 }
 
+function atualiza_info_on_db()
+{
+    if (!empty($_POST)) 
+        {
+         
+            $id_user = $_SESSION['id'];
+            $localID = get_local_id($_POST['lat'],$_POST['long']);
+            $id_complaint = $_POST['id'];
+            $titulo = $_POST['Titulo'];
+            $desc = $_POST['Descricao'];
+            $cat = $_POST['Categoria'];
+            $eme = $_POST['Emergencia'];
+            //$cur = $_POST['Curtida'];
+           
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            $sql = "UPDATE Complaints SET IDuser = ?, Titulo = ?, Descricao = ?, Categoria = ?, Emergencia = ? WHERE ComplaintId = ?";
+            $q = $pdo->prepare($sql);
+            $a = array($id_user, $titulo, $desc, $cat, $eme, $id_complaint);
+            //var_dump($pdo);
+            $q->execute($a);
+            //var_dump($q); exit;
+            Database::disconnect();
+        }
+}
+
 function insert_location($lat,$long)
 {
     $key_point = 0;

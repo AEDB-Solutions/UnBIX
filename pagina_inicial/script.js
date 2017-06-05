@@ -265,27 +265,27 @@ function pass_js_variables_to_php(host,array_keys,array_values)
 //----------------------------GETTING_FORM------------------------------------------------------------
 function getting_form(objs_comp,objs_loc)
 {
-    return "<form action='savelocation.php' method='post' id='form'>"+"<table>"+
-          "<tr><td></td> <td><input type='text' name='lat' id='lat' value ="+objs_loc.latitude+"> </td> </tr>"+
-          "<tr><td></td> <td><input type='text' name='long' id='long' value ="+objs_loc.longitude+"> </td> </tr>"+
-          "<tr><td>Título: </td> <td><input type='text' name = 'Titulo' id= 'Titulo' value ="+objs_comp.Titulo+"> </td> </tr>"+
-          "<tr><td>Descrição:</td> <td><input type='text' name = 'Descricao' id='Descricao' value ="+objs_comp.Descricao+"> </td> </tr>"+
-          "<tr><td>Type:</td> <td><select name = 'Categoria' id ='Categoria' value ="+objs_comp.Categoria+"> +"+
-                "<option value='Iluminacao' SELECTED>Iluminação</option>"+
-                "<option value='Banheiro' SELECTED> Banheiro</option>"+
-                "<option value='Bebedouro'>Bebedouro</option>"+
-                "<option value='Infraestrutura'>Infraestrutura</option>"+
-                "<option value='Seguranca'>Segurança</option>"+
-                "<option value='Barulho'>Barulho</option>"+
-                "<option value='Outro'>Outro</option>"+
+    return "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='id' value='"+objs_comp.ComplaintID+"'/><table>"+
+          "<tr><td></td> <td><input type='hidden' name='lat' id='lat' value='"+objs_loc.latitude+"'> </td> </tr>"+
+          "<tr><td></td> <td><input type='hidden' name='long' id='long' value='"+objs_loc.longitude+"'> </td> </tr>"+
+          "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo' value='"+objs_comp.Titulo+"'> </td> </tr>"+
+          "<tr><td>Descrição:</td> <td><input type='text' name='Descricao' id='Descricao' value='"+objs_comp.Descricao+"'> </td> </tr>"+
+          "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+objs_comp.Categoria+"'> +"+
+                "<option value='Iluminacao' "+ (objs_comp.Categ oria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
+                "<option value='Banheiro' "+ (objs_comp.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
+                "<option value='Bebedouro' "+ (objs_comp.Categoria == 'Bebedouro' ? 'selected' : '') +">Bebedouro</option>"+
+                "<option value='Infraestrutura' "+ (objs_comp.Categoria == 'Infraestrutura' ? 'selected' : '') +">Infraestrutura</option>"+
+                "<option value='Seguranca' "+ (objs_comp.Categoria == 'Seguranca' ? 'selected' : '') +">Segurança</option>"+
+                "<option value='Barulho' "+ (objs_comp.Categoria == 'Barulho' ? 'selected' : '') +">Barulho</option>"+
+                "<option value='Outro' "+ (objs_comp.Categoria == 'Outro' ? 'selected' : '') +">Outro</option>"+
                 "</select> </td></tr>"+
-            "<tr><td>Emergencia:</td> <td><select name = 'Emergencia' id ='Emergencia' value ="+objs_comp.Emergencia+"> +"+
-                "<option value='1' SELECTED> 1 </option>"+
-                "<option value='2' SELECTED> 2 </option>"+
-                "<option value='3' SELECTED> 3 </option>"+
-                "<option value='4' SELECTED> 4 </option>"+
-                "<option value='5' SELECTED> 5 </option>"+
+            "<tr><td>Emergencia:</td> <td><select name='Emergencia' id='Emergencia'> +"+
+                "<option value='1' "+ (objs_comp.Emergencia == 1 ? 'selected' : '') +"> 1 </option>"+
+                "<option value='2' "+ (objs_comp.Emergencia == 2 ? 'selected' : '') +"> 2 </option>"+
+                "<option value='3' "+ (objs_comp.Emergencia == 3 ? 'selected' : '') +"> 3 </option>"+
+                "<option value='4' "+ (objs_comp.Emergencia == 4 ? 'selected' : '') +"> 4 </option>"+
+                "<option value='5' "+ (objs_comp.Emergencia == 5 ? 'selected' : '') +"> 5 </option>"+
             "</select> </td></tr>"+
-              "<tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>"+
+              "<tr><td></td><td><input type='submit' value='Atualizar Reclamacao!'/></td></tr>"+
           "</table>"+"</form>";
 }

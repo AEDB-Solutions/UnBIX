@@ -4,12 +4,13 @@ session_start();
 
 include("locality_functions.php");
 
-save_info_on_db();
+
+if(isset($_POST['id'])) {
+	atualiza_info_on_db();
+} else {
+	save_info_on_db();
+}
+
+echo '<html><head><meta http-equiv="Refresh" content="0;index1.html"></head></html>';
 
 ?>
-
-
-<center>
-<br><br><br><br>
-RECLAMAÇÃO REGISTRADA<br><br>
-<a href="index1.html">Voltar para o mapa</a> </center>

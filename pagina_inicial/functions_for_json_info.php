@@ -24,7 +24,7 @@ function picking_loc_zero()
 function picking_complaints()
 {
 	$find_rows = new db_query();
-	$find_rows->set_find_rows("SELECT IDuser,LocalID,Titulo,Descricao,Categoria,Emergencia FROM Complaints;",array(""));
+	$find_rows->set_find_rows("SELECT ComplaintID,IDuser,LocalID,Titulo,Descricao,Categoria,Emergencia FROM Complaints;",array(""));
 	$rows = $find_rows->get_db_rows();
 
 	return $rows;

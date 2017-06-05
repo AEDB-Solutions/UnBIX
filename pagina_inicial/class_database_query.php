@@ -65,7 +65,7 @@ class db_query
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$prepare = $db->prepare($query);
 		$prepare->execute($search_elements);
-		$result = $prepare->fetchAll();
+		$result = $prepare->fetchAll(PDO::FETCH_OBJ);
 		Database::disconnect();
 
 		$this->db_rows = $result;
