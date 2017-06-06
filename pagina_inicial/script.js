@@ -15,8 +15,8 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-    load_on_map(map,"http://localhost/UNBIX/this/pagina_inicial/loc_1.php","http://localhost/UNBIX/this/pagina_inicial/get_complaints.php");
-    load_on_map(map,"http://localhost/UNBIX/this/pagina_inicial/loc_0.php","http://localhost/UNBIX/this/pagina_inicial/get_complaints.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php","http://localhost/UnBIX/pagina_inicial/get_complaints.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php","http://localhost/UnBIX/pagina_inicial/get_complaints.php");
     map_events(map);
     //map_events(map);//SE DEIXO ISTO DEPOIS DO LOAD MAP A PAGINA FICA CARREGANDO CONSTANTEMENTE
     
