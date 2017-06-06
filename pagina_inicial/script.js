@@ -15,8 +15,8 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-    load_on_map(map,"http://localhost/UNBIX/pagina_inicial/loc_1.php","http://localhost/UNBIX/pagina_inicial/get_complaints.php");
-    load_on_map(map,"http://localhost/UNBIX/pagina_inicial/loc_0.php","http://localhost/UNBIX/pagina_inicial/get_complaints.php");
+    load_on_map(map,"http://localhost/UNBIX/this/pagina_inicial/loc_1.php","http://localhost/UNBIX/this/pagina_inicial/get_complaints.php");
+    load_on_map(map,"http://localhost/UNBIX/this/pagina_inicial/loc_0.php","http://localhost/UNBIX/this/pagina_inicial/get_complaints.php");
     map_events(map);
     //map_events(map);//SE DEIXO ISTO DEPOIS DO LOAD MAP A PAGINA FICA CARREGANDO CONSTANTEMENTE
     
@@ -203,8 +203,8 @@ function load_on_map(map,host1,host2)
   
   for(i = 0; i < array_objs_loc.length; i++)
   {
-  	if(array_objs_loc[i].keypoint == 0)
-  	create_marker_and_info_window_key0(array_objs_loc[i],corresp_local_id(array_objs_comp, array_objs_loc[i].localID), map);
+    if(array_objs_loc[i].keypoint == 0)
+    create_marker_and_info_window_key0(array_objs_loc[i],corresp_local_id(array_objs_comp, array_objs_loc[i].localID), map);
 
    else
    create_marker_and_info_window_key1(array_objs_loc[i],map);
@@ -233,11 +233,11 @@ function create_marker_and_info_window_key0(objs_loc,objs_comp, map)
 
 function corresp_local_id(array_objs_comp,localID)
 {
-	for(i = 0; i < array_objs_comp.length; i++)
-	{
-		if(array_objs_comp[i].LocalID == localID)
-		return array_objs_comp[i];
-	}
+  for(i = 0; i < array_objs_comp.length; i++)
+  {
+    if(array_objs_comp[i].LocalID == localID)
+    return array_objs_comp[i];
+  }
 }
 
 
@@ -271,7 +271,7 @@ function getting_form(objs_comp,objs_loc)
           "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo' value='"+objs_comp.Titulo+"'> </td> </tr>"+
           "<tr><td>Descrição:</td> <td><input type='text' name='Descricao' id='Descricao' value='"+objs_comp.Descricao+"'> </td> </tr>"+
           "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+objs_comp.Categoria+"'> +"+
-                "<option value='Iluminacao' "+ (objs_comp.Categ oria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
+                "<option value='Iluminacao' "+ (objs_comp.Categoria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
                 "<option value='Banheiro' "+ (objs_comp.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
                 "<option value='Bebedouro' "+ (objs_comp.Categoria == 'Bebedouro' ? 'selected' : '') +">Bebedouro</option>"+
                 "<option value='Infraestrutura' "+ (objs_comp.Categoria == 'Infraestrutura' ? 'selected' : '') +">Infraestrutura</option>"+
