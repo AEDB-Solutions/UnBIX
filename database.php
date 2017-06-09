@@ -3,8 +3,8 @@ class Database
 {
     private static $dbName = 'UnBix_database' ;
     private static $dbHost = '127.0.0.1' ;
-    private static $dbUsername = 'andregalencar';
-    private static $dbUserPassword = '0l9k8j7h';
+    private static $dbUsername = 'root';
+    private static $dbUserPassword = 'aSSiral';
 
     private static $cont  = null;
 
