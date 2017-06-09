@@ -2,17 +2,16 @@
 
 include("database.php");
 
-var_dump(get_coords()); 
+//Var_dump(get_coords()); 
 
-function get_categ() // TESTADA E FUNCIONANDO
+function get_categ() // TESTADA E FUNCIONANDO -- função que pega a categoria e busca no banco todas as reclamações daquela categoria
 {			
-		//if (!empty($_POST)) 
-        //{ 
+		if (!empty($_POST)) 
+        { 
 
          
             //$id_user = $_SESSION['id']; - pensar caso a reclamação seja dele ou não 
-            //$categ = $_POST['categ'];
-            $categ = 'Infraestrutura'; 
+            $categ = $_POST['categ'];
 			
 			$pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -23,25 +22,20 @@ function get_categ() // TESTADA E FUNCIONANDO
             //var_dump($q); exit;
             Database::disconnect();
 
-            return $result; //retorna as informações de TODAS AS RECLAMAÇÕES e seus localid
-        //}
-        //else 
-        //{ 
-       	//return 0;  
-        //}
+            return $result; //retorna TODAS as informações de TODAS AS RECLAMAÇÕES DAQUELA CATEGORIA
+        }
+        else 
+        { 
+       	return 0;  
+        }
 
 }
 
-function get_coords()
+function get_coords() //TESTADA E FUNCIONANDO -- função que pega posição a posição do get_categ e procura seu respectivo na localidades, e armazena na mesma posição em outro array
 {
-    //montar um while para cada posição do array procurar seu local id e botar tudo no mesmo array 
    		$compl = get_categ();
         $localid = array_column($compl,'LocalID'); 
-
-        //egar tamanho do localid, procurar posição por posição do localid no localidades, e criar array para cada um e colocar todos em um array geral. 
- 
-        //var_dump($localid); exit; 
-        //$i = 0; 
+        //var_dump($localid); exit;
         $size = count($localid);
         //var_dump($size); exit; 
         $all = NULL;
@@ -58,38 +52,22 @@ function get_coords()
             $result = $q->fetchAll();
             //var_dump($result); exit;
             $all[$i] = $result; 
-          // array_push($all, $result);  //ESSA FUNÇÃO TA APAGANDO TUDO E SUBSTITUINDO, PRECISO QUE ACUMULE
             //var_dump($q); exit;
-            Database::disconnect();
-           // $i = $i + 1;             
+            Database::disconnect();       
         }
 
-        return $all;
+        return $all; // retorna as informações de LOCALIZAÇÃO de TODOS AS RECLAMAÇÕES 
 
 }
 
-function info_marker()
+function info_marker() 
 {
 			$reclm = get_categ();
-			//$coords = get_coords(); 
+			$coords = get_coords(); 
 
            // var_dump($reclm); 
            // var_dump($coords);
-
-			//$localid = $reclm["LocalID"]; 
-     		$titulo = $reclm["Titulo"];
-     		$desc = $reclm["Descricao"];
-     		$catego = $reclm["Categoria"];
-     		$emerg = $reclm["Emergencia"];
-     		$curti = $reclm["Curtida"];  
-
-     		//$local = $coords["descricao"]; 
-     		//$lat = $coords["latitude"];
-     		//$long = $coords["longitude"];  	
-
-//gerar marker com essas informações - COMO PASSAR VARIAVEL DO PHP PARA HTML (echo???)
-
-
+        // COLOCAR AQUI O QUE DEVE SER RETORNADO PARA O JAVASCRIPT GERAR MARKER
 }
 
 ?>
