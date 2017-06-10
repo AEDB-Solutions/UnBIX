@@ -3,7 +3,6 @@
 include("database.php");
 include("class_database_query.php");
 
-
 function save_info_on_db()
 {
     $lat = $_POST['lat'];

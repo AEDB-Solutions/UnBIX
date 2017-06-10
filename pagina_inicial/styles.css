@@ -107,9 +107,7 @@ html, body {
 }
 
 #map-canvas{
-  width:800px;
-  height:500px;
+  width:100%;
   position: absolute;
-  top:170px;
-  left: 300px;
+  top:50px;
 }

@@ -11,6 +11,6 @@ if(isset($_POST['id'])) {
 	save_info_on_db();
 }
 
-echo '<html><head><meta http-equiv="Refresh" content="0;index1.html"></head></html>';
+echo '<html><head><meta http-equiv="Refresh" content="0;index1.php"></head></html>';
 
 ?>
