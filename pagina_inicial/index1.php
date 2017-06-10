@@ -91,7 +91,13 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <tr><td></td> <td><input type="text" name="lat" id="lat"> </td> </tr>
           <tr><td></td> <td><input type="text" name="long" id="long"> </td> </tr>
           <tr><td>Título: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>
-          <tr><td>Descrição:</td> <td><input type="text" name = "Descricao" id='Descricao'/> </td> </tr>
+          <tr><td>Descrição:</td> <td><textarea name = "Descricao" id='Descricao' maxlength="140" rows="25" cols="80">Reclame aqui...</textarea>
+          <style>
+            textarea{
+            width: 150px;
+            height: 113px;
+            }
+          </style> </td> </tr>
           <tr><td>Type:</td> <td><select name = "Categoria" id ='Categoria'> +
                 <option value='Iluminacao' SELECTED>Iluminação</option>
                 <option value='Banheiro' SELECTED> Banheiro</option>
@@ -110,6 +116,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             </select> </td></tr>
      <!--     <tr><td>Curtida</td> <td><input type="text" name = "Curtida" id= "Curtida"/> </td> </tr> -->
               <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
+              
 </table> 
            </form>
 
