@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 //pode ser que precise do database em outro caso;
 class db_query
@@ -65,7 +65,7 @@ class db_query
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$prepare = $db->prepare($query);
 		$prepare->execute($search_elements);
-		$result = $prepare->fetchAll(PDO::FETCH_OBJ);
+		$result = $prepare->fetchAll();
 		Database::disconnect();
 
 		$this->db_rows = $result;

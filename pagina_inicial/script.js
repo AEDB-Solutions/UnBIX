@@ -15,11 +15,9 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php","http://localhost/UnBIX/pagina_inicial/get_complaints.php");
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php","http://localhost/UnBIX/pagina_inicial/get_complaints.php");
-    map_events(map);
-    //map_events(map);//SE DEIXO ISTO DEPOIS DO LOAD MAP A PAGINA FICA CARREGANDO CONSTANTEMENTE
-    
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
+      map_events(map);
     //user_current_location(map);
 
 }
@@ -194,53 +192,55 @@ function getting_db_info(host)
 }
 //-------------------LOAD ON MAP-------------------------------------------------------
 
-function load_on_map(map,host1,host2)
+function load_on_map(map,host)
 {
-  var array_objs_loc = getting_db_info(host1);
-  var array_objs_comp = getting_db_info(host2);
-  
-  //console.log(corresp_local_id(array_objs_comp, array_objs_loc[i].localID));
-  
-  for(i = 0; i < array_objs_loc.length; i++)
-  {
-    if(array_objs_loc[i].keypoint == 0)
-    create_marker_and_info_window_key0(array_objs_loc[i],corresp_local_id(array_objs_comp, array_objs_loc[i].localID), map);
 
-   else
-   create_marker_and_info_window_key1(array_objs_loc[i],map);
+  var complaints_info = getting_db_info(host);
+
+  console.log(complaints_info);
+
+  for(i = 0; i < complaints_info.length; i++)
+  {
+     var marker = create_marker(complaints_info[i].latitude, complaints_info[i].longitude, complaints_info[i].keypoint, map);
+     create_info_window(complaints_info[i], complaints_info[i].keypoint,marker,map);
   }
 }
 
-function create_marker_and_info_window_key1(objs_loc,map)
+function create_marker(lat,long,type,map)
 {
-    var key_point_location = new google.maps.LatLng(objs_loc.latitude,objs_loc.longitude);
-    var marker = new google.maps.Marker({position: key_point_location});
-    marker.setMap(map);
-    var info_window = new google.maps.InfoWindow({content:"Ponto chave--teste--Banheiro x"});
-    google.maps.event.addListener(marker, 'click', function(){ info_window.open(map,marker)});
-}
 
-function create_marker_and_info_window_key0(objs_loc,objs_comp, map)
-{
-  var point_location = new google.maps.LatLng(objs_loc.latitude,objs_loc.longitude);
-  var marker = new google.maps.Marker({position: point_location});
+  var key_point_location = new google.maps.LatLng(lat,long);
+  var marker = new google.maps.Marker({position: key_point_location});
+  
+  if(type == 0)
+  {
+    //normal// personalize
+  }
+  else if(type == 1)
+  {
+    //ponto chave//personalize
+  }  
+
   marker.setMap(map);
 
-    var info_window = new google.maps.InfoWindow({content:getting_form(objs_comp,objs_loc)});
-    google.maps.event.addListener(marker, 'click', function(){ info_window.open(map,marker)});
+  return marker;
 }
 
-
-function corresp_local_id(array_objs_comp,localID)
+function create_info_window(complaints_info,type,marker,map)
 {
-  for(i = 0; i < array_objs_comp.length; i++)
-  {
-    if(array_objs_comp[i].LocalID == localID)
-    return array_objs_comp[i];
-  }
+  var info_window;
+
+  console.log(complaints_info);
+
+  if(type == 0)
+    info_window = new google.maps.InfoWindow({content:getting_form_loc_0(complaints_info)});
+  
+  else if(type == 1)
+    info_window = new google.maps.InfoWindow({content:"Ponto chave--teste--Banheiro x"});
+
+  google.maps.event.addListener(marker, 'click', function(){ info_window.open(map,marker)});
+
 }
-
-
 
 //----------------------------------------------------URL_ATT------------------------------
 
@@ -263,29 +263,33 @@ function pass_js_variables_to_php(host,array_keys,array_values)
 
 
 //----------------------------GETTING_FORM------------------------------------------------------------
-function getting_form(objs_comp,objs_loc)
+function getting_form_loc_0(complaints_info)
 {
-    return "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='id' value='"+objs_comp.ComplaintID+"'/><table>"+
-          "<tr><td></td> <td><input type='hidden' name='lat' id='lat' value='"+objs_loc.latitude+"'> </td> </tr>"+
-          "<tr><td></td> <td><input type='hidden' name='long' id='long' value='"+objs_loc.longitude+"'> </td> </tr>"+
-          "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo' value='"+objs_comp.Titulo+"'> </td> </tr>"+
-          "<tr><td>Descrição:</td> <td><input type='text' name='Descricao' id='Descricao' value='"+objs_comp.Descricao+"'> </td> </tr>"+
-          "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+objs_comp.Categoria+"'> +"+
-                "<option value='Iluminacao' "+ (objs_comp.Categoria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
-                "<option value='Banheiro' "+ (objs_comp.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
-                "<option value='Bebedouro' "+ (objs_comp.Categoria == 'Bebedouro' ? 'selected' : '') +">Bebedouro</option>"+
-                "<option value='Infraestrutura' "+ (objs_comp.Categoria == 'Infraestrutura' ? 'selected' : '') +">Infraestrutura</option>"+
-                "<option value='Seguranca' "+ (objs_comp.Categoria == 'Seguranca' ? 'selected' : '') +">Segurança</option>"+
-                "<option value='Barulho' "+ (objs_comp.Categoria == 'Barulho' ? 'selected' : '') +">Barulho</option>"+
-                "<option value='Outro' "+ (objs_comp.Categoria == 'Outro' ? 'selected' : '') +">Outro</option>"+
+    return "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='id' value='"+complaints_info.ComplaintID+"'/><table>"+
+          "<tr><td></td> <td><input type='hidden' name='lat' id='lat' value='"+complaints_info.latitude+"'> </td> </tr>"+
+          "<tr><td></td> <td><input type='hidden' name='long' id='long' value='"+complaints_info.longitude+"'> </td> </tr>"+
+          "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo'value='"+complaints_info.Titulo+"'> </td> </tr>"+
+            "<tr><td>Descrição do problema:</td> <td><textarea name = 'Descricao' id='Descricao' value='"+complaints_info.Descricao+"'maxlength='140' rows='25' cols='80'>Reclame aqui...</textarea><style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
+          "<tr><td>Descrição da localidade:</td> <td><input type='text' name='Descricao' id='Descricao' value='"+complaints_info.descricao+"'> </td> </tr>"+
+          "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+complaints_info.Categoria+"'> +"+
+                "<option value='Iluminacao' "+ (complaints_info.Categoria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
+                "<option value='Banheiro' "+ (complaints_info.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
+                "<option value='Bebedouro' "+ (complaints_info.Categoria == 'Bebedouro' ? 'selected' : '') +">Bebedouro</option>"+
+                "<option value='Infraestrutura' "+ (complaints_info.Categoria == 'Infraestrutura' ? 'selected' : '') +">Infraestrutura</option>"+
+                "<option value='Seguranca' "+ (complaints_info.Categoria == 'Seguranca' ? 'selected' : '') +">Segurança</option>"+
+                "<option value='Barulho' "+ (complaints_info.Categoria == 'Barulho' ? 'selected' : '') +">Barulho</option>"+
+                "<option value='Outro' "+ (complaints_info.Categoria == 'Outro' ? 'selected' : '') +">Outro</option>"+
                 "</select> </td></tr>"+
             "<tr><td>Emergencia:</td> <td><select name='Emergencia' id='Emergencia'> +"+
-                "<option value='1' "+ (objs_comp.Emergencia == 1 ? 'selected' : '') +"> 1 </option>"+
-                "<option value='2' "+ (objs_comp.Emergencia == 2 ? 'selected' : '') +"> 2 </option>"+
-                "<option value='3' "+ (objs_comp.Emergencia == 3 ? 'selected' : '') +"> 3 </option>"+
-                "<option value='4' "+ (objs_comp.Emergencia == 4 ? 'selected' : '') +"> 4 </option>"+
-                "<option value='5' "+ (objs_comp.Emergencia == 5 ? 'selected' : '') +"> 5 </option>"+
+                "<option value='1' "+ (complaints_info.Emergencia == 1 ? 'selected' : '') +"> 1 </option>"+
+                "<option value='2' "+ (complaints_info.Emergencia == 2 ? 'selected' : '') +"> 2 </option>"+
+                "<option value='3' "+ (complaints_info.Emergencia == 3 ? 'selected' : '') +"> 3 </option>"+
+                "<option value='4' "+ (complaints_info.Emergencia == 4 ? 'selected' : '') +"> 4 </option>"+
+                "<option value='5' "+ (complaints_info.Emergencia == 5 ? 'selected' : '') +"> 5 </option>"+
             "</select> </td></tr>"+
               "<tr><td></td><td><input type='submit' value='Atualizar Reclamacao!'/></td></tr>"+
           "</table>"+"</form>";
 }
+
+
+//function getting_form_loc_0

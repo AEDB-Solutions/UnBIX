@@ -99,12 +99,13 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
 
-        <form action="savelocation.php" method="post" id="form" style='display:none'>
+       <form action="savelocation.php" method="post" id="form" style='display:none'>
   <table>
-          <tr><td></td> <td><input type="text" name="lat" id="lat"> </td> </tr>
-          <tr><td></td> <td><input type="text" name="long" id="long"> </td> </tr>
-          <tr><td>Título: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>
-          <tr><td>Descrição:</td> <td><textarea name = "Descricao" id='Descricao' maxlength="140" rows="25" cols="80">Reclame aqui...</textarea>
+          <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
+          <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
+          <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>
+          <tr><td>Descrição da localidade:</td> <td><input type='text' name='Descricao' id='Descricao'> </td></tr>"
+          <tr><td>Descrição do  problema:</td> <td><textarea name = "Descricao" id='Descricao' maxlength="140" rows="25" cols="80">Reclame aqui...</textarea>
           <style>
             textarea{
             width: 150px;
