@@ -1,17 +1,16 @@
 <?php
 
 include("database.php");
-
-var_dump(get_categ()); 
+//var_dump(get_categ()); 
 
 function get_categ() // TESTADA E FUNCIONANDO -- função que pega a categoria e busca no banco todas as reclamações daquela categoria
 {			
-		if (!empty($_POST)) 
+		if (!empty($_GET)) 
         { 
 
          
             //$id_user = $_SESSION['id']; - pensar caso a reclamação seja dele ou não 
-            $categ = $_POST['categ'];
+            $categ = $_GET['categ_'];
 			
 			$pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);

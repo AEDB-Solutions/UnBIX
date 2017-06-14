@@ -53,17 +53,17 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class=""><a href="#" style="color: white;">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
-          <ul class="dropdown-menu w3-green">
+          <ul class="dropdown-menu w3-white">
             <li style="color: blue;"><a href="#" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
-              <li><a href="buscacateg.php" style="color: black;">Infraestrutura</a></li>
-              <li><a href="buscacateg.php" style="color: black;">Segurança</a></li>
-              <li><a href="buscacateg.php" style="color: black;">Iluminação</a></li>
-              <li><a href="buscacateg.php" style="color: black;">Bebedouro</a></li>
-              <li><a href="buscacateg.php" style="color: black;">Banheiro</a></li>
-              <li><a href="buscacateg.php" style="color: black;">Outros</a></li>
+              <li><a href="buscacateg.php?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
+              <li><a href="buscacateg.php?categ =Segurança" style="color: black;">Segurança</a></li>
+              <li><a href="buscacateg.php?categ =Iluminação" style="color: black;">Iluminação</a></li>
+              <li><a href="buscacateg.php?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
+              <li><a href="buscacateg.php?categ =Banheiro" style="color: black;">Banheiro</a></li>
+              <li><a href="buscacateg.php?categ =Outros" style="color: black;">Outros</a></li>
 
               </ul>
               
@@ -79,7 +79,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-        	<ul class="dropdown-menu w3-green">
+        	<ul class="dropdown-menu w3-white">
             	<li><a href="#" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
             	<li><a href="#" style="color: black;">Configurações</a></li>
