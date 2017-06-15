@@ -39,7 +39,7 @@ function getting_form_info()
 	{
 	//var_dump($rows[$i]["localID"]);
 		$find_row = new db_query();
-	$find_row->set_find_row("SELECT ComplaintID,IDuser,Titulo,Categoria,Emergencia,Descricao FROM Complaints WHERE LocalID = ?;",array($rows[$i]["localID"]));
+		$find_row->set_find_row("SELECT ComplaintID,IDuser,Titulo,Categoria,Emergencia,Descricao FROM Complaints WHERE LocalID = ?;",array($rows[$i]["localID"]));
 		$row_complain = $find_row->get_row();
 
 
