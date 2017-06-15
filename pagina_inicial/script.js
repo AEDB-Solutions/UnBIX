@@ -15,9 +15,9 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
-      map_events(map);
+    load_on_map(map,"http://localhost/UNBIX/esse/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UNBIX/esse/pagina_inicial/loc_0.php");
+    map_events(map);
     //user_current_location(map);
 
 }
@@ -151,20 +151,30 @@ function constroy_url(host,array_keys,array_values)
 
 
 
-function requests(host, method = "GET") 
+function requests(host, method = "GET", data = {}) //ERA OBJETO
 {
     var content = null
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
     {
-    if (this.readyState == 4 && this.status == 200) 
+    if(this.readyState == 4 && this.status == 200) 
     {
      content = this.responseText
     }
     };
 
     xhttp.open(method, host, false)
+    
+    if(method = "GET")
     xhttp.send()
+    
+    else
+    {
+      xhttp.setRequestHeader("Content-Type", "application/json");
+      xhttp.send(JSON.stringify(data));
+      //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    }
+    
     return content;
 }
 
@@ -191,13 +201,11 @@ function getting_db_info(host)
 
 }
 //-------------------LOAD ON MAP-------------------------------------------------------
-
 function load_on_map(map,host)
 {
 
   var complaints_info = getting_db_info(host);
 
-  console.log(complaints_info);
 
   for(i = 0; i < complaints_info.length; i++)
   {
@@ -233,15 +241,18 @@ function create_info_window(complaints_info,type,marker,map)
   console.log(complaints_info);
 
   if(type == 0)
+  {  
     info_window = new google.maps.InfoWindow({content:getting_form_loc_0(complaints_info)});
-  
+    google.maps.event.addListener(marker, 'click', function(){info_window.open(map,marker)});
+  }
   else if(type == 1)
-    info_window = new google.maps.InfoWindow({content:"Ponto chave--teste--Banheiro x"});
-
-  google.maps.event.addListener(marker, 'click', function(){ info_window.open(map,marker)});
-
+  {
+    info_window = new google.maps.InfoWindow({content:content_keypoint(complaints_info)});
+    google.maps.event.addListener(marker, 'click', function(){
+    info_window.open(map,marker); 
+    document.getElementById("reclame").addEventListener("click",function(){complain_on_keypoint();});});
+  }
 }
-
 //----------------------------------------------------URL_ATT------------------------------
 
 
@@ -258,19 +269,63 @@ function pass_js_variables_to_php(host,array_keys,array_values)
   }
 
   window.location = string;
+  return string
 }//EXEMPLO: pass_js_variables_to_php("http://localhost/UNBIX/get/passing_with_get.php",["name","idade"],["pedro",18]);EECUTADA ESSA FUNÇÃO A PAGINA É REDIRECIONADA PARA UM .PHP ESCOLHIDO NO HOST
 
 
 
-//----------------------------GETTING_FORM------------------------------------------------------------
+
+//-----------------REQUESTING FORM-----------------------------------------------------------------------------------------------------
+
+/*function stringify_dados(host, dados){
+  var pair_list = []
+  for (key in dados) {
+    pair_list.push(key + "=" + dados[key])
+  }
+  return host + "?" + pair_list.join("&")
+}
+
+
+function send_data(host, dados){
+  //requests(host, "POST", dados)
+   var a = requests(stringify_dados(host,dados));
+
+}
+
+function pick_html_imputs(classe)
+{
+  var inputs = document.getElementsByClassName(classe)
+  var dados = {}
+  for (var i = 0; i < inputs.length; i++) {
+    dados[inputs[i].name] = inputs[i].value
+  }
+
+  return dados
+}
+
+function submete_formulario()
+{
+//var dados = {name:"John Rambo", time:"2pm"}
+  send_data("http://localhost/UNBIX/atual1/pagina_inicial/savelocation.php", pick_html_imputs('input'));
+}
+
+function click_on_submit(button_id,map,infowindow)
+{
+
+  document.getElementById(button_id).addEventListener("click", function(e){
+  e.preventDefault()
+  submete_formulario();infowindow.close();})
+}*/
+
+//----------------------------GETTING_FORMS------------------------------------------------------------
 function getting_form_loc_0(complaints_info)
 {
-    return "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='id' value='"+complaints_info.ComplaintID+"'/><table>"+
+    return "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'/><table>"+
           "<tr><td></td> <td><input type='hidden' name='lat' id='lat' value='"+complaints_info.latitude+"'> </td> </tr>"+
           "<tr><td></td> <td><input type='hidden' name='long' id='long' value='"+complaints_info.longitude+"'> </td> </tr>"+
           "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo'value='"+complaints_info.Titulo+"'> </td> </tr>"+
-            "<tr><td>Descrição do problema:</td> <td><textarea name = 'Descricao' id='Descricao' value='"+complaints_info.Descricao+"'maxlength='140' rows='25' cols='80'>Reclame aqui...</textarea><style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
-          "<tr><td>Descrição da localidade:</td> <td><input type='text' name='Descricao' id='Descricao' value='"+complaints_info.descricao+"'> </td> </tr>"+
+          "<tr><td>Descrição do problema:</td> <td><textarea name = 'descricao_comp' id='descricao_comp' value='"+complaints_info.Descricao+"'maxlength='140' rows='25' cols='80'>"+complaints_info.Descricao+"</textarea><style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
+          "<tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' value='"+complaints_info.descricao+"'> </td> </tr>"+
           "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+complaints_info.Categoria+"'> +"+
                 "<option value='Iluminacao' "+ (complaints_info.Categoria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
                 "<option value='Banheiro' "+ (complaints_info.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
@@ -292,4 +347,84 @@ function getting_form_loc_0(complaints_info)
 }
 
 
-//function getting_form_loc_0
+
+function content_keypoint(complaints_info)
+{
+
+ if(document.getElementById('content_keypoint') == null)
+ {
+      return "<p>"+complaints_info.descricao+"</p>"+
+      "<div id = 'content_keypoint'>"+
+      "<button id = 'reclame'>reclame</button>"+
+      "<button id = 'tabela_de_reclamacoes'>tabela de reclamacoes</button>"+
+      "</div>";
+ }
+
+}
+
+
+function complain_on_keypoint()
+{ 
+
+  var formulario ="<form action='savelocation.php' method='post' id='form'>"+"<table>"+
+          "<tr><td></td> <td><input type='hidden' name='lat' id='lat'> </td> </tr>"+
+          "<tr><td></td> <td><input type='hidden' name='long' id='long'> </td> </tr>"+
+          "<tr><td>Título do problema: </td> <td><input type='text' name = 'Titulo' id= 'Titulo'/> </td> </tr>"+
+          "<tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc'> </td></tr>"+
+          "<tr><td>Descrição do problema:</td> <td><textarea name = 'descricao_comp' id='descricao_comp' maxlength='140' rows='25' cols='80'>Reclame aqui...</textarea>"+
+          "<style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
+          "<tr><td>Type:</td> <td><select name = 'Categoria' id ='Categoria'>"+
+                "<option value='Iluminacao' SELECTED>Iluminação</option>"+
+                "<option value='Banheiro' SELECTED> Banheiro</option>"+
+                "<option value='Bebedouro'>Bebedouro</option>"+
+                "<option value='Infraestrutura'>Infraestrutura</option>"+
+                "<option value='Seguranca'>Segurança</option>"+
+                "<option value='Barulho'>Barulho</option>"+
+                "<option value='Outro'>Outro</option>"+
+                "</select> </td></tr>"+
+            "<tr><td>Emergencia:</td> <td><select name = 'Emergencia' id ='Emergencia'> +"+
+                "<option value='1' SELECTED> 1 </option>"+
+                "<option value='2' > 2 </option>"+
+                "<option value='3' > 3 </option>"+
+                "<option value='4' > 4 </option>"+
+                "<option value='5' > 5 </option>"+
+            "</select> </td></tr>"+
+              "<tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>"+
+              "</table></form>";
+
+              document.getElementById('content_keypoint').innerHTML = formulario;
+
+}
+
+
+
+function generic_form()
+{
+    return "<form id='form'>"+
+    "<table>"+
+          "<tr><td></td> <td><input class='input' type='hidden' name='lat' id='lat'> </td> </tr>"+
+          "<tr><td></td> <td><input class='input' type='hidden' name='long' id='long'> </td> </tr>"+
+          "<tr><td>Título do problema: </td> <td><input class='input' type='text' name = 'Titulo' id= 'Titulo'/> </td> </tr>"+
+          "<tr><td>Descrição da localidade:</td> <td><input class='input' type='text' name='descricao_loc' id='descricao_loc'> </td></tr>"+
+          "<tr><td>Descrição do  problema:</td> <td><textarea class='input' name = 'descricao_comp' id='descricao_comp' maxlength='140' rows='25' cols='80'>Reclame aqui...</textarea>"+
+          "<style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
+          "<tr><td>Type:</td> <td><select class='input' name = 'Categoria' id='Categoria'> +"+
+                "<option value='Iluminacao' SELECTED>Iluminação</option>"+
+                "<option value='Banheiro' SELECTED> Banheiro</option>"+
+                "<option value='Bebedouro'>Bebedouro</option>"+
+                "<option value='Infraestrutura'>Infraestrutura</option>"+
+                "<option value='Seguranca'>Segurança</option>"+
+                "<option value='Barulho'>Barulho</option>"+
+                "<option value='Outro'>Outro</option>"+
+                "</select> </td></tr>"+
+            "<tr><td>Emergencia:</td> <td><select class='input' name ='Emergencia' id ='Emergencia'> +"+
+                "<option value='1' SELECTED> 1 </option>"+
+                "<option value='2' > 2 </option>"+
+                "<option value='3' > 3 </option>"+
+                "<option value='4' > 4 </option>"+
+                "<option value='5' > 5 </option>"+
+                "</select> </td></tr>"+
+              "<tr><td></td><td><input type='submit' value='Reclame!' id='motherfucker'/></td></tr>"+
+              "</table></form>";
+
+}
