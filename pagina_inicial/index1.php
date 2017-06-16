@@ -101,6 +101,8 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
        <form action="savelocation.php" method="post" id="form" style='display:none'>
   <table>
+
+          <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
           <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
           <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
           <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>

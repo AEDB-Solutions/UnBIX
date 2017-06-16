@@ -6,27 +6,79 @@ include("class_database_query.php");
 
 function save_content_of_complain()
 {
+    //reclamacao ja existe
     if(isset($_POST['complaint_id']))
-    atualiza_info_on_db();
+    decide_update();//decide se atualiza uma reclamacao ou uma curtida
 
     else
     save_info_on_db();
+    //reclamacao nova
+}
 
+function decide_update()
+{
+    if(isset($_POST['like']))
+    update_curtida();
+
+    else
+    update_complain();
+}
+
+function update_curtida()
+{
+
+    $complaint_id = $_POST['complaint_id'];
+
+    $pdo = Database::connect();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+    
+    $sql = "UPDATE Complaints SET Likes = ? WHERE ComplaintID = ?";    
+    $q = $pdo->prepare($sql);
+    $a = array($_POST['like'],$complaint_id);
+    $q->execute($a);
+    Database::disconnect();
 }
 
 
 function save_info_on_db()
 {
-    $lat = $_POST['lat'];
-    $long = $_POST['long'];
-    $desc_loc = $_POST['descricao_loc'];
+    //é keypoint
+    if(isset($_POST['localid']))
+        new_key_point_complain();
+
+    else
+    {
+        //nao é keypoint
+        $lat = $_POST['lat'];
+        $long = $_POST['long'];
+        $desc_loc = $_POST['descricao_loc'];
     
-    insert_location($lat,$long,$desc_loc);
-    insert_into_complaints($lat,$long);
+        insert_location($lat,$long,$desc_loc);
+        insert_into_complaints($lat,$long);
+    }
 
 }
 
-function atualiza_info_on_db()
+function new_key_point_complain()
+{
+    $id_user = $_SESSION['id'];
+    $localID = $_POST['localid'];
+    $titulo = $_POST['Titulo'];
+    $desc_comp = $_POST['descricao_comp'];
+    $cat = $_POST['Categoria'];
+    $eme = $_POST['Emergencia'];
+
+    $pdo = Database::connect();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+    $sql = "INSERT INTO Complaints(IDuser, LocalID, Titulo, Descricao, Categoria, Emergencia) values(?, ?, ?, ?, ?, ?);";
+    $q = $pdo->prepare($sql);
+    $a = array($id_user, $localID, $titulo, $desc_comp, $cat, $eme);
+    $q->execute($a);
+    Database::disconnect();
+    
+}
+
+function update_complain()
 {
     if (!empty($_POST)) 
     {
@@ -121,3 +173,4 @@ function get_local_id_by_comp_id($complaint_id)
 }
 
 ?>
+
