@@ -5,6 +5,7 @@
     <title> UNBIX - Cadastro </title>
     <meta name="description" content="Faça aqui seu cadastro no UnBix!">
     <link href="cadastrodef.css" rel="stylesheet">
+	<link href="h2.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script language="JavaScript" src="cadastrodef.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +39,7 @@
 </div>
    
    
-   <div align="center">
+   <div class="group" align="center">
       <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="auto; height:auto;">
    </div>
       <form action="login_validation.php" method="post" id="frmLogin">
@@ -52,12 +53,14 @@
 </hgroup>
 <form>
   <div class="group">
+	<h2>Matrícula</h2>
     <input type="text" name = 'matricula'><span class="highlight"></span><span class="bar"></span>
-    <label>Matrícula</label>
+    <label></label>
   </div>
   <div class="group">
+	<h2>Senha</h2>
     <input type="password" name = 'pass'><span class="highlight"></span><span class="bar"></span>
-    <label>Senha</label>
+    <label></label>
   </div>
   <button type="submit" class="button buttonBlue">Logar
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
@@ -70,4 +73,3 @@
 </form>
  </body>
 </html>
-
