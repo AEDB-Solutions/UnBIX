@@ -79,6 +79,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li><a href="#" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>
+	 <li> <button id="user_pos" class="w3-green" style="border: none; margin-left: 630px; margin-top: 10px;">Reportar a partir da localização atual</button></li>      
       </ul>
 
 
