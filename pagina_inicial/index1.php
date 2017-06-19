@@ -71,6 +71,13 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             </li>
             <li><a href="#" style="color: black;">Buscar local específico</a></li>
           </ul>
+
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
+          <ul class="dropdown-menu w3-white">
+            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
+            <li><a href="#" style="color: black;">Relatório estatístico</a></li>
+          </ul>
         </li>
       </ul>
 
