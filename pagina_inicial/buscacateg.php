@@ -2,6 +2,12 @@
 
 include("database.php");
 
+$lista2 = array("larissa", "giovanna" );
+$lista3 = array("lala", "gigi");
+$lista = array($lista2, $lista3);
+
+echo json_encode($lista);
+
 //var_dump(get_reclam());
 
 function get_reclam() // TESTADA E FUNCIONANDO -- função que pega a categoria e busca no banco todas as reclamações daquela categoria e junta em um array multidimensional todas as informações, inclusive as que estao no localidaddes;
