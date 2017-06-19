@@ -50,7 +50,6 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class=""><a href="#" style="color: white;">Reportar a partir da localização atual</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
