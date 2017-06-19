@@ -77,12 +77,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
             <li><a href="#" style="color: black;">Relatório estatístico</a></li>
           </ul>
-        </li>
-	 <li> <button id="user_pos" class="w3-green" style="border: none; margin-left: 630px; margin-top: 10px;">Reportar a partir da localização atual</button></li>      
+        </li>   
       </ul>
 
 
       <ul class="nav navbar-nav navbar-right">
+	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
         <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
