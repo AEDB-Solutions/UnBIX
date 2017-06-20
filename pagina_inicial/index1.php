@@ -57,12 +57,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
-              <li><a href="buscacateg.php?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
-              <li><a href="buscacateg.php?categ =Segurança" style="color: black;">Segurança</a></li>
-              <li><a href="buscacateg.php?categ =Iluminação" style="color: black;">Iluminação</a></li>
-              <li><a href="buscacateg.php?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
-              <li><a href="buscacateg.php?categ =Banheiro" style="color: black;">Banheiro</a></li>
-              <li><a href="buscacateg.php?categ =Outros" style="color: black;">Outros</a></li>
+              <li><a href="fu.html?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
+              <li><a href="fu.html?categ =Seguranca" style="color: black;">Segurança</a></li>
+              <li><a href="fu.html?categ =Iluminacao" style="color: black;">Iluminação</a></li>
+              <li><a href="fu.html?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
+              <li><a href="fu.html?categ =Banheiro" style="color: black;">Banheiro</a></li>
+              <li><a href="fu.html?categ =Outros" style="color: black;">Outros</a></li>
 
               </ul>
               

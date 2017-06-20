@@ -1,4 +1,4 @@
-</!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>TABELA</title>
@@ -8,31 +8,47 @@
 
 	<h1>tabela</h1>
 
-	<table border="1" id="pedro">
+	<table border="1" id="table">
 		<tr>
+			<th>Título</th>
+			<th>Descrição</th>
 			<th>Categoria</th>
-			<th>Reclamação</th>
-		</tr>
-		<tr>
-			<td>Banheiro</td>
-			<td>Tá ruim</td>
-		</tr>
-		<tr>
-			<td>Bebedouro</td>	
-			<td>Tá rui</td>
-		</tr>
-		
+			<th>Emergência</th>
+			<th>Local</th>
+		</tr>		
 
 	</table>
 
-
-
 	<script type="text/javascript">
-		
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php");
-  
+		//passa o botao um get ate aqui, e faz varios if
 
-  console.log(info)
+if ($_GET = "Infraestrutura")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Infraestrutura");
+} 
+if ($_GET = "Seguranca")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Seguranca");
+} 
+if ($_GET = "Iluminacao")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Iluminacao");
+} 
+if ($_GET = "Bebedouro")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Bebedouro");
+} 
+if ($_GET = "Banheiro")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Banheiro");
+} 
+if ($_GET = "Outros")
+{
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Outros");
+} 
+
+//var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Infraestrutura");
+console.log(info)
   /*var reclams = [
 	{'cat': "Banheiro", 'rec': "Tá vazando"},
 	{'cat': "Banheiro1", 'rec': "Tá vazando5"},
@@ -41,20 +57,21 @@
 	{'cat': "Banheiro4", 'rec': "Tá vazando8ss"}
 	]
 */
-	var modelo = "<tr>\
-			<td>{{ele1}}</td>\
-			<td>{{ele2}}</td>\
-		</tr>";
+var modelo = "<tr>\
+		<td>{{ele1}}</td>\
+		<td>{{ele2}}</td>\
+		<td>{{ele3}}</td>\
+		<td>{{ele4}}</td>\
+		<td>{{ele5}}</td>\
+	</tr>";
+console.log(info.length)
 
-		console.log(info.length)
-	for (var i = 0; i < info.length; i++) 
-	{
-		for (var j = 0; j < info[i].length; j++)
-		 {
-			document.getElementById("pedro").innerHTML += modelo.replace("{{ele1}}", info[i][j]).replace("{{ele2}}", info[i][j])
-		}
-	}
- function requests(host, method = "GET", data = {}) //ERA OBJETO
+for (var i = 0; i < info.length; i++) 
+{
+		document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
+}
+
+function requests(host, method = "GET", data = {}) //ERA OBJETO
 {
     var content = null
     var xhttp = new XMLHttpRequest();
@@ -89,51 +106,6 @@ function getting_db_info(host)
   return JSON.parse(server_awnser);
 
 }
-	/*var lista = [
-	{'cat': "Banheiro", 'rec': "Tá vazando"},
-	{'cat': "Banheiro1", 'rec': "Tá vazando5"},
-	{'cat': "Banheiro2", 'rec': "Tá vazando6"},
-	{'cat': "Banheiro3", 'rec': "Tá vazando7"},
-	{'cat': "Banheiro4", 'rec': "Tá vazando8ss"}
-	]
-
-	var modelo = "<tr>\
-			<td>{{ele1}}</td>\
-			<td>{{ele2}}</td>\
-		</tr>";
-
-	for (var i = 0; i < lista.length; i++) {
-		document.getElementById("pedro").innerHTML += modelo.replace("{{ele1}}", lista[i].cat).replace("{{ele2}}", lista[i].rec)
-		
-	}
-
-	//document.getElementById("pedro").innerHTML += modelo.replace("{{ele1}}", "giovANnA").replace("{{ele2}}", "larissa")
-
-
-
-	/*	window.onload = info;
-		function info(){
-
-		novoElemento("table","table","tabela","","body");
-
-		novoElemento("tr","tr","tr1","","tabela");
-		novoElemento("td","td","td1","Nome","tr1");
-		document.getElementById("td1").colSpan = "2";
-		// body...
-	}
-
-	function novoElemento(nome,tag,identidade,texto,elementoPai){
-		var nome = document.createElement(tag);
-
-		if (identidade != "") {
-			nome.setAttribute("id", identidade);
-
-		else
-			document.getElementById(elementoPai).appendChild(nome);	
-		}
-
-
-	}*/
 
 	</script> 
 </body>

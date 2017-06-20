@@ -2,11 +2,11 @@
 
 include("database.php");
 
-$lista2 = array("larissa", "giovanna" );
-$lista3 = array("lala", "gigi");
-$lista = array($lista2, $lista3);
+//$lista2 = array("larissa", "giovanna" );
+//$lista3 = array("lala", "gigi");
+//$lista = array($lista2, $lista3);
 
-echo json_encode($lista);
+echo json_encode(get_reclam());
 
 //var_dump(get_reclam());
 
@@ -17,6 +17,7 @@ function get_reclam() // TESTADA E FUNCIONANDO -- função que pega a categoria 
 
             //$id_user = $_SESSION['id']; - pensar caso a reclamação seja dele ou não 
             $categ = $_GET['categ_'];
+            //$categ = "Infraestrutura";
 
 
             $pdo = Database::connect();
@@ -32,8 +33,10 @@ function get_reclam() // TESTADA E FUNCIONANDO -- função que pega a categoria 
         }      
         else
         {
-            return 0;
+          return 0;
         }
 }
+
+//executar a tabela
 
 ?>
