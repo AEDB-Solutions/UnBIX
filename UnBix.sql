@@ -38,7 +38,7 @@ CREATE TABLE `Complaints` (
   KEY `LocalID` (`LocalID`),
   CONSTRAINT `Complaints_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `Users` (`Userid`),
   CONSTRAINT `Complaints_ibfk_2` FOREIGN KEY (`LocalID`) REFERENCES `Localidades` (`localID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,6 +47,7 @@ CREATE TABLE `Complaints` (
 
 LOCK TABLES `Complaints` WRITE;
 /*!40000 ALTER TABLE `Complaints` DISABLE KEYS */;
+INSERT INTO `Complaints` VALUES (1,1,8,'leticia','a laeticia é mto chateo legalnha mas ainda assim é mei','Outro','5',NULL,NULL,NULL),(2,1,9,'problema','fffffffff','Banheiro','1',NULL,NULL,NULL),(3,1,10,'problema2','ffffff','Banheiro','1',NULL,NULL,NULL),(4,1,11,'problema4','kjahdjkha','Banheiro','1',NULL,NULL,NULL),(5,1,12,'banana','banana','Seguranca','1',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Complaints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +89,7 @@ CREATE TABLE `Localidades` (
   `descricao` varchar(140) NOT NULL,
   `keypoint` tinyint(1) NOT NULL,
   PRIMARY KEY (`localID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,8 +98,34 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
-INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1),(4,-15.763463,-47.872682,'Banheiro F. Civil',1),(5,-15.76313,-47.87244,'Banheiro M. Civil',1),(6,-15.763412,-47.872575,'Bebedouro Civil',1),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1);
+INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1),(4,-15.763463,-47.872682,'Banheiro F. Civil',1),(5,-15.76313,-47.87244,'Banheiro M. Civil',1),(6,-15.763412,-47.872575,'Bebedouro Civil',1),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1),(8,-15.762322450193949,-47.871047258377075,'a laeticia é mto chateo legalnha mas ainda assim é mei',0),(9,-15.762580584976813,-47.86959886550903,'fffffffff',0),(10,-15.763850603327809,-47.87023186683655,'ffffff',0),(11,-15.764511422741261,-47.868826389312744,'kjahdjkha',0),(12,-15.764635326141756,-47.87142276763916,'banana',0);
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Session`
+--
+
+DROP TABLE IF EXISTS `Session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Session` (
+  `UserID` bigint(20) NOT NULL,
+  `IDcomplaint` bigint(20) NOT NULL,
+  KEY `UserID` (`UserID`),
+  KEY `IDcomplaint` (`IDcomplaint`),
+  CONSTRAINT `Session_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `Users` (`Userid`),
+  CONSTRAINT `Session_ibfk_2` FOREIGN KEY (`IDcomplaint`) REFERENCES `Complaints` (`ComplaintID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Session`
+--
+
+LOCK TABLES `Session` WRITE;
+/*!40000 ALTER TABLE `Session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Session` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -120,7 +147,7 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`Userid`),
   KEY `Curso` (`Curso`),
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`Curso`) REFERENCES `Cursos` (`Cursoid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,6 +156,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
+INSERT INTO `Users` VALUES (1,54,'Daniel Gomes Venzi Gonçalves',111111111,'banana@banana.banana','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','M',NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-05 13:02:16
+-- Dump completed on 2017-06-19 21:17:52
