@@ -16,7 +16,7 @@ function get_reclam() // TESTADA E FUNCIONANDO -- função que pega a categoria 
         { 
 
             //$id_user = $_SESSION['id']; - pensar caso a reclamação seja dele ou não 
-            $categ = $_GET['categ_'];
+            $categ = $_GET['categ'];
             //$categ = "Infraestrutura";
 
 
