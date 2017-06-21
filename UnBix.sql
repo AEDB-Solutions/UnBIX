@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: UnBix_database
 -- ------------------------------------------------------
--- Server version	5.7.17-0ubuntu0.16.04.1
+-- Server version 5.7.17-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -99,7 +99,7 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
-INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1,'Banheiro'),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1,'Banheiro'),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1,'Bebedouro'),(4,-15.763463,-47.872682,'Banheiro F. Civil',1,'Banheiro'),(5,-15.76313,-47.87244,'Banheiro M. Civil',1,'Banheiro'),(6,-15.763412,-47.872575,'Bebedouro Civil',1,'Bebedouro'),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1,'Banheiro'),(8,-15.762322450193949,-47.871047258377075,'a laeticia é mto chateo legalnha mas ainda assim é mei',0),(9,-15.762580584976813,-47.86959886550903,'fffffffff',0),(10,-15.763850603327809,-47.87023186683655,'ffffff',0),(11,-15.764511422741261,-47.868826389312744,'kjahdjkha',0),(12,-15.764635326141756,-47.87142276763916,'banana',0);
+INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1,'Banheiro'),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1,'Banheiro'),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1,'Bebedouro'),(4,-15.763463,-47.872682,'Banheiro F. Civil',1,'Banheiro'),(5,-15.76313,-47.87244,'Banheiro M. Civil',1,'Banheiro'),(6,-15.763412,-47.872575,'Bebedouro Civil',1,'Bebedouro'),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1,'Banheiro'),(8,-15.762322450193949,-47.871047258377075,'a laeticia é mto chateo legalnha mas ainda assim é mei',0,'Indefinido'),(9,-15.762580584976813,-47.86959886550903,'fffffffff',0,'Indefinido'),(10,-15.763850603327809,-47.87023186683655,'ffffff',0,'Indefinido'),(11,-15.764511422741261,-47.868826389312744,'kjahdjkha',0,'Indefinido'),(12,-15.764635326141756,-47.87142276763916,'banana',0,'Indefinido');
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
