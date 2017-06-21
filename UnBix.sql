@@ -88,6 +88,7 @@ CREATE TABLE `Localidades` (
   `longitude` double NOT NULL,
   `descricao` varchar(140) NOT NULL,
   `keypoint` tinyint(1) NOT NULL,
+  `categoria` enum('Banheiro','Bebedouro','Indefinido') DEFAULT 'Indefinido',
   PRIMARY KEY (`localID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,7 +99,7 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
-INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1),(4,-15.763463,-47.872682,'Banheiro F. Civil',1),(5,-15.76313,-47.87244,'Banheiro M. Civil',1),(6,-15.763412,-47.872575,'Bebedouro Civil',1),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1),(8,-15.762322450193949,-47.871047258377075,'a laeticia é mto chateo legalnha mas ainda assim é mei',0),(9,-15.762580584976813,-47.86959886550903,'fffffffff',0),(10,-15.763850603327809,-47.87023186683655,'ffffff',0),(11,-15.764511422741261,-47.868826389312744,'kjahdjkha',0),(12,-15.764635326141756,-47.87142276763916,'banana',0);
+INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1,'Banheiro'),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1,'Banheiro'),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1,'Bebedouro'),(4,-15.763463,-47.872682,'Banheiro F. Civil',1,'Banheiro'),(5,-15.76313,-47.87244,'Banheiro M. Civil',1,'Banheiro'),(6,-15.763412,-47.872575,'Bebedouro Civil',1,'Bebedouro'),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1,'Banheiro'),(8,-15.762322450193949,-47.871047258377075,'a laeticia é mto chateo legalnha mas ainda assim é mei',0),(9,-15.762580584976813,-47.86959886550903,'fffffffff',0),(10,-15.763850603327809,-47.87023186683655,'ffffff',0),(11,-15.764511422741261,-47.868826389312744,'kjahdjkha',0),(12,-15.764635326141756,-47.87142276763916,'banana',0);
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
