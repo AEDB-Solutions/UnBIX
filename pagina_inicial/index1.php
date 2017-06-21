@@ -74,7 +74,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <a class="dropdown-toggle" data-toggle="dropdown" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
             <li><a data-toggle="modal" data-target="#myModal">Melhor caminho</a></li>
-            <li><a href="#" style="color: black;">Relatório estatístico</a></li>
+            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
       </ul>
