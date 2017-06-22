@@ -83,7 +83,7 @@
 	<h2>Reclamações</h2>
 	<p>*pode ter algo escrito caso precise*</p>
 	<p>*as cores vão ser definidas*</p>
-	<table class="table">
+	<table class="table" id="table">
 		<thead>
 			<tr>
 			<th>Título</th>
