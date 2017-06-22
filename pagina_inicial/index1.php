@@ -52,7 +52,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="#" style="color: black;">Reclamações</a></li>
+            <li style="color: blue;"><a href="fu.php" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
