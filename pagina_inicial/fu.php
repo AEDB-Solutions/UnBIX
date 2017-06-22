@@ -8,7 +8,7 @@ if(empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TABELA</title>
+	<title>Busca por categoria</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,12 +38,12 @@ if(empty($_SESSION['id'])) {
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
-              <li><a href="buscacateg.php?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
-              <li><a href="buscacateg.php?categ =Segurança" style="color: black;">Segurança</a></li>
-              <li><a href="buscacateg.php?categ =Iluminação" style="color: black;">Iluminação</a></li>
-              <li><a href="buscacateg.php?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
-              <li><a href="buscacateg.php?categ =Banheiro" style="color: black;">Banheiro</a></li>
-              <li><a href="buscacateg.php?categ =Outros" style="color: black;">Outros</a></li>
+              <li><a href="fu.php?categ=Infraestrutura" style="color: black;">Infraestrutura</a></li>
+              <li><a href="fu.php?categ=Seguranca" style="color: black;">Segurança</a></li>
+              <li><a href="fu.php?categ=Iluminacao" style="color: black;">Iluminação</a></li>
+              <li><a href="fu.php?categ=Bebedouro" style="color: black;">Bebedouro</a></li>
+              <li><a href="fu.php?categ=Banheiro" style="color: black;">Banheiro</a></li>
+              <li><a href="fu.php?categ=Outro" style="color: black;">Outros</a></li>
 
               </ul>
               
