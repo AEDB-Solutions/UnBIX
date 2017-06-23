@@ -4,25 +4,14 @@
  <head>
  <title> UNBIX - Cadastro </title>
  <link href="cadastrodef.css" rel="stylesheet">
- <meta name="description" content="Faça aqui seu cadastro no UnBix!">
+ <meta name="description" content="FaÃ§a aqui seu cadastro no UnBix!">
  <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1" />
  <meta charset="utf-8" />
- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-</style>
 
  <script language="text/javascript" type="text/javascript">
   function validar() {
-
   var mat = document.forms["cad"]["matricula"].value;
   var soNumeros = /^[0-9]+$/;
-
          if (document.forms["cad"]["nome"].value == "") {
             alert("Campo Obrigatorio: Nome");
             return false;
@@ -58,25 +47,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 
 <body>
- <div class="w3-top">
-  <div class="w3-bar w3-green w3-card-2 w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.php" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Quem somos</a>
-    <a href="http://www.unb.br/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" target="_blank">UnB</a>
-
-  </div>
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Quem somos</a>
-    <a href="http://www.unb.br/" class="w3-bar-item w3-button w3-padding-large" target="_blank">UnB</a>
-  </div>
-</div>
-   
-   
-   <div class="group" align="center">
-      <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="padding-top: 60px">
-   </div>
-      <form action="login_validation.php" method="post" id="frmLogin"> 
+<div align="center">  
+  <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="width:auto; height:auto;">
+</div>  
 <form action="confirma.php" method="post" name="cad" onsubmit="return validar();">
 <!-- DADOS DE CADASTRO -->
 <hgroup>
