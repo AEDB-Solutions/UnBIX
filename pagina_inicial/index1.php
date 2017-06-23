@@ -86,7 +86,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
         	<ul class="dropdown-menu w3-white">
-            	<li><a href="reclamuser.php" style="color: black;">Minhas reclamações</a></li>
+            	<li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
             	<li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>

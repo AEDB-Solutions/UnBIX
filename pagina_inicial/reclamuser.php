@@ -6,17 +6,14 @@ if(empty($_SESSION['id'])) {
     header("location:../index.php"); 
 }
 
-
 include("database.php");
 
-//echo json_encode(get_user_reclam());
+echo json_encode(get_user_reclam());
 
-var_dump(get_user_reclam());
+//var_dump(get_user_reclam());
 
 function get_user_reclam() // TESTADA E FUNCIONANDO 
 {
-        //if (!empty($_GET)) 
-        //{ 
 
             $id_user = $_SESSION['id'];
             //$id_user = '1'; 
@@ -32,11 +29,6 @@ function get_user_reclam() // TESTADA E FUNCIONANDO
             Database::disconnect();   
 
             return $result;  
-        //}      
-        //else
-        //{
-          //return 0;
-        //}
 }
 
 
