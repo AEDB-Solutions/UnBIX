@@ -59,7 +59,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index1.php">
       	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
