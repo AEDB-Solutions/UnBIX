@@ -195,7 +195,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
           
 
-      </main>
+      
 
       <div id="piechart" style="width: 1200px; height: 800px;"></div>
 
@@ -222,6 +222,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         chart.draw(data, options);
       }
     </script>
+</main>	     
 
   </body>
 </html>
