@@ -97,6 +97,7 @@ if(empty($_SESSION['id'])) {
 			<th>Categoria</th>
 			<th>Emergência</th>
 			<th>Local</th>
+	                <th><input type="button" href="script.js" name="botao-mapa" value="Ver todos no mapa"></th>			
 		</tr>
 		</thead>
 		<tbody>
