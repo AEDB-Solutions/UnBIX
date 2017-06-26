@@ -204,7 +204,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li>Acompanhar quais problemas estão em maior porcentagem</li>
             <li>Tirar conclusões e levar para a reitoria resolver</li>
 
-      <div id="piechart" class="w3-content" style="width: 500px; height: 500px; margin-top: -100px;"></div>
+      <div id="piechart" class="w3-content" style="width: 500px; height: 500px; "></div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -223,7 +223,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
       function drawChart() {
         var data = google.visualization.arrayToDataTable(list);
         var options = {
-          title: 'Complaints por Categoria'
+          title: ''
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
