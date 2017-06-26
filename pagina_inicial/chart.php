@@ -38,6 +38,29 @@ if(empty($_SESSION['id'])) {
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    /*var list = [
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]*/
+    var list = <?php echo $list_str;?> ; 
+    console.log(list)
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(list);
+        var options = {
+          title: ''
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>		
 
 
 </head>
@@ -172,29 +195,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
       <div id="piechart" class="w3-content" style="width: 600px; height: 400px; "></div>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    /*var list = [
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]*/
-    var list = <?php echo $list_str;?> ; 
-    console.log(list)
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(list);
-        var options = {
-          title: ''
-        };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    </script>
+    
 </main>      
 
   </body>
