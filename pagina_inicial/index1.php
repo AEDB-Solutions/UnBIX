@@ -44,7 +44,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index1.php">
       	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
@@ -53,7 +53,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="#" style="color: black;">Reclamações</a></li>
+            <li style="color: blue;"><a href="fu.php" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
@@ -75,7 +75,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
             <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
-            <li><a href="#" style="color: black;">Relatório estatístico</a></li>
+            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
       </ul>
