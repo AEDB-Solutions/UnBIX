@@ -197,7 +197,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
       
       <div class="w3-content" style="width: 500px; height: 300px; margin-top: 60px; line-height: 25px;" align="left">
-            <h1 style="font-size: 28px;">Relatórios Estatísticos</h1>
+            <h1 style="font-size: 28px; line-height: 20px;">Relatórios Estatísticos</h1>
 
             <h2 style="font-size: 16px; line-height: 20px;">Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</h2>
             <h2 style="font-size: 16px; line-height: 20px;">Com o relatório estatístico você pode:</h2>
