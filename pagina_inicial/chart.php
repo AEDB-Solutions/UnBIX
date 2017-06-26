@@ -206,7 +206,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li>Tirar conclusões e levar para a reitoria resolver</li>
 
 
-      <div id="piechart" class="w3-content" style="width: 600px; height: 600px; "></div>
+      <div id="piechart" class="w3-content" style="width: 600px; height: 600px; margin-top: -50px; "></div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
