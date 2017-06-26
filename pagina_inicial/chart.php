@@ -26,11 +26,11 @@ if(empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Relatorios</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Relatorios</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
 
@@ -60,7 +60,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="index1.php">
-      	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
+        <img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -97,14 +97,14 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
       <ul class="nav navbar-nav navbar-right">
-	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
+  <li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
         <li class="dropdown">
-        	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-        	<ul class="dropdown-menu w3-white">
-            	<li><a href="#" style="color: black;">Minhas reclamações</a></li>
-            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-            	<li><a href="#" style="color: black;">Configurações</a></li>
+          <ul class="dropdown-menu w3-white">
+              <li><a href="#" style="color: black;">Minhas reclamações</a></li>
+              <li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
+              <li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
           </ul>
         </li>
@@ -195,9 +195,16 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
           
 
-      
+      <div class="w3-content" style="width: 500px; height: 300px; margin-top: 60px;" align="left">
+            <h1>Relatórios Estatísticos</h1>
 
-      <div id="piechart" style="width: 1200px; height: 800px;"></div>
+            <p>Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</p>
+            <p>Com o relatório estatístico você pode:</p>
+            <li>Ficar por dentro dos problemas da Universidade</li>
+            <li>Acompanhar quais problemas estão em maior porcentagem</li>
+            <li>Tirar conclusões e levar para a reitoria resolver</li>
+
+      <div id="piechart" class="w3-content" style="width: 500px; height: 500px; margin-top: -100px;"></div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -222,7 +229,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         chart.draw(data, options);
       }
     </script>
-</main>	     
+</main>      
 
   </body>
 </html>
