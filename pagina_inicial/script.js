@@ -15,8 +15,8 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-    load_on_map(map,"http://localhost/UNBIX/git/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/UNBIX/git/pagina_inicial/loc_0.php");
+    load_on_map(map,"http://localhost/UNBIX/atual/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UNBIX/atual/pagina_inicial/loc_0.php");
     map_events(map);
     //user_current_location(map);
 
@@ -245,7 +245,7 @@ function create_info_window(windows,complaints_info,type,marker,map)
     info_window = new google.maps.InfoWindow({content:"<div id='choose_form'><input type='hidden' name='user_id' id='"+complaints_info.ComplaintID+"' value='"+complaints_info.IDuser+"'></div>"});
     windows.push(info_window);
     console.log(windows);
-    google.maps.event.addListener(marker, 'click', function(){close_windows(windows);info_window.open(map,marker);define_form(complaints_info);});
+    google.maps.event.addListener(marker, 'click', function(){close_windows(windows);info_window.open(map,marker);define_form(complaints_info);curtida_event(complaints_info);});
   }
   else if(type == 1)
   {
@@ -376,22 +376,37 @@ function getting_form_loc_0(complaints_info)
 
 function curtir(complaints_info)
 {
-      document.getElementById('choose_form').innerHTML = "<form action='savelocation.php' method='post' id='form'><input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'/>"+
+   var user_id_session = document.getElementById('user_id_session').value;
+   console.log(user_id_session+"oi");
+  //get
+      document.getElementById('choose_form').innerHTML = "<form id='form'>"+
+            "<input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'></inputs>"+
+            "<input type='hidden' name='user_id' value='"+user_id_session+"'></input>"+
             "<p>titulo: "+complaints_info.Titulo+"<p>"+
             "<p>descricao da localidade: "+complaints_info.descricao+"<p>"+
+            "<p>Nivel de aprovacao da reclamacao:atualizar depois do php<p>"+
             "<p>descricao da reclamacao: "+complaints_info.Descricao+"<p>"+
             "<p>categoria: "+complaints_info.Categoria+"<p>"+
             "<p>emergencia "+complaints_info.Emergencia+"<p>"+
-            "<p>avaliacao dos usuarios quanto a reclamção(1 a 5): "+complaints_info.Likes+" este campo esta com a avaliacao do usuario na vdd alguem do front bota ele na linha debaixo<p>"+
-            "<tr><td>Sua avaliação:<select  name = 'like' id='like'> +"+
-            "<option value=1 SELECTED>1</option>"+
-            "<option value=2 SELECTED>2</option>"+
-            "<option value=3 SELECTED>3</option>"+
-            "<option value=4 SELECTED>4</option>"+
-            "<option value=5 SELECTED>5</option>"+
-            "</select>"+
-            "<br><input type='submit' value='Salvar curtida'/>"+
-            "<form/>";
+            "<div id = 'curtida'>"+
+            "<button id = 'like'>Like</button>"+
+            "<button id = 'deslike'>Deslike</button>"+
+            "</div>"+
+            "</form>";
+}
+
+function curtida_event(complaints_info)
+{
+  var user_id_session = document.getElementById('user_id_session').value;
+  document.getElementById("like").addEventListener("click",function(e){e.preventDefault(); save_curtida(1,user_id_session,complaints_info.ComplaintID); document.getElementById("curtida").innerHTML = "<button>Descurtir</button>"});
+  document.getElementById("deslike").addEventListener("click",function(e){e.preventDefault(); save_curtida(0,user_id_session,complaints_info.ComplaintID); document.getElementById("curtida").innerHTML = "<button>Descurtir</button>"});
+}
+
+function save_curtida(like,user_id_session,ComplaintID)
+{
+  //document.getElementById("like")
+    var a = requests("http://localhost/UNBIX/atual/pagina_inicial/curtida.php?session_user="+user_id_session+"&complaint_id="+ComplaintID+"&like="+like);
+    console.log(a);
 }
 
 function content_keypoint(complaints_info)
