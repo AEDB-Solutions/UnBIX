@@ -3,123 +3,21 @@
 <head>
 	<title>TABELA</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed w3-green" style="position: top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="index1.php">
-      	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
-          <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="fu.html" style="color: black;">Reclamações</a></li>
-            <li class="dropdown-submenu">
-              <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
-              <ul class="dropdown-submenu">
-              <li><a href="buscacateg.php?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
-              <li><a href="buscacateg.php?categ =Segurança" style="color: black;">Segurança</a></li>
-              <li><a href="buscacateg.php?categ =Iluminação" style="color: black;">Iluminação</a></li>
-              <li><a href="buscacateg.php?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
-              <li><a href="buscacateg.php?categ =Banheiro" style="color: black;">Banheiro</a></li>
-              <li><a href="buscacateg.php?categ =Outros" style="color: black;">Outros</a></li>
 
-              </ul>
-              
+	<h1>tabela</h1>
 
-            </li>
-            <li><a href="#" style="color: black;">Buscar local específico</a></li>
-          </ul>
+	<table border="1" id="table">
+		<tr>
+			<th>Título</th>
+			<th>Descrição</th>
+			<th>Categoria</th>
+			<th>Emergência</th>
+			<th>Local</th>
+		</tr>		
 
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
-          <ul class="dropdown-menu w3-white">
-            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
-            <li><a href="#" style="color: black;">Relatório estatístico</a></li>
-          </ul>
-        </li>   
-      </ul>
-
-
-      <ul class="nav navbar-nav navbar-right">
-	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
-        <li class="dropdown">
-        	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
-          <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-        	<ul class="dropdown-menu w3-white">
-            	<li><a href="#" style="color: black;">Minhas reclamações</a></li>
-            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-            	<li><a href="#" style="color: black;">Configurações</a></li>
-              <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
-          </ul>
-        </li>
-        <li><a href="logoff.php" style="color: white;"><span class="glyphicon glyphicon-log-out"></span> Log off</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-     <main >
-       <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
-        <div id="out"></div>
-
-          <p id="demo"></p> -->
-
-
-<div class="conteiner">
-	<h2>Reclamações</h2>
-	<p>*pode ter algo escrito caso precise*</p>
-	<p>*as cores vão ser definidas*</p>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Categoria</th>
-				<th>Reclamação</th>
-		</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Banheiro</td>
-				<td>Tá ruim</td>
-			</tr>
-			<tr class="success">
-				<td>Bebedouro</td>	
-				<td>Tá ruim</td>
-			</tr>
-			<tr class="danger">
-				<td>Banheiro</td>
-				<td>Tá ruim</td>
-			</tr>
-			<tr class="info">
-				<td>Bebedouro</td>	
-				<td>Tá ruim</td>
-			</tr>
-			<tr class="warning">
-				<td>Banheiro</td>
-				<td>Tá ruim</td>
-			</tr>
-			<tr class="active">
-				<td>Bebedouro</td>	
-				<td>Tá ruim</td>
-			</tr>
-		</tbody>	
 	</table>
-	
-</div>
-
 
 	<script type="text/javascript">
 		//passa o botao um get ate aqui, e faz varios if

@@ -10,8 +10,10 @@
 
  <script language="text/javascript" type="text/javascript">
   function validar() {
+
   var mat = document.forms["cad"]["matricula"].value;
   var soNumeros = /^[0-9]+$/;
+
          if (document.forms["cad"]["nome"].value == "") {
             alert("Campo Obrigatorio: Nome");
             return false;

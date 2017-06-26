@@ -8,35 +8,11 @@ function save_content_of_complain()
 {
     //reclamacao ja existe
     if(isset($_POST['complaint_id']))
-    decide_update();//decide se atualiza uma reclamacao ou uma curtida
+    update_complain();
 
     else
     save_info_on_db();
     //reclamacao nova
-}
-
-function decide_update()
-{
-    if(isset($_POST['like']))
-    update_curtida();
-
-    else
-    update_complain();
-}
-
-function update_curtida()
-{
-
-    $complaint_id = $_POST['complaint_id'];
-
-    $pdo = Database::connect();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    
-    $sql = "UPDATE Complaints SET Likes = ? WHERE ComplaintID = ?";    
-    $q = $pdo->prepare($sql);
-    $a = array($_POST['like'],$complaint_id);
-    $q->execute($a);
-    Database::disconnect();
 }
 
 

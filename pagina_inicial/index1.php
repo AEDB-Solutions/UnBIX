@@ -14,6 +14,8 @@ if(empty($_SESSION['id'])) {
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
@@ -26,7 +28,6 @@ if(empty($_SESSION['id'])) {
 
 </head>
 <body>
-
 <!--
 Foi utilizado BootStrap na pagina para poder deixar ela o mais responsiva possível;
 A tag <span> é utilizada para por icones na página;
@@ -52,16 +53,16 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="fu.php" style="color: black;">Reclamações</a></li>
+            <li style="color: blue;"><a href="#" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
-              <li><a href="fu.php?categ=Infraestrutura" style="color: black;">Infraestrutura</a></li>
-              <li><a href="fu.php?categ=Seguranca" style="color: black;">Segurança</a></li>
-              <li><a href="fu.php?categ=Iluminacao" style="color: black;">Iluminação</a></li>
-              <li><a href="fu.php?categ=Bebedouro" style="color: black;">Bebedouro</a></li>
-              <li><a href="fu.php?categ=Banheiro" style="color: black;">Banheiro</a></li>
-              <li><a href="fu.php?categ=Outro" style="color: black;">Outros</a></li>
+              <li><a href="fu.html?categ =Infraestrutura" style="color: black;">Infraestrutura</a></li>
+              <li><a href="fu.html?categ =Seguranca" style="color: black;">Segurança</a></li>
+              <li><a href="fu.html?categ =Iluminacao" style="color: black;">Iluminação</a></li>
+              <li><a href="fu.html?categ =Bebedouro" style="color: black;">Bebedouro</a></li>
+              <li><a href="fu.html?categ =Banheiro" style="color: black;">Banheiro</a></li>
+              <li><a href="fu.html?categ =Outros" style="color: black;">Outros</a></li>
 
               </ul>
               
@@ -71,10 +72,10 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           </ul>
 
           <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" style="color: white;">Ferramentas<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a data-toggle="modal" data-target="#myModal">Melhor caminho</a></li>
-            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
+            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
+            <li><a href="#" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
       </ul>
@@ -86,7 +87,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
         	<ul class="dropdown-menu w3-white">
-            	<li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
+            	<li><a href="#" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
             	<li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
@@ -97,42 +98,6 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
     </div>
   </div>
 </nav>
-
-<div class="container">
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px"></h4>
-        </div>
-        <div class="modal-body">
-              <form action="algoritmo.php">
-                        <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
-                        <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
-              <p> Local a procurar: </p>
-                   <input type="radio" name="categoria" value="Banheiro" checked> Banheiro<br>
-                    <input type="radio" name="categoria" value="Bebedouro"> Bebedouro
-              <br>
-              Raio (em metros):
-              <input type="number" value="raio" min="1" max="1000">
-              <br>
-              <input type="submit" value="Buscar">
-              </form> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
      <main >
        <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
         <div id="out"></div>
@@ -198,8 +163,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
