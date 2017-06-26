@@ -196,7 +196,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           
 
       
-      <div class="w3-content" style="width: 500px; height: 300px; margin-top: 60px; line-height: 25px;" align="left">
+      <div class="w3-content" style="width: 450px; height: 300px; margin-top: 60px; line-height: 25px;" align="left">
             <h1 style="font-size: 28px; line-height: 20px;">Relatórios Estatísticos</h1>
 
             <h2 style="font-size: 16px; line-height: 20px;">Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</h2>
@@ -206,7 +206,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li>Tirar conclusões e levar para a reitoria resolver</li>
 
 
-      <div id="piechart" class="w3-content" style="width: 600px; height: 600px; "></div>
+      <div id="piechart" class="w3-content" style="width: 600px; height: 400px; "></div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
