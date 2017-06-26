@@ -196,15 +196,16 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           
 
       <div class="w3-content" style="width: 500px; height: 300px; margin-top: 60px;" align="left">
-            <h1>Relatórios Estatísticos</h1>
+            <h1 style="font-size: 28px;">Relatórios Estatísticos</h1>
 
-            <p>Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</p>
-            <p>Com o relatório estatístico você pode:</p>
+            <h2 style="font-size: 16px;">Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</h2>
+            <h2 style="font-size: 16px;">Com o relatório estatístico você pode:</h2>
             <li>Ficar por dentro dos problemas da Universidade</li>
             <li>Acompanhar quais problemas estão em maior porcentagem</li>
             <li>Tirar conclusões e levar para a reitoria resolver</li>
 
-      <div id="piechart" class="w3-content" style="width: 500px; height: 500px; "></div>
+
+      <div id="piechart" class="w3-content" style="width: 600px; height: 600px; "></div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
