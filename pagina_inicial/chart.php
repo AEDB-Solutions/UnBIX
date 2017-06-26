@@ -60,7 +60,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="index1.php">
-        <img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
+      	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -72,12 +72,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
-              <li><a href="fu.php?categ=Infraestrutura" id="form" style="color: black;">Infraestrutura</a></li>
-              <li><a href="fu.php?categ=Seguranca" id="form" style="color: black;">Segurança</a></li>
-              <li><a href="fu.php?categ=Iluminacao" id="form" style="color: black;">Iluminação</a></li>
-              <li><a href="fu.php?categ=Bebedouro" id="form" style="color: black;">Bebedouro</a></li>
-              <li><a href="fu.php?categ=Banheiro" id="form" style="color: black;">Banheiro</a></li>
-              <li><a href="fu.php?categ=Outros" id="form" style="color: black;">Outros</a></li>
+              <li><a href="fu.php?categ=Infraestrutura" style="color: black;">Infraestrutura</a></li>
+              <li><a href="fu.php?categ=Seguranca" style="color: black;">Segurança</a></li>
+              <li><a href="fu.php?categ=Iluminacao" style="color: black;">Iluminação</a></li>
+              <li><a href="fu.php?categ=Bebedouro" style="color: black;">Bebedouro</a></li>
+              <li><a href="fu.php?categ=Banheiro" style="color: black;">Banheiro</a></li>
+              <li><a href="fu.php?categ=Outro" style="color: black;">Outros</a></li>
 
               </ul>
               
@@ -87,9 +87,9 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           </ul>
 
           <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" style="color: white;">Ferramentas<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a data-toggle="modal" data-target="#myModal">Melhor caminho</a></li>
+            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
             <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
@@ -97,14 +97,14 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
       <ul class="nav navbar-nav navbar-right">
-  <li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
+	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
-          <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-          <ul class="dropdown-menu w3-white">
-              <li><a href="#" style="color: black;">Minhas reclamações</a></li>
-              <li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-              <li><a href="#" style="color: black;">Configurações</a></li>
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
+          <span class="glyphicon glyphicon-user"></span> jorge </a>
+        	<ul class="dropdown-menu w3-white">
+              <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
+            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
+            	<li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
           </ul>
         </li>
@@ -113,45 +113,10 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
     </div>
   </div>
 </nav>
-
-<div class="container">
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px"></h4>
-        </div>
-        <div class="modal-body">
-              <form action="algoritmo.php">
-                        <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
-                        <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
-              <p> Local a procurar: </p>
-                   <input type="radio" name="categoria" value="Banheiro" checked> Banheiro<br>
-                    <input type="radio" name="categoria" value="Bebedouro"> Bebedouro
-              <br>
-              Raio (em metros):
-              <input type="number" value="raio" min="1" max="1000">
-              <br>
-              <input type="submit" value="Buscar">
-              </form> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
      <main >
        <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
         <div id="out"></div>
+
           <p id="demo"></p> -->
 
 
@@ -159,7 +124,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
        <form action="savelocation.php" method="post" id="form" style='display:none'>
   <table>
 
-          <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
+          <input type="hidden" name="lat" id="user_id_session" value = 1 >
           <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
           <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
           <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>
@@ -192,7 +157,6 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               
 </table> 
            </form>
-
           
 
       
