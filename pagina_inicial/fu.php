@@ -87,6 +87,34 @@ if(empty($_SESSION['id'])) {
 
 <div class="conteiner">
   <h2>Reclamações</h2>
+  <h3>
+      <form action="index1.php" method="post">
+        <button type="submit" href="script.js" name="botao-mapa" value="Ver todos no mapa" onclick="create_marker(lat,long,type,map)">ver</button>
+      </form>
+      <script type="text/javascript">
+          function create_marker(lat,long,type,map)
+          {
+            var key_point_location = new google.maps.LatLng(lat,long);
+            var marker = new google.maps.Marker({position: key_point_location});
+  
+            if(type == 0)
+            {
+               //normal// personalize
+            }
+            else if(type == 1)
+             {
+                //ponto chave//personalize
+             }  
+
+             marker.setMap(map);
+
+              return marker;
+          }  
+  
+    
+
+      </script>
+  </h3>
   <p>*pode ter algo escrito caso precise*</p>
   <p>*as cores vão ser definidas*</p>
   <table class="table" id="table">
@@ -97,8 +125,6 @@ if(empty($_SESSION['id'])) {
       <th>Categoria</th>
       <th>Emergência</th>
       <th>Local</th>
-      <th><input type="button" href="script.js" name="botao-mapa" value="Ver todos no mapa"></th>    
-    </tr>
     </thead>
     <tbody>
       <tr>
