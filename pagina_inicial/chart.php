@@ -1,22 +1,36 @@
 <?php
 session_start();
-
 if(empty($_SESSION['id'])) {
     header("location:../index.php"); 
 }
+?>
 
+<?php
+  include "database.php";
+  $pdo = Database::connect();
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "select Categoria , count(*) as Complaints from Complaints group by Categoria";
+  $q = $pdo->prepare($sql);
+  $q->execute();
+  $value = $q->fetchall(PDO::FETCH_OBJ);
+  
+  //var_dump($value);
+  $list = ["['Bitch', 'Fuck']"];
+  foreach($value as $row)
+  {
+    array_push($list, "['".$row->Categoria."',".$row->Complaints."]");
+  }
+  $list_str = "[" .  implode(',', $list) . "]";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>UnBIX</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Relatorios</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
 
@@ -24,10 +38,34 @@ if(empty($_SESSION['id'])) {
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    /*var list = [
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]*/
+    var list = <?php echo $list_str;?> ; 
+    console.log(list)
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(list);
+        var options = {
+          title: ''
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>		
 
 
 </head>
 <body>
+
 <!--
 Foi utilizado BootStrap na pagina para poder deixar ela o mais responsiva possível;
 A tag <span> é utilizada para por icones na página;
@@ -85,7 +123,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
         <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
-          <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
+          <span class="glyphicon glyphicon-user"></span> jorge </a>
         	<ul class="dropdown-menu w3-white">
               <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
@@ -109,7 +147,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
        <form action="savelocation.php" method="post" id="form" style='display:none'>
   <table>
 
-          <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
+          <input type="hidden" name="lat" id="user_id_session" value = 1 >
           <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
           <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
           <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo"/> </td> </tr>
@@ -142,30 +180,23 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               
 </table> 
            </form>
+          
 
-            <div id="map-canvas"></div>
-            <script src="script.js"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
+      
+      <div class="w3-content" style="width: 450px; height: 300px; margin-top: 60px; line-height: 25px;" align="left">
+            <h1 style="font-size: 28px; line-height: 20px;">Relatórios Estatísticos</h1>
 
-            <!--<h4><i  style=" position: absolute;left:300px; top:130px"> Busca por CATEGORIA:</i></h4>
-                <select name="busca">
-                  <option value="Infraestrutura">Infraestrutura</option>
-                  <option value="Seguranca">Segurança</option>
-                  <option value="Iluminacao">Iluminação</option>
-                  <option value="Bebedouro">Bebedouro</option>
-                  <option value="Banheiro">Banheiro</option>
-                  <option value="Barulho">Barulho</option>
-                  <option value="Outros">Outros</option>
-                </select>-->
-
-      </main>
+            <h2 style="font-size: 16px; line-height: 20px;">Acompanhe em tempo real a porcentagem de problemas referentes a cada categoria</h2>
+            <h2 style="font-size: 16px; line-height: 20px;">Com o relatório estatístico você pode:</h2>
+            <li>Ficar por dentro dos problemas da Universidade</li>
+            <li>Acompanhar quais problemas estão em maior porcentagem</li>
+            <li>Tirar conclusões e levar para a reitoria resolver</li>
 
 
+      <div id="piechart" class="w3-content" style="width: 600px; height: 400px; "></div>
 
-
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+</main>      
 
   </body>
 </html>

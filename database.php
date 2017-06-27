@@ -4,7 +4,11 @@ class Database
     private static $dbName = 'UnBix_database' ;
     private static $dbHost = '127.0.0.1' ;
     private static $dbUsername = 'root';
+<<<<<<< HEAD
     private static $dbUserPassword = 'bgt2k4m3';
+=======
+    private static $dbUserPassword = 'aSSiral';
+>>>>>>> a65099c98e2a2dba1f3f533e6311a71600665fad
 
     private static $cont  = null;
 
