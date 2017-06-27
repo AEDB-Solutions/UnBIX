@@ -15,6 +15,7 @@ if(empty($_SESSION['id'])) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="tabela.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed w3-green" style="position: top">
@@ -88,9 +89,11 @@ if(empty($_SESSION['id'])) {
 <div class="conteiner">
   <h2>Reclamações</h2>
   <h3>
+      <div id="butao" align="center">
       <form action="index1.php" method="post">
-        <button type="submit" href="script.js" name="botao-mapa" value="Ver todos no mapa" onclick="create_marker(lat,long,type,map)">ver</button>
+        <button type="submit" href="script.js" name="botao-mapa" value="Ver todos no mapa" onclick="create_marker(lat,long,type,map)" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
       </form>
+     </div> 
       <script type="text/javascript">
           function create_marker(lat,long,type,map)
           {
