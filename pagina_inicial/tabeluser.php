@@ -89,15 +89,14 @@ if(empty($_SESSION['id'])) {
 	<h2>Minhas reclamações</h2>
 	<p>*pode ter algo escrito caso precise*</p>
 	<p>*as cores vão ser definidas*</p>
-	<table class="table" id="table">
+		<table class="table" id="table" style="width: 100%;" align="center">
 		<thead>
 			<tr>
 			<th>Título</th>
-			<th>Descrição</th>
 			<th>Categoria</th>
 			<th>Emergência</th>
 			<th>Local</th>
-	                <th><input type="button" href="script.js" name="botao-mapa" value="Ver todos no mapa"></th>			
+	                <th><input type="button" href="script.js" name="botao-mapa" value="Ver todos no mapa" style="border: none; background-color: #0099ff; text-decoration: underline;"></th>			
 		</tr>
 		</thead>
 		<tbody>
