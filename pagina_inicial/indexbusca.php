@@ -1,24 +1,42 @@
 <?php
 session_start();
+
 if(empty($_SESSION['id'])) {
     header("location:../index.php"); 
 }
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Minhas reclamações</title>
-	<meta charset="utf-8">
+	<title>UnBIX</title>
+	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="tabela.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="material.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed w3-green" style="position: top">
+<!--
+Foi utilizado BootStrap na pagina para poder deixar ela o mais responsiva possível;
+A tag <span> é utilizada para por icones na página;
+As responsividades ficam dentro de cada tag e vc seleciona usando o 'class=""';
+No proprio site do bootstrap ensina como fazer bastante coisa ou, se prefirir, no site w3schools tem uns guias bem praticos para aprender;
+Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois assim ela fica por cima do mapa
+-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top w3-green" style="position: absolute;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -69,7 +87,7 @@ if(empty($_SESSION['id'])) {
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
         	<ul class="dropdown-menu w3-white">
-            	<li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
+              <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
             	<li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
@@ -80,106 +98,31 @@ if(empty($_SESSION['id'])) {
     </div>
   </div>
 </nav>
-     <main >
-       <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
-        <div id="out"></div>
-          <p id="demo"></p> -->
 
 
-<div class="conteiner">
-	<h2>Minhas reclamações</h2>
-	<p>*pode ter algo escrito caso precise*</p>
-	<p>*as cores vão ser definidas*</p>
-		<table class="table" id="table" style="width: 100%;" align="center">
-		<thead>
-			<tr>
-			<th>Título</th>
-			<th>Descrição</th>
-			<th>Categoria</th>
-			<th>Emergência</th>
-			<th>Local</th>
-	                <th><input type="button" href="script.js" name="botao-mapa" value="Ver todos no mapa" style="border: none; background-color: #0099ff; text-decoration: underline;"></th>			
-		</tr>
-		</thead>
-		<tbody>
-			<tr>
-			</tr>
-			<tr class="success">
-				
-			</tr>
-			<tr class="danger">
-				
-			</tr>
-			<tr class="info">
-				
-			</tr>
-			<tr class="warning">
-				
-			</tr>
-			<tr class="active">
-				
-			</tr>
-		</tbody>	
-	</table>
-	
-</div>
+            <div id="map-canvas"></div>
+            <script src="vernomapa.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
+
+            <!--<h4><i  style=" position: absolute;left:300px; top:130px"> Busca por CATEGORIA:</i></h4>
+                <select name="busca">
+                  <option value="Infraestrutura">Infraestrutura</option>
+                  <option value="Seguranca">Segurança</option>
+                  <option value="Iluminacao">Iluminação</option>
+                  <option value="Bebedouro">Bebedouro</option>
+                  <option value="Banheiro">Banheiro</option>
+                  <option value="Barulho">Barulho</option>
+                  <option value="Outros">Outros</option>
+                </select>-->
+
+      </main>
 
 
-	<script type="text/javascript">
 
 
-var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/reclamuser.php");
-console.log(info);
 
-var modelo = "<tr>\
-		<td>{{ele1}}</td>\
-		<td>{{ele2}}</td>\
-		<td>{{ele3}}</td>\
-		<td>{{ele4}}</td>\
-		<td>{{ele5}}</td>\
-	</tr>";
-console.log(info.length)
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
 
-for (var i = 0; i < info.length; i++) 
-{
-		document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
-}
-
-function requests(host, method = "GET", data = {}) //ERA OBJETO
-{
-    var content = null
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-    if(this.readyState == 4 && this.status == 200) 
-    {
-     content = this.responseText
-    }
-    };
-
-    xhttp.open(method, host, false)
-    
-    if(method = "GET")
-    xhttp.send()
-    
-    else
-    {
-      xhttp.setRequestHeader("Content-Type", "application/json");
-      xhttp.send(JSON.stringify(data));
-      //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    }
-    
-    return content;
-}
-function getting_db_info(host)
-{
-  var server_awnser = requests(host);
-
-  //console.log("hola", JSON.parse(server_awnser));
-  
-  return JSON.parse(server_awnser);
-}
-
-	</script> 
-</body>
+  </body>
 </html>

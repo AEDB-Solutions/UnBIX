@@ -89,33 +89,10 @@ if(empty($_SESSION['id'])) {
 <div class="conteiner">
   <h3>
       <div id="butao" align="center">
-      <form action="index1.php" method="post">
-        <button type="submit" href="script.js" name="botao-mapa" value="Ver todos no mapa" onclick="create_marker(lat,long,type,map)" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
+      <form action="indexbusca.php" method="post">
+        <button type="submit" href="vernomapa.js" name="botao-mapa" value="Ver todos no mapa" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
       </form>
      </div> 
-      <script type="text/javascript">
-          function create_marker(lat,long,type,map)
-          {
-            var key_point_location = new google.maps.LatLng(lat,long);
-            var marker = new google.maps.Marker({position: key_point_location});
-  
-            if(type == 0)
-            {
-               //normal// personalize
-            }
-            else if(type == 1)
-             {
-                //ponto chave//personalize
-             }  
-
-             marker.setMap(map);
-
-              return marker;
-          }  
-  
-    
-
-      </script>
   </h3>
   
   <table class="table" id="table">
@@ -152,7 +129,7 @@ if(empty($_SESSION['id'])) {
 
 
   <script type="text/javascript">
-
+      make_tabela();
 
     
 //var x = document.getElementById("form").elements[0].value;
@@ -167,6 +144,8 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function make_tabela()
+{
 var x = getParameterByName('categ');
 console.log(x);
 
@@ -229,6 +208,12 @@ for (var i = 0; i < info.length; i++)
 {
     document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
 }
+
+return info;
+
+} 
+
+//-----------------------------------------------------------------------------------------------------
 
 function requests(host, method = "GET", data = {}) //ERA OBJETO
 {
