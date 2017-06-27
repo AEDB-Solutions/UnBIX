@@ -180,7 +180,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               
 </table> 
            </form>
-          
+         </main>   
 
       
       <div class="w3-content" style="width: 450px; height: 300px; margin-top: 60px; line-height: 25px;" align="left">
@@ -196,7 +196,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
       <div id="piechart" class="w3-content" style="width: 600px; height: 400px; position: fixed; "></div>
 
     
-</main>      
+      
 
   </body>
 </html>
