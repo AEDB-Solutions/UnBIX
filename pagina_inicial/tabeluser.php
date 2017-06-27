@@ -93,7 +93,7 @@ if(empty($_SESSION['id'])) {
 		<table class="table" id="table" style="width: 100%;" align="center">
 		<thead>
 			<tr>
-			th>Título</th>
+			<th>Título</th>
 			<th>Descrição</th>
 			<th>Categoria</th>
 			<th>Emergência</th>
