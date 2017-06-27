@@ -77,7 +77,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">Acredite no seu potencial, reaja a assaltos</h1>
+    <h1 class="w3-margin w3-xlarge">Não lamente o acidente que já aconteceu, comemore o acidente que você foi capaz de evitar.</h1>
 </div>
 
 <!-- Footer -->
