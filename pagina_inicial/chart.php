@@ -193,7 +193,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li>Tirar conclusões e levar para a reitoria resolver</li>
 
 
-      <div id="piechart" class="w3-content" style="width: 600px; height: 400px; "></div>
+      <div id="piechart" class="w3-content" style="width: 600px; height: 400px; position: fixed; "></div>
 
     
 </main>      
