@@ -87,7 +87,6 @@ if(empty($_SESSION['id'])) {
 
 
 <div class="conteiner">
-  <h2>Reclamações</h2>
   <h3>
       <div id="butao" align="center">
       <form action="index1.php" method="post">
@@ -118,8 +117,7 @@ if(empty($_SESSION['id'])) {
 
       </script>
   </h3>
-  <p>*pode ter algo escrito caso precise*</p>
-  <p>*as cores vão ser definidas*</p>
+  <
   <table class="table" id="table">
     <thead>
       <tr>
