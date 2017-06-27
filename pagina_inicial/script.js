@@ -15,13 +15,10 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-<<<<<<< HEAD
+
     load_on_map(map,"http://localhost/unbix/UnBiX/UnBIX/pagina_inicial/loc_1.php");
     load_on_map(map,"http://localhost/unbix/UnBiX/UnBIX/pagina_inicial/loc_0.php");
-=======
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
->>>>>>> a65099c98e2a2dba1f3f533e6311a71600665fad
+
     map_events(map);
     //user_current_location(map);
 
