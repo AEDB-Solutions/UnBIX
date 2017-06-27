@@ -117,7 +117,7 @@ if(empty($_SESSION['id'])) {
 
       </script>
   </h3>
-  <
+  
   <table class="table" id="table">
     <thead>
       <tr>
