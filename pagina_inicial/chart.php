@@ -38,6 +38,7 @@ if(empty($_SESSION['id'])) {
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tabela.css">	
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     /*var list = [
