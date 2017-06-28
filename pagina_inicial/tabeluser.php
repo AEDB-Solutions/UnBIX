@@ -18,6 +18,19 @@ if(empty($_SESSION['id'])) {
   <link href="tabela.css" rel="stylesheet">
 </head>
 <body>
+<style>
+    input[type="submit"]
+              {
+                background-color: #4CAF50;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+                border: none;
+                margin-bottom: 10px;
+                color: white;
+                style="margin-left: 10px;
+            }
+    </style>
 <nav class="navbar navbar-inverse navbar-fixed w3-green" style="position: top">
   <div class="container-fluid">
     <div class="navbar-header">
