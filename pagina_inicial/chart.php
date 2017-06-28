@@ -194,6 +194,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
       <div id="piechart" class="w3-content" style="width: 600px; height: 400px; position: fixed; "></div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	      
 
     
       
