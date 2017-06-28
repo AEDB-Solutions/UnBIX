@@ -106,7 +106,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
 
-       <form action="savelocation.php" method="post" id="form" style='display:none'>
+<form action="savelocation.php" method="post" id="form" class="w3-container" style='display:none; width: 400px; background-color: #f0f0f5; border: double;border-color: green;'>
   <table>
 
           <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
@@ -130,6 +130,30 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
                 <option value='Barulho'>Barulho</option>
                 <option value='Outro'>Outro</option>
                 </select> </td></tr>
+              <style>
+              select {
+                margin-top: 15px;
+                -webkit-appearance: none;  
+                 -moz-appearance: none; 
+                 background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee;  /* Imagem de fundo (Seta) */
+                 background-position: 218px center; 
+                 background-color: white; 
+                 width: 250px; 
+                 height:30px; 
+                 border:1px solid #ddd;
+              }
+              input[type="submit"]
+              {
+                background-color: #4CAF50;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+                border: none;
+                margin-bottom: 10px;
+                color: white;
+                margin-left: 10px;
+            }
+            </style>   
             <tr><td>Emergencia:</td> <td><select name = "Emergencia" id ='Emergencia'> +
                 <option value='1' SELECTED> 1 </option>
                 <option value='2' > 2 </option>
@@ -142,6 +166,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 </table>
            </form>
+
 
             <div id="map-canvas"></div>
             <script src="script.js"></script>
