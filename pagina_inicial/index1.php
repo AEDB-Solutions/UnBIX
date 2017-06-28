@@ -10,13 +10,13 @@ if(empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UnBIX</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title>UnBIX</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
 
@@ -45,7 +45,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index1.php">
-        <img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
+      	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -53,7 +53,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a href="fu.php" style="color: black;">Reclamações</a></li>
+            <li><a href="tabelareclam.html" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
@@ -76,13 +76,13 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <ul class="dropdown-menu w3-white">
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
-                <form action="" method="get">
-                  <input type="checkbox" name="opcao" value="Banheiro F"> Banheiro Feminino </br>
-                  <input type="checkbox" name="opcao" value="Banheiro M"> Banheiro Masculino </br>
-                  <input type="checkbox" name="opcao" value="Bebedouro"> Bebedouro </br>
+                <form action="" method="post">
+                  <input type="checkbox" name="BF" id="BF"> Banheiro Feminino </br>
+                  <input type="checkbox" name="BM" id="BM"> Banheiro Masculino </br>
+                  <input type="checkbox" name="BB" id="BB"> Bebedouro </br>
                   <label id="raio">Raio: </label>
                   <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
-                  <input class="w3-hover-black" type="submit" value="Calcular!">
+                  <input type="submit" value="Calcular!">
                 </form>
               </ul>
             </li>
@@ -93,14 +93,14 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
       <ul class="nav navbar-nav navbar-right">
-  <li class=""><a id="user_pos" href="#" style="color: white;">Reportar a partir da localização atual</a></li>       
+	<li class=""><a id="user_pos" href="#" style="color: white;">Reportar a partir da localização atual</a></li>       
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-          <ul class="dropdown-menu w3-white">
+        	<ul class="dropdown-menu w3-white">
               <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
-              <li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-              <li><a href="#" style="color: black;">Configurações</a></li>
+            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
+            	<li><a href="#" style="color: black;">Configurações</a></li>
               <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
           </ul>
         </li>
@@ -117,7 +117,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
 
-<form action="savelocation.php" method="post" id="form" class="w3-container" style="display: none;>
+<form action="savelocation.php" method="post" id="form" class="w3-container">
   <table>
 
           <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
@@ -164,12 +164,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
                 color: white;
                 margin-left: 10px;
             }
-          
-       input [type="text"] {
+		      
+	     input [type="text"] {
               border-style: groove;
               margin-top: 10px;
               border-color: grey;
-            }         
+            }		      
             </style>   
             <tr><td>Emergencia:</td> <td><select name = "Emergencia" id ='Emergencia'> +
                 <option value='1' SELECTED> 1 </option>
