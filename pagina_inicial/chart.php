@@ -31,16 +31,14 @@ if(empty($_SESSION['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="material.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="tabela.css">	
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="material.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tabela.css">	
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
     /*var list = [
           ['Task', 'Hours per Day'],
           ['Work',     11],
@@ -61,7 +59,7 @@ if(empty($_SESSION['id'])) {
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }
-    </script>		
+  </script>
 
 
 </head>
@@ -124,7 +122,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
         <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
-          <span class="glyphicon glyphicon-user"></span> jorge </a>
+          <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
         	<ul class="dropdown-menu w3-white">
               <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
             	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
