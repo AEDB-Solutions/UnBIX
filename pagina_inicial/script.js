@@ -16,8 +16,8 @@ function initMap()
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
 
-    load_on_map(map,"http://localhost/unbix/UnBiX/UnBiiX/UnBIX/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/unbix/UnBiX/UnBiiX/UnBIX/pagina_inicial/loc_0.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
 
     map_events(map);
     user_current_location(map);
@@ -370,9 +370,9 @@ function getting_form_loc_0(complaints_info)
             "<input type='hidden' name='user_id' id='user_id_complain' value='"+complaints_info.IDuser+"'>"+
             "<tr><td></td> <td><input type='hidden' name='lat' id='lat' value='"+complaints_info.latitude+"'> </td> </tr>"+
             "<tr><td></td> <td><input type='hidden' name='long' id='long' value='"+complaints_info.longitude+"'> </td> </tr>"+
-            "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo'value='"+complaints_info.Titulo+"'> </td> </tr>"+
-            "<tr><td>Descrição do problema:</td> <td><textarea name = 'descricao_comp' id='descricao_comp' value='"+complaints_info.Descricao+"'maxlength='140' rows='25' cols='80'>"+complaints_info.Descricao+"</textarea><style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
-            "<tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' value='"+complaints_info.descricao+"'> </td> </tr>"+
+            "<tr><td>Título: </td> <td><input type='text' name='Titulo' id='Titulo' class='w3-input w3-border' style='margin-top: 10px;' value='"+complaints_info.Titulo+"'> </td> </tr>"+
+            "<tr><td>Descrição do problema:</td> <td><textarea name = 'descricao_comp' id='descricao_comp' class='w3-input w3-border' style='margin-top: 10px;'' value='"+complaints_info.Descricao+"'maxlength='140' rows='25' cols='80'>"+complaints_info.Descricao+"</textarea><style>textarea{width: 150px;height: 113px;}</style> </td> </tr>"+
+            "<tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' class='w3-input w3-border' style='margin-top: 10px;'' value='"+complaints_info.descricao+"'> </td> </tr>"+
             "<tr><td>Type:</td> <td><select name='Categoria' id='Categoria' value='"+complaints_info.Categoria+"'> +"+
                 "<option value='Iluminacao' "+ (complaints_info.Categoria == 'Iluminacao' ? 'selected' : '') +">Iluminação</option>"+
                 "<option value='Banheiro' "+ (complaints_info.Categoria == 'Banheiro' ? 'selected' : '') +"> Banheiro</option>"+
@@ -389,7 +389,7 @@ function getting_form_loc_0(complaints_info)
                 "<option value='4' "+ (complaints_info.Emergencia == 4 ? 'selected' : '') +"> 4 </option>"+
                 "<option value='5' "+ (complaints_info.Emergencia == 5 ? 'selected' : '') +"> 5 </option>"+
             "</select> </td></tr>"+
-              "<tr><td></td><td><input type='submit' value='Atualizar Reclamacao!'/></td></tr>"+
+              "<tr><td></td><td><input type='submit' value='Atualizar!'/></td></tr>"+
           "</table>"+"</form>";
 }
 
@@ -401,15 +401,14 @@ function curtir(complaints_info)
       document.getElementById('choose_form').innerHTML = "<form id='form'>"+
             "<input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'></inputs>"+
             "<input type='hidden' name='user_id' value='"+user_id_session+"'></input>"+
-            "<p>titulo: "+complaints_info.Titulo+"<p>"+
-            "<p>descricao da localidade: "+complaints_info.descricao+"<p>"+
-            "<p>Nivel de aprovacao da reclamacao:atualizar depois do php<p>"+
-            "<p>descricao da reclamacao: "+complaints_info.Descricao+"<p>"+
-            "<p>categoria: "+complaints_info.Categoria+"<p>"+
-            "<p>emergencia "+complaints_info.Emergencia+"<p>"+
+            "<p><b>Titulo:</b> "+complaints_info.Titulo+"<p>"+
+            "<p><b>Descricao da localidade:</b> "+complaints_info.descricao+"<p>"+
+            "<p><b>Descricao da reclamacao:</b> "+complaints_info.Descricao+"<p>"+
+            "<p><b>Categoria:</b> "+complaints_info.Categoria+"<p>"+
+            "<p><b>Emergencia:</b>  "+complaints_info.Emergencia+"<p>"+
             "<div id = 'curtida'>"+
-            "<button id = 'like'>Like</button>"+
-            "<button id = 'deslike'>Deslike</button>"+
+            "<button id = 'like' style='border:none; background-color:#33ccff; color:white; width:50px; height:30px;'>Like</button>"+
+            "<button id = 'deslike' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Deslike</button>"+
             "</div>"+
             "</form>";
 }
@@ -435,8 +434,7 @@ function content_keypoint(complaints_info)
  {
       return "<p>"+complaints_info.descricao+"</p>"+
       "<div id = 'content_keypoint'>"+
-      "<button id = 'reclame'>reclame</button>"+
-      "<button id = 'tabela_de_reclamacoes'>tabela de reclamacoes</button>"+
+      "<button id = 'reclame' style='border:none; background-color: #4CAF50; color:white; width:70px; height:30px;'>Reclame</button>"+
       "</div>";
  }
 
