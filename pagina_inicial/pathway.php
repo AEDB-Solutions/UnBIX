@@ -42,19 +42,19 @@ function get_by_bebedouro()
 }
 
 
-function which_categ($categ)
+function which_categ($categ,$radius)
 {
 	if($categ == 'Banheiro M')
 	{
-		$a = get_by_categ_m();
+		$a = result1($radius);
 	}
 	elseif($categ == 'Banheiro F')
 	{
-		$a = get_by_categ_f();
+		$a = result2($radius);
 	}
 	elseif($categ == 'Bebedouro') 
 	{
-		$a = get_by_bebedouro();
+		$a = result3($radius);
 	}
 
 	return $a;
@@ -114,29 +114,8 @@ function calculate_dist_bebedouro()
         return $a;
 }
 
-/*function dist_calculate($lat_key,$long_key,$lat_fixed,$long_fixed)
-{
-	$r = sqrt(($lat_key-$lat_fixed)*($lat_key-$lat_fixed) + ($long_key - $long_fixed)*($long_key - $long_fixed));
-	return $r;
-}
-*/
-/*
-function dist_calculate($lat_key,$long_key,$lat_fixed,$long_fixed,$earthRadius)
-{
-	 $lat_fixed = deg2rad($lat_fixed);
- 	 $long_fixed = deg2rad($long_fixed);
- 	 $lat_key = deg2rad($lat_key);
- 	 $long_key = deg2rad($long_fixed);
-	
-	 $latDelta = $lat_key - $lat_key;
-	 $lonDelta = $long_key - $long_key;
-	
- 	 $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($lat_fixed) * cos($lat_key) * pow(sin($lonDelta / 2), 2)));
- 
-	 return $angle * $earthRadius;
-	
-}
-*/
+
+
 function dist_calculate($lat_key,$long_key,$lat_fixed,$long_fixed)
 {
 	$theta = $long_key - $long_fixed;
@@ -244,10 +223,35 @@ function funcao_larissa($id,$array)
 	return $a;
 }
 
+function result1($radius)
+{
+	$a = funcao_larissa(select_the_best(grade_location(associate_complaints(select_by_radius($radius,calculate_dist_m())))),grade_location(associate_complaints(select_by_radius($radius,calculate_dist_m()))));
+	return $a;
+}
 
-//var_dump(which_categ('Banheiro M'));
-//var_dump(which_categ('Bebedouro
-//var_dump(calculate_dist_bebedouro());
+function result2($radius)
+{
+	$a = funcao_larissa(select_the_best(grade_location(associate_complaints(select_by_radius($radius,calculate_dist_f())))),grade_location(associate_complaints(select_by_radius($radius,calculate_dist_f()))));
+	return $a;
+}
+
+function result3($radius)
+{
+	$a = funcao_larissa(select_the_best(grade_location(associate_complaints(select_by_radius($radius,calculate_dist_bebedouro())))),grade_location(associate_complaints(select_by_radius($radius,calculate_dist_bebedouro()))));
+	return $a;
+}
+
+//var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_m())))));
+//var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_bebedouro())))));
+//var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_f())))));
+//var_dump(grade_location(associate_complaints(select_by_radius(500,calculate_dist_f()))));)
+
+
+//var_dump(result1(500));
+//var_dump(which_categ('Banheiro M',500));
+//var_dump(which_categ('Banheiro F',500));
+//var_dump(which_categ('Bebedouro',500));
+//var_dump(calculate_dist_f());
 //var_dump(dist_calculate(-15.763463,-47.872682,-15.763226,-47872365,6371000));
 //var_dump(get_by_bebedouro());
 //var_dump(select_by_radius(100,calculate_dist_bebedouro()));
