@@ -193,14 +193,16 @@ function grade_location($array)
 	{
 		$dist = $a[$i]->dist;
 		$complaints = $a[$i]->complaints[$z];
-		$grade = ((3*$dist) + (2*$complaints))/5;
+		$grade = ((2*$dist) + (3*$complaints))/5;
 		$a[$i]->nota = $grade;
 	}
 	return $a;
 }
 
-function select_the_best()
+function select_the_best($array)
 {
+	$c = count($array);
+	
 }
 
 //var_dump(which_categ('Banheiro M'));
@@ -211,7 +213,7 @@ function select_the_best()
 //var_dump(select_by_radius(100,calculate_dist_bebedouro()));
 //echo count(which_categ('Banheiro M'));
 //var_dump(calculate_dist_bebedouro());
-var_dump(grade_location(associate_complaints(calculate_dist_m())));
+//var_dump(grade_location(associate_complaints(calculate_dist_m())));
 //$a = get_by_categ_m();
 //echo "<br /><br />";
 
