@@ -40,7 +40,7 @@
    
    
    <div class="group" align="center">
-      <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="auto; height:auto;">
+      <img src="http://imgur.com/UzU7KBX.png" alt="UNBIX - Logo" style="auto;width:350px; height:100px;">
    </div>
       <form action="login_validation.php" method="post" id="frmLogin">
 
