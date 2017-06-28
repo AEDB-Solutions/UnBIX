@@ -77,9 +77,9 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
                 <form action="" method="post">
-                  <input type="checkbox" name="BF" id="BF"> Banheiro Feminino </br>
-                  <input type="checkbox" name="BM" id="BM"> Banheiro Masculino </br>
-                  <input type="checkbox" name="BB" id="BB"> Bebedouro </br>
+                  <input type="checkbox" name="B" id="BF" value="Banheiro F"> Banheiro Feminino </br>
+                  <input type="checkbox" name="B" value="Banheiro M"> Banheiro Masculino </br>
+                  <input type="checkbox" name="B" value="Bebedouro"> Bebedouro </br>
                   <label id="raio">Raio: </label>
                   <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
                   <input type="submit" value="Calcular!">

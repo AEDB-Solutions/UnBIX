@@ -63,8 +63,15 @@ if(empty($_SESSION['id'])) {
                   <input type="checkbox" name="opcao" value="Banheiro M"> Banheiro Masculino </br>
                   <input type="checkbox" name="opcao" value="Bebedouro"> Bebedouro </br>
                   <label id="raio">Raio: </label>
-                  <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
-                  <input class="w3-hover-black" type="submit" value="Calcular!">
+                  <input type="text" id="raio" name="raio"  style="width: 50px;">(metros)
+                  <input class="w3-hover-black" type="submit" value="Calcular!" style="background-color: #4CAF50;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+                border: none;
+                margin-bottom: 10px;
+                color: white;
+                margin-left: 10px;">
                 </form>
               </ul>
             </li>
