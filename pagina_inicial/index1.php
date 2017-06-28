@@ -123,9 +123,9 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
           <tr><td></td> <td><input type="hidden" name="lat" id="lat"> </td> </tr>
           <tr><td></td> <td><input type="hidden" name="long" id="long"> </td> </tr>
-          <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo" class="w3-input w3-border"/> </td> </tr>
-          <tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' class="w3-input w3-border"> </td></tr>
-          <tr><td>Descrição do  problema:</td> <td><textarea name = "descricao_comp" id='descricao_comp' class="w3-input w3-border" maxlength="140" rows="25" cols="80">Reclame aqui...</textarea>
+          <tr><td>Título do problema: </td> <td><input type="text" name = "Titulo" id= "Titulo" class="w3-input w3-border" style="margin-top: 10px;"/> </td> </tr>
+          <tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' class="w3-input w3-border" style="margin-top: 10px;"> </td></tr>
+          <tr><td>Descrição do  problema:</td> <td><textarea name = "descricao_comp" id='descricao_comp' placeholder="Reclame aqui" class="w3-input w3-border" maxlength="140" rows="25" cols="80" style="margin-top: 10px;"></textarea>
           <style>
             textarea{
             width: 150px;
