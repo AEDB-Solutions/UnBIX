@@ -199,6 +199,10 @@ function grade_location($array)
 	return $a;
 }
 
+function select_the_best()
+{
+}
+
 //var_dump(which_categ('Banheiro M'));
 //var_dump(which_categ('Bebedouro
 //var_dump(calculate_dist_bebedouro());
@@ -207,7 +211,7 @@ function grade_location($array)
 //var_dump(select_by_radius(100,calculate_dist_bebedouro()));
 //echo count(which_categ('Banheiro M'));
 //var_dump(calculate_dist_bebedouro());
-//var_dump(grade_location(associate_complaints(calculate_dist_m())));
+var_dump(grade_location(associate_complaints(calculate_dist_m())));
 //$a = get_by_categ_m();
 //echo "<br /><br />";
 
