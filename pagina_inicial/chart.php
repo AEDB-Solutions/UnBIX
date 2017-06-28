@@ -28,8 +28,7 @@ if(empty($_SESSION['id'])) {
 <head>
   <title>Relatorios</title>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+  <meta name="viewport" content="width=device-width, initial-scale=1">	
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" />
@@ -194,6 +193,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
       <div id="piechart" class="w3-content" style="width: 600px; height: 400px; position: fixed; "></div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     
       
