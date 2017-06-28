@@ -1,5 +1,5 @@
 
-function initMap() 
+function initMap()
 {
   var options = {
       center: {
@@ -8,9 +8,9 @@ function initMap()
       },
       zoom: 17,
       scrollwheel: false,
-      disableDefaultUI: true,
-      maxZoom: 17,
-      minZoom: 17
+      disableDefaultUI: false,
+      maxZoom: 20,
+      minZoom: 18
   };
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
@@ -20,7 +20,7 @@ function initMap()
     load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
 
     map_events(map);
-    //user_current_location(map);
+    user_current_location(map);
 
 }
 
@@ -30,7 +30,7 @@ function map_events(map)
         var infowindow;
         var messagewindow;
         var wind;
-    
+
       infowindow = new google.maps.InfoWindow({
         content: document.getElementById('form')
       })
@@ -62,57 +62,50 @@ function map_events(map)
 
 function user_current_location(map)
 {
-        //dica para integrar os dois mapas em um .Usem a linha abaixo e tentem mudar o index.php;
-        //document.getElementById("user_pos").addEventListener("click",getLocation(map));
+         console.log("oi");
+         document.getElementById("user_pos").addEventListener("click",function() {
+           getLocation(map);
+         });
 }
 
 
-function getLocation() 
+function getLocation(map)
 {
-        console.log("oi");
-        var options = {
-            center: {
-              lat: -15.764114,
-              lng: -47.870709
-            },
-            zoom: 17,
-            scrollwheel: false,
-            disableDefaultUI: true,
-            maxZoom: 17,
-            minZoom: 17
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'), options);
-        var wind = new google.maps.InfoWindow({map: map});
 
-        if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(function(position) {
-               var pos = {
-                 lat: position.coords.latitude,
-                 lng: position.coords.longitude
-               };
+  var infoWindow = new google.maps.InfoWindow({
+    content: document.getElementById('form')
+  })
 
-               var marker = new google.maps.Marker({
-                 position: pos,
-                 map: map,
-                 animation: google.maps.Animation.DROP,
-                 draggable: true
-                 });
-               map.setCenter(pos);
-             }, function() {
-               handleLocationError(true, infoWindow, map.getCenter());
-             });
-           } else {
-             // Browser doesn't support Geolocation
-             handleLocationError(false, infoWindow, map.getCenter());
-           }
+  if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(function(position) {
+         var pos = {
+           lat: position.coords.latitude,
+           lng: position.coords.longitude
+         };
+
+         var marker = new google.maps.Marker({
+           position: pos,
+           map: map,
+           animation: google.maps.Animation.DROP,
+           draggable: true
+           });
+         map.setCenter(pos);
+       }, function() {
+         handleLocationError(true, infoWindow, map.getCenter());
+       });
+     } else {
+       // Browser doesn't support Geolocation
+       handleLocationError(false, infoWindow, map.getCenter());
+     }
 
 
-         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-           wind.setPosition(pos);
-           wind.setContent(browserHasGeolocation ?
-                                 'Error: The Geolocation service failed.' :
-                                 'Error: Your browser doesnt support geolocation.');
-         }
+   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+
+     infoWindow.setPosition(pos);
+     infoWindow.setContent(browserHasGeolocation ?
+                           'Error: The Geolocation service failed.' :
+                           'Error: Your browser doesnt support geolocation.');
+   }
 
 }
 
@@ -157,30 +150,30 @@ function requests(host, method = "GET", data = {}) //ERA OBJETO
 {
     var content = null
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
+    xhttp.onreadystatechange = function()
     {
-    if(this.readyState == 4 && this.status == 200) 
+    if(this.readyState == 4 && this.status == 200)
     {
      content = this.responseText
     }
     };
 
     xhttp.open(method, host, false)
-    
+
     if(method = "GET")
     xhttp.send()
-    
+
     else
     {
       xhttp.setRequestHeader("Content-Type", "application/json");
       xhttp.send(JSON.stringify(data));
       //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     }
-    
+
     return content;
 }
 
-function requestasync(host, callback, method = "GET") 
+function requestasync(host, callback, method = "GET")
 {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -198,7 +191,7 @@ function getting_db_info(host)
   var server_awnser = requests(host);
 
   //console.log("hola", JSON.parse(server_awnser));
-  
+
   return JSON.parse(server_awnser);
 
 }
@@ -211,17 +204,41 @@ function load_on_map(map,host)
 
   for(i = 0; i < complaints_info.length; i++)
   {
-     var marker = create_marker(complaints_info[i].latitude, complaints_info[i].longitude, complaints_info[i].keypoint, map);
+
+    var choosenIcon = 'banheiro';
+ if (complaints_info[i].keypoint == '0'){
+   if(complaints_info[i][3] == "Outro"){
+     choosenIcon = 'parking'
+   } else {
+     choosenIcon = 'info'
+   }
+}
+     var marker = create_marker(complaints_info[i].latitude, complaints_info[i].longitude, complaints_info[i].keypoint, map, choosenIcon);
      create_info_window(windows,complaints_info[i], complaints_info[i].keypoint,marker,map);
   }
 }
 
-function create_marker(lat,long,type,map)
+function create_marker(lat,long,type,map,iconmydick)
 {
 
+  var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+ var icons = {
+   banheiro: {
+     icon: 'privada.png'
+   },
+   parking: {
+     icon: iconBase + 'library_maps.png'
+   },
+   info: {
+     icon: iconBase + 'info-i_maps.png'
+   }
+ };
+
+ var choosenIcon = icons[iconmydick].icon
+
   var key_point_location = new google.maps.LatLng(lat,long);
-  var marker = new google.maps.Marker({position: key_point_location});
-  
+  var marker = new google.maps.Marker({position: key_point_location, icon: choosenIcon});
+
   if(type == 0)
   {
     //normal// personalize
@@ -229,7 +246,7 @@ function create_marker(lat,long,type,map)
   else if(type == 1)
   {
     //ponto chave//personalize
-  }  
+  }
 
   marker.setMap(map);
 
@@ -243,7 +260,7 @@ function create_info_window(windows,complaints_info,type,marker,map)
   //console.log(complaints_info);
 
   if(type == 0)
-  {  
+  {
     info_window = new google.maps.InfoWindow({content:"<div id='choose_form'><input type='hidden' name='user_id' id='"+complaints_info.ComplaintID+"' value='"+complaints_info.IDuser+"'></div>"});
     windows.push(info_window);
     console.log(windows);
@@ -260,7 +277,7 @@ function create_info_window(windows,complaints_info,type,marker,map)
 //----------------------------------------------------URL_ATT------------------------------
 function close_windows(windows)
 {
-   for(i = 0; i < windows.length; i++) 
+   for(i = 0; i < windows.length; i++)
    {
       windows[i].close();
    }
@@ -331,16 +348,16 @@ function click_on_submit(button_id,map,infowindow)
 
 function define_form(complaints_info)
 {
-  var complaint_user = document.getElementById(complaints_info.ComplaintID).value; 
+  var complaint_user = document.getElementById(complaints_info.ComplaintID).value;
   var user_id = document.getElementById('user_id_session').value;
 
   console.log(complaint_user);
   console.log(user_id);
-   
+
   if(complaint_user == user_id)
   getting_form_loc_0(complaints_info)
 
-  else 
+  else
   curtir(complaints_info);
 
 
@@ -427,7 +444,7 @@ function content_keypoint(complaints_info)
 
 
 function complain_on_keypoint(complaints_info)
-{ 
+{
   //console.log(complaints_info.localID);
   var formulario ="<form action='savelocation.php' method='post' id='form'>"+"<table>"+
           "<input type='hidden' name='localid' id='localid' value='"+complaints_info.localID+"'>"+
