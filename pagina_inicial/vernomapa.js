@@ -14,8 +14,8 @@ function initMap()
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
-   load_on_map(map,"http://localhost/UnBIX/pagina_inicial/chamarfuncaomap.php");
-    map_events(map);
+  load_on_map(map,"http://localhost/UnBIX/pagina_inicial/chamarfuncaomap.php");
+  map_events(map);
     
     //user_current_location(map);
 

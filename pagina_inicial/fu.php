@@ -89,10 +89,14 @@ if(empty($_SESSION['id'])) {
 <div class="conteiner">
   <h3>
       <div id="butao" align="center">
-      <form action="indexbusca.php" method="post">
-        <button type="submit" href="vernomapa.js" name="botao-mapa" value="Ver todos no mapa" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
+      <form action="arraymapa.php" method="post">
+        <button type="submit" name="botao-mapa" onclick="return meu_array()" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
       </form>
      </div> 
+     <script type="text/javascript">
+//O PROBLEMA É PASSAR ESSE ARRAY JS COMO PARÂMETRO PRO PHP. PODEMOS TENTAR PEGAR A CATEGORIA E JOGAR DE NOVO NA BUSCA E JA PEGAR  ARRAY NO PHP, MAS COMO PEGAR A CATEGORIA?
+    
+      </script>
   </h3>
   
   <table class="table" id="table">
@@ -127,129 +131,7 @@ if(empty($_SESSION['id'])) {
   
 </div>
 
+  <script type="text/javascript" src="scripttabel.js"></script>
 
-  <script type="text/javascript">
-      make_tabela();
-
-    
-//var x = document.getElementById("form").elements[0].value;
-
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-function make_tabela()
-{
-var x = getParameterByName('categ');
-console.log(x);
-
-switch(x){
-  case "Infraestrutura":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
-    break;
-  case "Seguranca":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Seguranca");
-    break;
-  case "Iluminacao":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Iluminacao");
-    break;
-  case "Bebedouro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Bebedouro");
-    break;
-  case "Banheiro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Banheiro");
-    break;
-  case "Outros":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Outros");
-    break;
-}
-
-/*if (x = "Infraestrutura"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
-} else if (x = "Seguranca"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Seguranca");
-} else if (x = "Iluminacao"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Iluminacao");
-} else if (x = "Bebedouro"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Bebedouro");
-} else if (x = "Banheiro"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Banheiro");
-} else if (x = "Outros"){
-  var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Outros");
-} */
-
-
-//var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ =Infraestrutura");
-console.log(info);
-  /*var reclams = [
-  {'cat': "Banheiro", 'rec': "Tá vazando"},
-  {'cat': "Banheiro1", 'rec': "Tá vazando5"},
-  {'cat': "Banheiro2", 'rec': "Tá vazando6"},
-  {'cat': "Banheiro3", 'rec': "Tá vazando7"},
-  {'cat': "Banheiro4", 'rec': "Tá vazando8ss"}
-  ]
-*/
-var modelo = "<tr>\
-    <td>{{ele1}}</td>\
-    <td>{{ele2}}</td>\
-    <td>{{ele3}}</td>\
-    <td>{{ele4}}</td>\
-    <td>{{ele5}}</td>\
-  </tr>";
-console.log(info.length)
-
-for (var i = 0; i < info.length; i++) 
-{
-    document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
-}
-
-return info;
-
-} 
-
-//-----------------------------------------------------------------------------------------------------
-
-function requests(host, method = "GET", data = {}) //ERA OBJETO
-{
-    var content = null
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-    if(this.readyState == 4 && this.status == 200) 
-    {
-     content = this.responseText
-    }
-    };
-
-    xhttp.open(method, host, false)
-    
-    if(method = "GET")
-    xhttp.send()
-    
-    else
-    {
-      xhttp.setRequestHeader("Content-Type", "application/json");
-      xhttp.send(JSON.stringify(data));
-      //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    }
-    
-    return content;
-}
-function getting_db_info(host)
-{
-  var server_awnser = requests(host);
-
-  //console.log("hola", JSON.parse(server_awnser));
-  
-  return JSON.parse(server_awnser);
-}
-
-  </script> 
 </body>
 </html>
