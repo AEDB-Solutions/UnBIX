@@ -2,7 +2,7 @@
 session_start();
 
 if(empty($_SESSION['id'])) {
-    header("location:../index.php"); 
+    header("location:../index.php");
 }
 
 ?>
@@ -42,7 +42,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index1.php">
       	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
@@ -65,7 +65,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               <li><a href="fu.php?categ=Outro" style="color: black;">Outros</a></li>
 
               </ul>
-              
+
 
             </li>
             <li><a href="#" style="color: black;">Buscar local específico</a></li>
@@ -77,12 +77,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
             <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
-        </li>   
+        </li>
       </ul>
 
 
       <ul class="nav navbar-nav navbar-right">
-	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
+	<li class=""><a id="user_pos" href="#" style="color: white;">Reportar a partir da localização atual</a></li>       
         <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
@@ -99,7 +99,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
   </div>
 </nav>
      <main >
-       <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
+       <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p>
         <div id="out"></div>
 
           <p id="demo"></p> -->
@@ -139,8 +139,8 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
             </select> </td></tr>
      <!--     <tr><td>Curtida</td> <td><input type="text" name = "Curtida" id= "Curtida"/> </td> </tr> -->
               <tr><td></td><td><input type='submit' value='Reclame!'/></td></tr>
-              
-</table> 
+
+</table>
            </form>
 
             <div id="map-canvas"></div>
