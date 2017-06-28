@@ -89,15 +89,12 @@ if(empty($_SESSION['id'])) {
 <div class="conteiner">
   <h3>
       <div id="butao" align="center">
-      <form action="arraymapa.php" method="post">
-        <button type="submit" name="botao-mapa" onclick="return meu_array()" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
+      <form action="indexbusca.php" method="post">
+        <button name="botao-mapa" id="botao" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
       </form>
      </div> 
-     <script type="text/javascript">
-//O PROBLEMA É PASSAR ESSE ARRAY JS COMO PARÂMETRO PRO PHP. PODEMOS TENTAR PEGAR A CATEGORIA E JOGAR DE NOVO NA BUSCA E JA PEGAR  ARRAY NO PHP, MAS COMO PEGAR A CATEGORIA?
-    
-      </script>
-  </h3>
+  
+      </h3>
   
   <table class="table" id="table">
     <thead>
@@ -132,6 +129,8 @@ if(empty($_SESSION['id'])) {
 </div>
 
   <script type="text/javascript" src="scripttabel.js"></script>
-
+            <div id="map-canvas" style="width:; height: 400px;"></div>
+            <script src="scrittabel.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
 </body>
 </html>

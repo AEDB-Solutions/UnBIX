@@ -16,8 +16,8 @@ function initMap()
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
 
-    load_on_map(map,"http://localhost/unbix/UnBiX/UnBIX/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/unbix/UnBiX/UnBIX/pagina_inicial/loc_0.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
 
     map_events(map);
     user_current_location(map);
