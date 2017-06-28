@@ -117,7 +117,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
 
-<form action="savelocation.php" method="post" id="form" class="w3-container">
+<form action="savelocation.php" method="post" id="form" class="w3-container" style="display: none;>
   <table>
 
           <input type="hidden" name="lat" id="user_id_session" value = <?php echo $_SESSION['id']?> >
