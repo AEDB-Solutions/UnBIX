@@ -56,7 +56,18 @@ if(empty($_SESSION['id'])) {
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
+            <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
+              <ul class="dropdown-submenu">
+                <form action="" method="get">
+                  <input type="checkbox" name="opcao" value="Banheiro F"> Banheiro Feminino </br>
+                  <input type="checkbox" name="opcao" value="Banheiro M"> Banheiro Masculino </br>
+                  <input type="checkbox" name="opcao" value="Bebedouro"> Bebedouro </br>
+                  <label id="raio">Raio: </label>
+                  <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
+                  <input class="w3-hover-black" type="submit" value="Calcular!">
+                </form>
+              </ul>
+            </li>
             <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
