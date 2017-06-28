@@ -9,7 +9,7 @@ function get_by_categ_m()
 {
 	$pdo = Database::connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$sql = "select latitude,longitude,localID from Localidades where categoria = 'Banheiro M' and keypoint = 1";
+	$sql = "select latitude,longitude,localID,descricao from Localidades where categoria = 'Banheiro M' and keypoint = 1";
 	$q = $pdo->prepare($sql);
 	$q->execute();
 	$value = $q->fetchall(PDO::FETCH_OBJ);	
@@ -21,7 +21,7 @@ function get_by_categ_f()
 {
 	$pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select latitude,longitude,localID from Localidades where categoria = 'Banheiro F' and keypoint = 1";
+        $sql = "select latitude,longitude,localID,descricao from Localidades where categoria = 'Banheiro F' and keypoint = 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $value = $q->fetchall(PDO::FETCH_OBJ);
@@ -33,7 +33,7 @@ function get_by_bebedouro()
 {
 	$pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select latitude,longitude,localID from Localidades where categoria = 'Bebedouro' and keypoint = 1";
+        $sql = "select latitude,longitude,localID,descricao from Localidades where categoria = 'Bebedouro' and keypoint = 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $value = $q->fetchall(PDO::FETCH_OBJ);
@@ -176,34 +176,74 @@ function associate_complaints($array)
         	$q = $pdo->prepare($sql);
         	$q->execute();
         	$value = $q->fetch(PDO::FETCH_ASSOC);
-		$a[$i]->complaints = $value;
-		//echo var_dump($value);
+		$a[$i]->complaints = $value['Complaints'];
+		
 	}
 	
 	return $a;
 	
 }
+
+
 	
 function grade_location($array)
 {
 	$a = $array;
 	$c = count($array);
-	$z= 0;
 	for($i = 0 ; $i < $c ;$i++)
 	{
 		$dist = $a[$i]->dist;
-		$complaints = $a[$i]->complaints[$z];
-		$grade = ((2*$dist) + (3*$complaints))/5;
+ 		$complaint = $a[$i]->complaints;
+	 	$grade = ((2*$dist) + (3*$complaint*100))/5;
 		$a[$i]->nota = $grade;
 	}
+	
+	
 	return $a;
 }
 
 function select_the_best($array)
 {
 	$c = count($array);
+	$d = 0;
+	$best_ID = 0;
+	for($i=0 ; $i < $c ; $i++)
+	{
+		$nota = $array[$i]->nota;
+		if($d == 0)
+		{
+			$d = $nota;
+		}
+		elseif($d != 0 && $nota < $d)
+		{
+		        $d = $nota;
+			$best_ID = $array[$i]->localID;		
+		}
+	}
 	
+	return $best_ID;
 }
+
+function funcao_larissa($id,$array)
+{
+	$a = $array;
+	$c = count($array);
+	for($i = 0 ; $i < $c ; $i++)
+	{
+		$array_id = $a[$i]->localID;
+		if($id == $array_id)
+		{
+			$a[$i]->best = 1;
+		}
+		elseif($id != $array_id)
+		{
+			$a[$i]->best = 0;
+		}
+	}
+	
+	return $a;
+}
+
 
 //var_dump(which_categ('Banheiro M'));
 //var_dump(which_categ('Bebedouro
@@ -211,9 +251,12 @@ function select_the_best($array)
 //var_dump(dist_calculate(-15.763463,-47.872682,-15.763226,-47872365,6371000));
 //var_dump(get_by_bebedouro());
 //var_dump(select_by_radius(100,calculate_dist_bebedouro()));
-//echo count(which_categ('Banheiro M'));
-//var_dump(calculate_dist_bebedouro());
-//var_dump(grade_location(associate_complaints(calculate_dist_m())));
+//var_dump(which_categ('Banheiro M'));
+//var_dump(calculate_dist_bebedouro()));
+//var_dump(select_the_best(grade_location(associate_complaints(calculate_dist_m()))));
+//var_dump(funcao_larissa(select_the_best(grade_location(associate_complaints(calculate_dist_m()))),grade_location(associate_complaints(calculate_dist_m()))));
+//var_dump(select_the_best(grade_location(associate_complaints(calculate_dist_m()))));
+//var_dump(associate_complaints(calculate_dist_m()));
 //$a = get_by_categ_m();
 //echo "<br /><br />";
 
