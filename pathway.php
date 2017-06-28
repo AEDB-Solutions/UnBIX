@@ -9,19 +9,19 @@ function get_by_categ_m()
 {
 	$pdo = Database::connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$sql = "select latitude,longitude from Localidades where categoria = 'Banheiro M'";
+	$sql = "select latitude,longitude,localID from Localidades where categoria = 'Banheiro M' and keypoint = 1";
 	$q = $pdo->prepare($sql);
 	$q->execute();
 	$value = $q->fetchall(PDO::FETCH_OBJ);	
 	//var_dump($value[0]->latitude);
-		return $value;		
+	return $value;		
 }
 
 function get_by_categ_f()
 {
 	$pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select latitude,longitude from Localidades where categoria = 'Banheiro F'";
+        $sql = "select latitude,longitude,localID from Localidades where categoria = 'Banheiro F' and keypoint = 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $value = $q->fetchall(PDO::FETCH_OBJ);
@@ -33,7 +33,7 @@ function get_by_bebedouro()
 {
 	$pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "select latitude,longitude from Localidades where categoria = 'Bebedouro'";
+        $sql = "select latitude,longitude,localID from Localidades where categoria = 'Bebedouro' and keypoint = 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $value = $q->fetchall(PDO::FETCH_OBJ);
@@ -163,6 +163,42 @@ function select_by_radius($radius,$array)
 	return $v;	
 }
 
+function associate_complaints($array)
+{ 
+	$a = $array;
+	$c = count($array);
+	for($i= 0; $i<$c ;$i++)
+	{
+		$d = $array[$i]->localID;
+		$pdo = Database::connect();
+        	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        	$sql = "select count(ComplaintID) as Complaints from Complaints where LocalID = $d";
+        	$q = $pdo->prepare($sql);
+        	$q->execute();
+        	$value = $q->fetch(PDO::FETCH_ASSOC);
+		$a[$i]->complaints = $value;
+		//echo var_dump($value);
+	}
+	
+	return $a;
+	
+}
+	
+function grade_location($array)
+{
+	$a = $array;
+	$c = count($array);
+	$z= 0;
+	for($i = 0 ; $i < $c ;$i++)
+	{
+		$dist = $a[$i]->dist;
+		$complaints = $a[$i]->complaints[$z];
+		
+		$grade = ((3*$dist) + (2*$complaints))/5;
+		$a[$i]->nota = $grade;
+	}
+	return $a;
+}
 
 //var_dump(which_categ('Banheiro M'));
 //var_dump(which_categ('Bebedouro
@@ -171,7 +207,8 @@ function select_by_radius($radius,$array)
 //var_dump(get_by_bebedouro());
 //var_dump(select_by_radius(100,calculate_dist_bebedouro()));
 //echo count(which_categ('Banheiro M'));
-var_dump(select_by_radius(500,calculate_dist_bebedouro()))
+var_dump(calculate_dist_bebedouro());
+//var_dump(grade_location(associate_complaints(calculate_dist_m())));
 //$a = get_by_categ_m();
 //echo "<br /><br />";
 
