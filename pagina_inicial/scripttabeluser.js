@@ -20,30 +20,7 @@ function execute_fetch()
 function minha_tabela()
 {
 
-var x = getParameterByName('categ');
-console.log(x);
-
-switch(x){
-  case "Infraestrutura":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
-    break;
-  case "Seguranca":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Seguranca");
-    break;
-  case "Iluminacao":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Iluminacao");
-    break;
-  case "Bebedouro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Bebedouro");
-    break;
-  case "Banheiro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Banheiro");
-    break;
-  case "Outros":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Outros");
-    break;
-}
-
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/reclamuser.php");
 /*if (x = "Infraestrutura"){
   var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
 } else if (x = "Seguranca"){
@@ -75,7 +52,6 @@ var modelo = "<tr>\
     <td>{{ele3}}</td>\
     <td>{{ele4}}</td>\
     <td>{{ele5}}</td>\
-    <td>{{ele6}}</td>\
   </tr>";
 console.log(info.length)
 
@@ -83,7 +59,7 @@ console.log(info.length)
 
 for (var i = 0; i < info.length; i++) 
 {
-    document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao).replace("{{ele6}}", info[i].keypoint)
+    document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
 }
 
 //console.log(meu_array());
@@ -137,7 +113,6 @@ function event_map_button(tabela_info)
 }
 
 //------------------------------------------------------------------------------------------
-
 function initMap(tabela_info) 
 {
   var options = {
