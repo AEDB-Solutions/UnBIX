@@ -8,16 +8,29 @@ if(empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Busca por categoria</title>
+  <title>Reclamações</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="tabela.css" rel="stylesheet">
+  <link href="tabela.css" rel="stylesheet">
 </head>
 <body>
+<style>
+    input[type="submit"]
+              {
+                background-color: #4CAF50;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+                border: none;
+                margin-bottom: 10px;
+                color: white;
+                style="margin-left: 10px;
+            }
+    </style>
 <nav class="navbar navbar-inverse navbar-fixed w3-green" style="position: top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -35,7 +48,7 @@ if(empty($_SESSION['id'])) {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="tabelareclam.html" style="color: black;">Reclamações</a></li>
+            <li style="color: blue;"><a href="tabelareclam.php" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
@@ -56,7 +69,18 @@ if(empty($_SESSION['id'])) {
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a style="color: blue;"><a href="#" style="color: black;">Melhor caminho</a></li>
+            <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
+              <ul class="dropdown-submenu">
+                <form action="" method="get">
+                  <input type="checkbox" name="opcao" value="Banheiro F"> Banheiro Feminino </br>
+                  <input type="checkbox" name="opcao" value="Banheiro M"> Banheiro Masculino </br>
+                  <input type="checkbox" name="opcao" value="Bebedouro"> Bebedouro </br>
+                  <label id="raio">Raio: </label>
+                  <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
+                  <input class="w3-hover-black" type="submit" value="Calcular!">
+                </form>
+              </ul>
+            </li>
             <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>   
@@ -128,9 +152,8 @@ if(empty($_SESSION['id'])) {
   
 </div>
 
-  <script type="text/javascript" src="scripttable1.js"></script>
             <div id="map-canvas" style="width:; height: 400px;"></div>
-            <script src="scrittable1.js"></script>
+            <script src="scripttable1.js"></script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
 </body>
 </html>
