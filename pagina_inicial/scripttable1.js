@@ -53,7 +53,6 @@ var modelo = "<tr>\
     <td>{{ele3}}</td>\
     <td>{{ele4}}</td>\
     <td>{{ele5}}</td>\
-    <td>{{ele6}}</td>\
   </tr>";
 console.log(info.length)
 
@@ -61,7 +60,7 @@ console.log(info.length)
 
 for (var i = 0; i < info.length; i++) 
 {
-    document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao).replace("{{ele6}}", info[i].keypoint)
+    document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].Titulo).replace("{{ele2}}", info[i].Descricao).replace("{{ele3}}", info[i].Categoria).replace("{{ele4}}", info[i].Emergencia).replace("{{ele5}}", info[i].descricao)
 }
 
 //console.log(meu_array());
