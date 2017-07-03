@@ -2,6 +2,7 @@
 session_start();
 if(empty($_SESSION['id'])) {
     header("location:../index.php"); 
+
 }
 ?>
 
@@ -84,18 +85,6 @@ if(empty($_SESSION['id'])) {
        <!-- <p><button onclick="getLocation()"  style="position: absolute; left:300px; top:90px">Inserir reclamação na localização atual</button></p> 
         <div id="out"></div>
           <p id="demo"></p> -->
-
-
-	<div class="conteiner">
-  <h3>
-      <div id="butao" align="center">
-      <form action="indexbusca.php" method="post">
-        <button name="botao-mapa" id="botao" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
-      </form>
-     </div> 
-  
-      </h3>
-  
      
   
   <table class="table" id="table">
@@ -103,6 +92,8 @@ if(empty($_SESSION['id'])) {
       <tr>
       <th>Descrição</th>
       <th>Nota</th>
+      <th>Best</th>
+      <th>Distância</th>
     </thead>
     <tbody>
       <tr>
@@ -127,7 +118,6 @@ if(empty($_SESSION['id'])) {
   
 </div>
 
-  <script type="text/javascript" src="caminho.js"></script>
             <div id="map-canvas" style="width:; height: 400px;"></div>
             <script src="caminho.js"></script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1WMWZn7OQEGUH0lCnd-3i9krdCkA8LoY&callback=initMap" type="text/javascript"></script>
