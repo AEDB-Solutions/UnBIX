@@ -13,15 +13,18 @@ function getParameterByName(name, url) {
 function execute_fetch()
 {
   var tabela_info = minha_tabela();
-  event_map_button(tabela_info);
 
 }
 //melhor caminho tem seu array, q eu vou usar esse getting pra chamar o arquivo, ai ja chama a funçao de fazer pinos no mapa
 function minha_tabela()
 {
 
+var x = getParameterByName('Categoria');
+var y = getParameterByName('raio');
 
-    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/chamarcaminho.php");
+console.log(x); 
+
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/chamarcaminho.php?categ="+x+"&raio="+y);
 
 /*if (x = "Infraestrutura"){
   var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
@@ -51,6 +54,8 @@ console.log(info);
 var modelo = "<tr>\
     <td>{{ele1}}</td>\
     <td>{{ele2}}</td>\
+    <td>{{ele3}}</td>\
+    <td>{{ele4}}</td>\
   </tr>";
 console.log(info.length)
 
@@ -59,7 +64,7 @@ console.log(info.length)
 
 for (var i = 0; i < info.length; i++) 
 {
-  document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].descricao).replace("{{ele2}}", info[i].nota)
+  document.getElementById("table").innerHTML += modelo.replace("{{ele1}}", info[i].descricao).replace("{{ele2}}", info[i].nota).replace("{{ele3}}", info[i].best).replace("{{ele4}}", info[i].dist)
 
 }
 
