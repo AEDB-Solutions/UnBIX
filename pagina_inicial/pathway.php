@@ -44,11 +44,11 @@ function get_by_bebedouro()
 
 function which_categ($categ,$radius)
 {
-	if($categ == 'Banheiro M')
+	if($categ == 'BanheirM')
 	{
 		$a = result1($radius);
 	}
-	elseif($categ == 'Banheiro F')
+	elseif($categ == 'BanheirF')
 	{
 		$a = result2($radius);
 	}
@@ -248,7 +248,7 @@ function result3($radius)
 
 
 //var_dump(result1(500));
-var_dump(which_categ('Banheiro M',500));
+//var_dump(which_categ('Banheiro M',500));
 //var_dump(which_categ('Banheiro F',500));
 //var_dump(which_categ('Bebedouro',500));
 //var_dump(calculate_dist_f());
