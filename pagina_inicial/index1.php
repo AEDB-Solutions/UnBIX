@@ -53,7 +53,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li><a href="tabelareclam.html" style="color: black;">Reclamações</a></li>
+<li><a href="tabelareclam.php" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
@@ -76,13 +76,15 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <ul class="dropdown-menu w3-white">
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
-                <form action="tabelcaminho.php" method="post">
-                  <input type="checkbox" name="B" id="BF" value="Banheiro F"> Banheiro Feminino </br>
-                  <input type="checkbox" name="B" value="Banheiro M"> Banheiro Masculino </br>
-                  <input type="checkbox" name="B" value="Bebedouro"> Bebedouro </br>
+                <form action="tabelcaminho.php">
+                <tr><td>Type:</td> <td><select name = "Categoria" id ='Categoria'> +
+                <option value='BanheirM' id = 'Banheiro_m' SELECTED>Banheiro M </option>
+                <option value='BanheirF'  id = 'Baneiro_f' SELECTED> Banheiro F</option>
+                <option value = 'Bebedouro'  id = 'bebedouro' SELCTED>Bebedouro</option>
+                </select> </td></tr>
                   <label id="raio">Raio: </label>
-                  <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
-                  <input type="submit" value="Calcular!">
+                  <input type="text" id="raio" name="raio" style="width: 50px;"> (metros)
+                  <input type="submit" id="botao2" value="Calcular!">
                 </form>
               </ul>
             </li>
