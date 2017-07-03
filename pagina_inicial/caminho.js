@@ -21,7 +21,7 @@ function minha_tabela()
 {
 
 
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/chamarcaminho.php");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/chamarcaminho.php");
 
 /*if (x = "Infraestrutura"){
   var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
@@ -107,11 +107,13 @@ function getting_db_info(host)
 }
 
 
+
 function event_map_button(tabela_info)
 {
    document.getElementById("botao").addEventListener("click",function(e){
     e.preventDefault(); initMap(tabela_info)});
 }
+
 
 //------------------------------------------------------------------------------------------
 

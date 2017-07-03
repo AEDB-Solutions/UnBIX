@@ -76,7 +76,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <ul class="dropdown-menu w3-white">
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
-                <form action="" method="post">
+                <form action="tabelcaminho.php" method="post">
                   <input type="checkbox" name="B" id="BF" value="Banheiro F"> Banheiro Feminino </br>
                   <input type="checkbox" name="B" value="Banheiro M"> Banheiro Masculino </br>
                   <input type="checkbox" name="B" value="Bebedouro"> Bebedouro </br>

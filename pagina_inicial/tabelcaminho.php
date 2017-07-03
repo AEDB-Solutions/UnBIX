@@ -86,10 +86,17 @@ if(empty($_SESSION['id'])) {
           <p id="demo"></p> -->
 
 
-<div class="conteiner">
+	<div class="conteiner">
   <h3>
+      <div id="butao" align="center">
+      <form action="indexbusca.php" method="post">
+        <button name="botao-mapa" id="botao" style="background-color: #0099ff; border: double; border-color: white; color: white; padding: 15px 32px; text-align:center; text-decoration: none; display: inline-block;font-size: 16px;"> <span class="glyphicon glyphicon-globe"></span>Ver no mapa</button>
+      </form>
+     </div> 
   
       </h3>
+  
+     
   
   <table class="table" id="table">
     <thead>

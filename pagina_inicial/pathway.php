@@ -248,7 +248,7 @@ function result3($radius)
 
 
 //var_dump(result1(500));
-//var_dump(which_categ('Banheiro M',500));
+var_dump(which_categ('Banheiro M',500));
 //var_dump(which_categ('Banheiro F',500));
 //var_dump(which_categ('Bebedouro',500));
 //var_dump(calculate_dist_f());

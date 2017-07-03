@@ -25,22 +25,22 @@ console.log(x);
 
 switch(x){
   case "Infraestrutura":
-    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
     break;
   case "Seguranca":
-    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Seguranca");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Seguranca");
     break;
   case "Iluminacao":
-    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Iluminacao");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Iluminacao");
     break;
   case "Bebedouro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Bebedouro");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Bebedouro");
     break;
   case "Banheiro":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Banheiro");
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Banheiro");
     break;
-  case "Outros":
-    var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Outros");
+  case "Outro":
+    var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/buscacateg.php?categ=Outro");
     break;
 }
 
