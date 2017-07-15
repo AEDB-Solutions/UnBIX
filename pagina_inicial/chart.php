@@ -92,10 +92,10 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index1.php">
-      	<img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
+        <img src="http://i.imgur.com/RJTalj1.png" alt="UnBIX" style="height: 30px; width: 100px">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -103,7 +103,7 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
-            <li style="color: blue;"><a href="fu.php" style="color: black;">Reclamações</a></li>
+<li><a href="tabelareclam.php" style="color: black;">Reclamações</a></li>
             <li class="dropdown-submenu">
               <a class="test" data-toggle="dropdown" href="#" style="color: black;">Busca por Categoria<span class="caret"></span></a>
               <ul class="dropdown-submenu">
@@ -115,43 +115,41 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               <li><a href="fu.php?categ=Outro" style="color: black;">Outros</a></li>
 
               </ul>
-              
+
 
             </li>
-            <li><a href="#" style="color: black;">Buscar local específico</a></li>
           </ul>
 
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
+            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
-                <form action="" method="get">
-                  <input type="checkbox" name="opcao" value="Banheiro F"> Banheiro Feminino </br>
-                  <input type="checkbox" name="opcao" value="Banheiro M"> Banheiro Masculino </br>
-                  <input type="checkbox" name="opcao" value="Bebedouro"> Bebedouro </br>
+                <form action="tabelcaminho.php">
+                <tr><td>Type:</td> <td><select name = "Categoria" id ='Categoria'> +
+                <option value='BanheirM' id = 'Banheiro_m' SELECTED>Banheiro M </option>
+                <option value='BanheirF'  id = 'Baneiro_f' SELECTED> Banheiro F</option>
+                <option value = 'Bebedouro'  id = 'bebedouro' SELCTED>Bebedouro</option>
+                </select> </td></tr>
                   <label id="raio">Raio: </label>
-                  <input type="text" id="raio" name="raio"  style="width: 50px;"> (metros)
-                  <input class="w3-hover-green" type="submit" value="Calcular!">
+                  <input type="text" id="raio" name="raio" style="width: 50px;"> (metros)
+                  <input type="submit" id="botao2" value="Calcular!">
                 </form>
               </ul>
             </li>
-            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
-        </li>   
+        </li>
       </ul>
 
 
       <ul class="nav navbar-nav navbar-right">
-	<li> <button id="user_pos" class="w3-green" style="border: none;  margin-top: 10px;">Reportar a partir da localização atual</button></li>       
+  <li class=""><a id="user_pos" href="#" style="color: white;">Reportar a partir da localização atual</a></li>       
         <li class="dropdown">
-        	<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
-        	<ul class="dropdown-menu w3-white">
+          <ul class="dropdown-menu w3-white">
               <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
-            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-            	<li><a href="#" style="color: black;">Configurações</a></li>
-              <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
           </ul>
         </li>
         <li><a href="logoff.php" style="color: white;"><span class="glyphicon glyphicon-log-out"></span> Log off</a></li>

@@ -20,7 +20,7 @@ function execute_fetch()
 function minha_tabela()
 {
 
-var info = getting_db_info("http://localhost/unbix/UnBiX/UnBiiX/UnBiiiX/UnBIX/pagina_inicial/reclamuser.php");
+var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/reclamuser.php");
 /*if (x = "Infraestrutura"){
   var info = getting_db_info("http://localhost/UnBIX/pagina_inicial/buscacateg.php?categ=Infraestrutura");
 } else if (x = "Seguranca"){

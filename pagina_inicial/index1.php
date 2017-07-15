@@ -68,12 +68,12 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
 
 
             </li>
-            <li><a href="#" style="color: black;">Buscar local específico</a></li>
           </ul>
 
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white;">Ferramentas<span class="caret"></span></a>
           <ul class="dropdown-menu w3-white">
+            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
             <li><a href="#" style="color: black; width: 200px">Melhor caminho <span class="caret"></span></a>
               <ul class="dropdown-submenu">
                 <form action="tabelcaminho.php">
@@ -88,7 +88,6 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
                 </form>
               </ul>
             </li>
-            <li><a href="chart.php" style="color: black;">Relatório estatístico</a></li>
           </ul>
         </li>
       </ul>
@@ -101,9 +100,6 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
           <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['name'] ?> </a>
         	<ul class="dropdown-menu w3-white">
               <li><a href="tabeluser.php" style="color: black;">Minhas reclamações</a></li>
-            	<li><a href="#" style="color: black;">Fazer reclamação anônima</a></li>
-            	<li><a href="#" style="color: black;">Configurações</a></li>
-              <li><a href="#" style="color: black;">Ver perfil<span></span></a></li>
           </ul>
         </li>
         <li><a href="logoff.php" style="color: white;"><span class="glyphicon glyphicon-log-out"></span> Log off</a></li>

@@ -185,8 +185,9 @@ function select_the_best($array)
 {
 	$c = count($array);
 	$d = 0;
+	//echo var_dump($c);
 	$best_ID = 0;
-	for($i=0 ; $i < $c ; $i++)
+	for($i = 0 ; $i < $c ; $i++)
 	{
 		$nota = $array[$i]->nota;
 		if($d == 0)
@@ -201,6 +202,7 @@ function select_the_best($array)
 	}
 	
 	return $best_ID;
+	
 }
 
 function funcao_larissa($id,$array)
@@ -245,6 +247,10 @@ function result3($radius)
 //var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_bebedouro())))));
 //var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_f())))));
 //var_dump(grade_location(associate_complaints(select_by_radius(500,calculate_dist_f()))));)
+
+//var_dump(select_the_best(grade_location(associate_complaints(select_by_radius(500,calculate_dist_bebedouro())))));
+//var_dump(grade_location(associate_complaints(select_by_radius(500,calculate_dist_bebedouro()))));
+
 
 
 //var_dump(result1(500));
