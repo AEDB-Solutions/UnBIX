@@ -33,12 +33,16 @@ CREATE TABLE `Complaints` (
   `Likes` int(11) DEFAULT NULL,
   `Dislikes` int(11) DEFAULT NULL,
   `Averiguado` tinyint(4) DEFAULT NULL,
+  `Time` bigint(20) DEFAULT NULL,
+  `Deleted` tinyint(4) DEFAULT NULL,
+  `Validade` tinyint(4) DEFAULT '0',
+  `Pronto` bigint(20) DEFAULT '0',
   PRIMARY KEY (`ComplaintID`),
   KEY `IDuser` (`IDuser`),
   KEY `LocalID` (`LocalID`),
   CONSTRAINT `Complaints_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `Users` (`Userid`),
   CONSTRAINT `Complaints_ibfk_2` FOREIGN KEY (`LocalID`) REFERENCES `Localidades` (`localID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +93,7 @@ CREATE TABLE `Localidades` (
   `keypoint` tinyint(1) NOT NULL,
   `categoria` enum('Banheiro M','Bebedouro','Banheiro F','Indefinido') DEFAULT 'Indefinido',
   PRIMARY KEY (`localID`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +102,7 @@ CREATE TABLE `Localidades` (
 
 LOCK TABLES `Localidades` WRITE;
 /*!40000 ALTER TABLE `Localidades` DISABLE KEYS */;
-INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1,'Banheiro F'),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1,'Banheiro M'),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1,'Bebedouro'),(4,-15.763463,-47.872682,'Banheiro F. Civil',1,'Banheiro F'),(5,-15.76313,-47.87244,'Banheiro M. Civil',1,'Banheiro M'),(6,-15.763412,-47.872575,'Bebedouro Civil',1,'Bebedouro'),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1,'Banheiro F'),(13,-15.763121,-47.87229,'Banheiro M. Elétrica',1,'Banheiro M'),(14,-15.763615,-47.872089,'Banheiro F. CA Redes',1,'Banheiro F'),(15,-15.763798,-47.871858,'Banheiro M. CA Redes',1,'Banheiro M'),(16,-15.76399,-47.872359,'Banheiro F. Florestal',1,'Banheiro F'),(17,-15.763845,-47.872583,'Banheiro M. Florestal',1,'Banheiro M'),(18,-15.764227,-47.872733,'Banheiro F. CA Mecatrônica',1,'Banheiro F'),(19,-15.764234,-47.872384,'Banheiro M. CA Mecatrônica',1,'Banheiro M'),(20,-15.763295,-47.871307,'Banheiro F. Amarelinho',1,'Banheiro F'),(21,-15.762996,-47.871501,'Banheiro M. Amarelinho',1,'Banheiro M'),(22,-15.761768,-47.870217,'Bebedouro ICC Norte Corredor',1,'Bebedouro'),(23,-15.76077,-47.870824,'Banheiro F. Departamento História',1,'Banheiro F'),(24,-15.760757,-47.870808,'Banheiro M. Departamento História',1,'Banheiro M'),(25,-15.760688,-47.870813,'Bebedouro Departamento História',1,'Bebedouro'),(26,-15.761155,-47.870743,'Banheiro M. Departamento de Filosofia',1,'Banheiro M'),(27,-15.761202,-47.870709,'Banheiro F. Departamento de Filosofia',1,'Banheiro F'),(28,-15.760885,-47.870781,'Bebedouro Departamento de Filosofia',1,'Bebedouro'),(29,-15.761998,-47.870378,'Banheiro Departamento de Serviço Social',1,'Banheiro M'),(30,-15.762002,-47.870438,'Banheiro F. Departamento de Serviço Social',1,'Banheiro F'),(31,-15.761976,-47.870485,'Bebedouro Departamento de Serviço Social',1,'Bebedouro'),(32,-15.761543,-47.870512,'Banheiro F. Departamento de Geografia',1,'Banheiro F'),(33,-15.761571,-47.870548,'Banheiro M. Departamento de Geografia',1,'Banheiro M'),(34,-15.761856,-47.870402,'Bebedouro Departamento de Geografia',1,'Bebedouro');
+INSERT INTO `Localidades` VALUES (1,-15.763611793518066,-47.872989654541016,'Banheiro F. Mecânica',1,'Banheiro F'),(2,-15.763364791870117,-47.872657775878906,'Banheiro M. Mecânica',1,'Banheiro M'),(3,-15.763545036315918,-47.872962951660156,'Bebedouro Mecânica',1,'Bebedouro'),(4,-15.763463,-47.872682,'Banheiro F. Civil',1,'Banheiro F'),(5,-15.76313,-47.87244,'Banheiro M. Civil',1,'Banheiro M'),(6,-15.763412,-47.872575,'Bebedouro Civil',1,'Bebedouro'),(7,-15.763226,-47.872365,'Banheiro F. Elétrica',1,'Banheiro F'),(13,-15.763121,-47.87229,'Banheiro M. Elétrica',1,'Banheiro M'),(14,-15.763615,-47.872089,'Banheiro F. CA Redes',1,'Banheiro F'),(15,-15.763798,-47.871858,'Banheiro M. CA Redes',1,'Banheiro M'),(16,-15.76399,-47.872359,'Banheiro F. Florestal',1,'Banheiro F'),(17,-15.763845,-47.872583,'Banheiro M. Florestal',1,'Banheiro M'),(18,-15.764227,-47.872733,'Banheiro F. CA Mecatrônica',1,'Banheiro F'),(19,-15.764234,-47.872384,'Banheiro M. CA Mecatrônica',1,'Banheiro M'),(20,-15.763295,-47.871307,'Banheiro F. Amarelinho',1,'Banheiro F'),(21,-15.762996,-47.871501,'Banheiro M. Amarelinho',1,'Banheiro M'),(22,-15.761768,-47.870217,'Bebedouro ICC Norte Corredor',1,'Bebedouro'),(23,-15.76077,-47.870824,'Banheiro F. Departamento História',1,'Banheiro F'),(24,-15.760757,-47.870808,'Banheiro M. Departamento História',1,'Banheiro M'),(25,-15.760688,-47.870813,'Bebedouro Departamento História',1,'Bebedouro'),(26,-15.761155,-47.870743,'Banheiro M. Departamento de Filosofia',1,'Banheiro M'),(27,-15.761202,-47.870709,'Banheiro F. Departamento de Filosofia',1,'Banheiro F'),(28,-15.760885,-47.870781,'Bebedouro Departamento de Filosofia',1,'Bebedouro'),(29,-15.761998,-47.870378,'Banheiro Departamento de Serviço Social',1,'Banheiro M'),(30,-15.762002,-47.870438,'Banheiro F. Departamento de Serviço Social',1,'Banheiro F'),(31,-15.761976,-47.870485,'Bebedouro Departamento de Serviço Social',1,'Bebedouro'),(32,-15.761543,-47.870512,'Banheiro F. Departamento de Geografia',1,'Banheiro F'),(33,-15.761571,-47.870548,'Banheiro M. Departamento de Geografia',1,'Banheiro M'),(34,-15.761856,-47.870402,'Bebedouro Departamento de Geografia',1,'Bebedouro'),(35,-15.763711211457998,-47.87113845348358,'banana de pijama',0,'Indefinido');
 /*!40000 ALTER TABLE `Localidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +152,7 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`Userid`),
   KEY `Curso` (`Curso`),
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`Curso`) REFERENCES `Cursos` (`Cursoid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-24  9:08:31
+-- Dump completed on 2017-07-25 21:38:21
