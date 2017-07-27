@@ -89,6 +89,11 @@ Obs: A posicao da barra de navegacao esta com style="position: absolute;" pois a
               </ul>
             </li>
           </ul>
+		  
+		 <li class=""><a id="user_pos" href="http://www.ssp.df.gov.br/component/content/article/354.html" style="color: red;">EMERGÊNCIA</a></li>       
+		 <li class=""><a id="user_pos" href="http://delegaciaeletronica.pcdf.df.gov.br/" style="color: red;">BOLETIM DE OCORRÊNCIA</a></li> 
+
+  
         </li>
       </ul>
 
