@@ -15,41 +15,9 @@ function picking_loc_one()
 function picking_loc_zero()
 {
 	$find_rows = new db_query();
-	$find_rows->set_find_rows("SELECT * FROM Localidades where keypoint = 0;",array(""));
+	$find_rows->set_find_rows("SELECT Complaints.ComplaintID,Complaints.LocalID,Complaints.IDuser,Complaints.Likes,Complaints.Dislikes, Complaints.Titulo, Complaints.Descricao, Complaints.Categoria, Complaints.Emergencia, Localidades.descricao, Localidades.latitude, Localidades.longitude, Localidades.keypoint FROM Complaints INNER JOIN Localidades ON Complaints.LocalID = Localidades.localID",array(""));
 	$rows = $find_rows->get_db_rows();
 
-	return $rows;
-}
-
-/*function picking_complaints()
-{
-	$find_rows = new db_query();
-	$find_rows->set_find_rows("SELECT ComplaintID,IDuser,LocalID,Titulo,Descricao,Categoria,Emergencia FROM Complaints;",array(""));
-	$rows = $find_rows->get_db_rows();
-
-	return $rows;
-}*/
-
-
-function getting_form_info()
-{
-	$rows = picking_loc_zero();
-
-	for($i = 0; $i < count($rows); $i++)
-	{
-	//var_dump($rows[$i]["localID"]);
-		$find_row = new db_query();
-		$find_row->set_find_row("SELECT ComplaintID,IDuser,Titulo,Categoria,Emergencia,Descricao,Likes FROM Complaints WHERE LocalID = ?;",array($rows[$i]["localID"]));
-		$row_complain = $find_row->get_row();
-
-
-		foreach($row_complain as $key => $value)
-		$rows[$i][$key] = $value;
-	
-		//$rows[$i] = $row_complain;
-	}
-
-	//var_dump($rows);	
 	return $rows;
 }
 
