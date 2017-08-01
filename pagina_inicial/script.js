@@ -1,3 +1,4 @@
+//verificar url das linhas:21,22,231,562
 
 function initMap()
 {
@@ -16,39 +17,32 @@ function initMap()
   var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
 
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_1.php");
-    load_on_map(map,"http://localhost/UnBIX/pagina_inicial/loc_0.php");
+    load_on_map(map,"http://localhost/UNBIX/git/pagina_inicial/loc_1.php");
+    load_on_map(map,"http://localhost/UNBIX/git/pagina_inicial/loc_0.php");
 
     map_events(map);
-    user_current_location(map);
+    //user_current_location(map);
 
 }
 
 function map_events(map)
 {
-        var marker;
-        var infowindow;
-        var messagewindow;
-        var wind;
-
-      infowindow = new google.maps.InfoWindow({
-        content: document.getElementById('form')
-      })
-
-      messagewindow = new google.maps.InfoWindow({
-        content: document.getElementById('message')
-      });
 
       google.maps.event.addListener(map, 'click', function(event) {
         var position = event.latLng;
-        marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: position,
           map: map,
           animation: google.maps.Animation.DROP,
           draggable: true
           });
-        document.getElementById('lat').value = position.lat();
-        document.getElementById('long').value = position.lng();
+        var lat = position.lat();
+        var long = position.lng();
+
+        var infowindow = new google.maps.InfoWindow({
+        content: general_form(lat,long)
+      })
+
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.open(map, marker);
           document.getElementById('form').style = 'display:block';
@@ -56,6 +50,41 @@ function map_events(map)
       });
 
 }
+
+function general_form(lat,long)
+{
+   return "<form action='savelocation.php' method='post' id='form' class='w3-container'>"+"<table>"+
+          "<input type='hidden' name='lat' id='user_id_session' value = <?php echo $_SESSION['id']?> >"+
+          "<tr><td></td> <td><input type='text' name='lat' id='lat' value='"+lat+"'> </td> </tr>"+
+          "<tr><td></td> <td><input type='text' name='long' id='long' value='"+long+"'> </td> </tr>"+
+          "<tr><td>Título do problema: </td> <td><input type='text' name = 'Titulo' id= 'Titulo' class='w3-input w3-border' style='margin-top: 10px;'/> </td> </tr>"+
+          "<tr><td>Descrição da localidade:</td> <td><input type='text' name='descricao_loc' id='descricao_loc' class='w3-input w3-border' style='margin-top: 10px;'> </td></tr>"+
+          "<tr><td>Descrição do  problema:</td> <td><textarea name = 'descricao_comp' id='descricao_comp' placeholder='Reclame aqui' class='w3-input w3-border' maxlength='140' rows='25' cols='80' style='margin-top: 10px;'></textarea>"+
+          "<style>textarea{width: 150px;height: 113px;}"+
+          "</style> </td> </tr>"+
+          "<tr><td>Type:</td> <td><select name = 'Categoria' id ='Categoria'> +"+
+                "<option value='Iluminacao' SELECTED>Iluminação</option>"+
+                "<option value='Banheiro' SELECTED> Banheiro</option>"+
+                "<option value='Bebedouro'>Bebedouro</option>"+
+                "<option value='Infraestrutura'>Infraestrutura</option>"+
+                "<option value='Seguranca'>Segurança</option>"+
+                "<option value='Barulho'>Barulho</option>"+
+                "<option value='Outro'>Outro</option>"+
+                "</select> </td></tr>"+
+              "<style>select {margin-top: 15px;-webkit-appearance: none;  -moz-appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee;  /* Imagem de fundo (Seta) */background-position: 218px center;"+
+                 "background-color: white; width: 250px; height:30px; border:1px solid #ddd;}"+
+              "input[type='submit']{background-color: #4CAF50;margin-top: 10px;width: 80px;height: 40px;border: none;margin-bottom: 10px;color: white;margin-left: 10px;}"+
+              "input [type='text'] {border-style: groove;margin-top: 10px;border-color: grey;}</style>"+   
+              "<tr><td>Emergencia:</td> <td><select name = 'Emergencia' id ='Emergencia'> +"+
+                "<option value='1' SELECTED> 1 </option>"+
+                "<option value='2' > 2 </option>"+
+                "<option value='3' > 3 </option>"+
+                "<option value='4' > 4 </option>"+
+                "<option value='5' > 5 </option>"+
+                "</select> </td></tr>"+
+                "<tr><td></td><td><input type='submit' value='Reclame!'/></td></tr></table></form>";
+}
+
 
 //------------------------------------------PEGAR LOCALIZAÇÃO----------------------------------
 
@@ -198,7 +227,8 @@ function getting_db_info(host)
 //-------------------LOAD ON MAP-------------------------------------------------------
 function load_on_map(map,host)
 {
-
+  var like_info = getting_db_info("http://localhost/UNBIX/git/pagina_inicial/user_curtidas.php");
+  console.log(like_info);
   var complaints_info = getting_db_info(host);
   var windows = [];
 
@@ -214,7 +244,7 @@ function load_on_map(map,host)
    }
 }
      var marker = create_marker(complaints_info[i].latitude, complaints_info[i].longitude, complaints_info[i].keypoint, map, choosenIcon);
-     create_info_window(windows,complaints_info[i], complaints_info[i].keypoint,marker,map);
+     create_info_window(like_info,windows,complaints_info[i], complaints_info[i].keypoint,marker,map);
   }
 }
 
@@ -253,7 +283,7 @@ function create_marker(lat,long,type,map,iconmydick)
   return marker;
 }
 
-function create_info_window(windows,complaints_info,type,marker,map)
+function create_info_window(like_info,windows,complaints_info,type,marker,map)
 {
   var info_window;
 
@@ -264,7 +294,8 @@ function create_info_window(windows,complaints_info,type,marker,map)
     info_window = new google.maps.InfoWindow({content:"<div id='choose_form'><input type='hidden' name='user_id' id='"+complaints_info.ComplaintID+"' value='"+complaints_info.IDuser+"'></div>"});
     windows.push(info_window);
     console.log(windows);
-    google.maps.event.addListener(marker, 'click', function(){close_windows(windows);info_window.open(map,marker);define_form(complaints_info);curtida_event(complaints_info);});
+    google.maps.event.addListener(marker, 'click', function(){info_window_actions(info_window,windows,map,marker,complaints_info,like_info)});
+  
   }
   else if(type == 1)
   {
@@ -275,6 +306,19 @@ function create_info_window(windows,complaints_info,type,marker,map)
   }
 }
 //----------------------------------------------------URL_ATT------------------------------
+function info_window_actions(info_window,windows,map,marker,complaints_info,like_info)
+{
+  close_windows(windows);
+  info_window.open(map,marker);
+  define_form(complaints_info,like_info); 
+  
+  if(already_like(complaints_info.ComplaintID,like_info) == false)
+  curtida_event(complaints_info); 
+  else
+  descurtir_event(complaints_info,get_curtida_of_complaint_id(complaints_info.ComplaintID,like_info));
+
+}
+
 function close_windows(windows)
 {
    for(i = 0; i < windows.length; i++)
@@ -283,72 +327,11 @@ function close_windows(windows)
    }
 }
 
-function pass_js_variables_to_php(host,array_keys,array_values)
+function define_form(complaints_info,like_info)
 {
-  var string = host+"?";
-
-  for(i = 0; i < array_values.length; i++)
-  {
-    string+= array_keys[i] + "=" + array_values[i];
-
-    if(i != array_values.length-1)
-    string += "&";
-  }
-
-  window.location = string;
-  return string
-}//EXEMPLO: pass_js_variables_to_php("http://localhost/UNBIX/get/passing_with_get.php",["name","idade"],["pedro",18]);EECUTADA ESSA FUNÇÃO A PAGINA É REDIRECIONADA PARA UM .PHP ESCOLHIDO NO HOST
-
-
-
-
-//-----------------REQUESTING FORM-----------------------------------------------------------------------------------------------------
-
-/*function stringify_dados(host, dados){
-  var pair_list = []
-  for (key in dados) {
-    pair_list.push(key + "=" + dados[key])
-  }
-  return host + "?" + pair_list.join("&")
-}
-
-
-function send_data(host, dados){
-  //requests(host, "POST", dados)
-   var a = requests(stringify_dados(host,dados));
-
-}
-
-function pick_html_imputs(classe)
-{
-  var inputs = document.getElementsByClassName(classe)
-  var dados = {}
-  for (var i = 0; i < inputs.length; i++) {
-    dados[inputs[i].name] = inputs[i].value
-  }
-
-  return dados
-}
-
-function submete_formulario()
-{
-//var dados = {name:"John Rambo", time:"2pm"}
-  send_data("http://localhost/UNBIX/atual1/pagina_inicial/savelocation.php", pick_html_imputs('input'));
-}
-
-function click_on_submit(button_id,map,infowindow)
-{
-
-  document.getElementById(button_id).addEventListener("click", function(e){
-  e.preventDefault()
-  submete_formulario();infowindow.close();})
-}*/
-
-//----------------------------GETTING_FORMS------------------------------------------------------------
-
-function define_form(complaints_info)
-{
+  //if(document.getElementById(complaints_info.ComplaintID).value != null) 
   var complaint_user = document.getElementById(complaints_info.ComplaintID).value;
+  
   var user_id = document.getElementById('user_id_session').value;
 
   console.log(complaint_user);
@@ -358,11 +341,10 @@ function define_form(complaints_info)
   getting_form_loc_0(complaints_info)
 
   else
-  curtir(complaints_info);
+  curtir_define(complaints_info,like_info);
 
 
 }
-
 
 function getting_form_loc_0(complaints_info)
 {
@@ -393,38 +375,190 @@ function getting_form_loc_0(complaints_info)
           "</table>"+"</form>";
 }
 
-function curtir(complaints_info)
+function curtir_define(complaints_info,like_info)
 {
-   var user_id_session = document.getElementById('user_id_session').value;
-   console.log(user_id_session+"oi");
-  //get
-      document.getElementById('choose_form').innerHTML = "<form id='form'>"+
+  if(already_like(complaints_info.ComplaintID,like_info) == true)
+  already_like_form(complaints_info);
+
+  else
+  curtir(complaints_info);
+}
+
+function already_like(complaint_id,like_info)
+{
+  for(i = 0; i < like_info.length; i++)
+  {
+      if(like_info[i].IDcomplaint == complaint_id)
+      return true;
+  }
+
+    return false;
+}
+
+function get_curtida_of_complaint_id(complaint_id,like_info)
+{ 
+    for(i = 0; i < like_info.length; i++)
+    {
+      if(like_info[i].IDcomplaint == complaint_id)
+      {
+        if(like_info[i].Value == 1)
+        return 'like';
+
+        else
+        return 'deslike'
+      }
+    }
+
+      return 'nada';
+}
+
+function already_like_form(complaints_info)
+{
+    var user_id_session = document.getElementById('user_id_session').value;
+    var aprovation_s;
+    var likes = parseFloat(complaints_info.Likes);
+    var dislikes = parseFloat(complaints_info.Dislikes);
+    
+    if((parseFloat(complaints_info.Likes)+parseFloat(complaints_info.Dislikes)) != 0)
+    aprovation_s = ((parseFloat(complaints_info.Likes))/(parseFloat(complaints_info.Likes)+parseFloat(complaints_info.Dislikes)))*100;
+
+    else
+    aprovation_s = 0;
+
+    var aprovation = parseInt(aprovation_s);
+
+    document.getElementById('choose_form').innerHTML = "<form id='form'>"+
+            "<input type = 'hidden' id = 'save_likes' value='"+likes+"'></input>"+
+            "<input type = 'hidden' id = 'save_dislikes' value='"+dislikes+"'></input>"+  
             "<input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'></inputs>"+
             "<input type='hidden' name='user_id' value='"+user_id_session+"'></input>"+
-            "<p><b>Titulo:</b> "+complaints_info.Titulo+"<p>"+
-            "<p><b>Descricao da localidade:</b> "+complaints_info.descricao+"<p>"+
-            "<p><b>Descricao da reclamacao:</b> "+complaints_info.Descricao+"<p>"+
-            "<p><b>Categoria:</b> "+complaints_info.Categoria+"<p>"+
-            "<p><b>Emergencia:</b>  "+complaints_info.Emergencia+"<p>"+
+            "<p><b>titulo:</b> "+complaints_info.Titulo+"<p>"+
+            "<p><b>descricao da localidade:</b> "+complaints_info.descricao+"<p>"+
+            "<p id = 'aprovation'><b>Nivel de aprovacao da reclamacao:</b>"+aprovation+"%</p>"+
+            "<p><b>descricao da reclamacao:</b> "+complaints_info.Descricao+"<p>"+
+            "<p><b>categoria:</b> "+complaints_info.Categoria+"<p>"+
+            "<p><b>emergencia:</b> "+complaints_info.Emergencia+"<p>"+
+            "<div id = 'curtida'>"+
+            "<button id = 'descurtir' style='border:none; background-color:#33ccff; color:white; width:50px; height:30px;'>Descurtir</button>"+
+            "</div>"+
+            "</form>";
+}
+
+
+function curtir(complaints_info)
+{
+   var aprovation_s;
+   var user_id_session = document.getElementById('user_id_session').value;
+   var likes = parseFloat(complaints_info.Likes);
+   var dislikes = parseFloat(complaints_info.Dislikes);
+
+   if((parseFloat(complaints_info.Likes)+parseFloat(complaints_info.Dislikes)) != 0)
+    aprovation_s = ((parseFloat(complaints_info.Likes))/(parseFloat(complaints_info.Likes)+parseFloat(complaints_info.Dislikes)))*100;
+
+    else
+    aprovation_s = 0.0;
+
+  var aprovation = parseInt(aprovation_s);
+
+      document.getElementById('choose_form').innerHTML = "<form id='form'>"+
+            "<input type = 'hidden' id = 'save_likes' value='"+likes+"'></input>"+
+            "<input type = 'hidden' id = 'save_dislikes' value='"+dislikes+"'></input>"+
+            "<input type='hidden' name='complaint_id' value='"+complaints_info.ComplaintID+"'></input>"+
+            "<input type='hidden' name='user_id' value='"+user_id_session+"'></input>"+
+            "<p><b>titulo:</b> "+complaints_info.Titulo+"<p>"+
+            "<p><b>descricao da localidade:</b> "+complaints_info.descricao+"<p>"+
+            "<p id = 'aprovation'><b>Nivel de aprovacao da reclamacao:</b>"+aprovation+"%<p>"+
+            "<p><b>descricao da reclamacao:</b> "+complaints_info.Descricao+"<p>"+
+            "<p><b>categoria:</b> "+complaints_info.Categoria+"<p>"+
+            "<p><b>emergencia:</b> "+complaints_info.Emergencia+"<p>"+
             "<div id = 'curtida'>"+
             "<button id = 'like' style='border:none; background-color:#33ccff; color:white; width:50px; height:30px;'>Like</button>"+
             "<button id = 'deslike' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Deslike</button>"+
             "</div>"+
             "</form>";
+
+            console.log(document.getElementById('save_likes').value+"este_aqui")
 }
 
 function curtida_event(complaints_info)
 {
   var user_id_session = document.getElementById('user_id_session').value;
-  document.getElementById("like").addEventListener("click",function(e){e.preventDefault(); save_curtida(1,user_id_session,complaints_info.ComplaintID); document.getElementById("curtida").innerHTML = "<button>Descurtir</button>"});
-  document.getElementById("deslike").addEventListener("click",function(e){e.preventDefault(); save_curtida(0,user_id_session,complaints_info.ComplaintID); document.getElementById("curtida").innerHTML = "<button>Descurtir</button>"});
+  document.getElementById("like").addEventListener("click",function(e){e.preventDefault(); save_curtida(1,user_id_session,complaints_info.ComplaintID,'incrementa');update_aprovation(complaints_info,'like'); document.getElementById("curtida").innerHTML = "<button id = 'descurtir' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Descurtir</button>";descurtir_event(complaints_info,'like');});
+  document.getElementById("deslike").addEventListener("click",function(e){e.preventDefault(); save_curtida(0,user_id_session,complaints_info.ComplaintID,'incrementa');update_aprovation(complaints_info,'deslike'); document.getElementById("curtida").innerHTML = "<button id = 'descurtir' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Descurtir</button>";descurtir_event(complaints_info,'deslike');});
 }
 
-function save_curtida(like,user_id_session,ComplaintID)
+function update_aprovation(complaints_info,curtida)
 {
-  //document.getElementById("like")
-    var a = requests("http://localhost/UNBIX/atual/pagina_inicial/curtida.php?session_user="+user_id_session+"&complaint_id="+ComplaintID+"&like="+like);
-    console.log(a);
+  var update;
+  var likes_s = document.getElementById('save_likes').value;
+  var dislikes_s = document.getElementById('save_dislikes').value;
+  var likes = parseFloat(likes_s);
+  var dislikes = parseFloat(dislikes_s);
+
+    if(curtida == 'like')
+    {
+     update = ((likes+1)/(likes+dislikes+1))*100;
+     document.getElementById('save_likes').value = likes+1;
+    }
+
+    else
+    {
+      update = ((likes)/(likes+dislikes+1))*100;
+      document.getElementById('save_dislikes').value = dislikes+1;
+    } 
+
+  if(isFinite(update) == false)
+  update = 0;
+  
+  var int_value = parseInt(update);
+
+  document.getElementById("aprovation").innerHTML = "<p><b>Nivel de aprovacao da reclamacao:</b>"+int_value+"%</p>"; 
+
+}
+
+function decrement_aprovation(complaints_info,curtida)
+{
+    var update;
+    var likes_s = document.getElementById('save_likes').value;
+    var dislikes_s = document.getElementById('save_dislikes').value;
+    var likes = parseFloat(likes_s);
+    var dislikes = parseFloat(dislikes_s);
+
+
+    if(curtida == 'like')
+    {
+      update = ((likes-1)/(likes+dislikes-1))*100;
+      document.getElementById('save_likes').value = likes-1;
+      console.log(document.getElementById('save_likes').value);
+    }
+
+    else
+    {
+      update = ((likes)/(likes+dislikes-1))*100;
+      document.getElementById('save_dislikes').value = dislikes-1;
+    } 
+
+  if(isFinite(update) == false)
+  update = 0;
+
+  var int_value = parseInt(update);
+
+  document.getElementById("aprovation").innerHTML = "<p><b>Nivel de aprovacao da reclamacao</b>"+int_value+"%</p>";
+}
+
+function descurtir_event(complaints_info,curtida)
+{
+    var user_id_session = document.getElementById('user_id_session').value;
+    if(curtida == 'like')
+    document.getElementById("descurtir").addEventListener("click",function(e){e.preventDefault();document.getElementById("curtida").innerHTML = "<button id = 'like' style='border:none; background-color:#33ccff; color:white; width:50px; height:30px;'>Like</button><button id = 'deslike' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Deslike</button>";curtida_event(complaints_info); save_curtida(0,user_id_session,complaints_info.ComplaintID,'decrementa');decrement_aprovation(complaints_info,'like');});
+    
+    else
+    document.getElementById("descurtir").addEventListener("click",function(e){e.preventDefault();document.getElementById("curtida").innerHTML = "<button id = 'like' style='border:none; background-color:#33ccff; color:white; width:50px; height:30px;'>Like</button><button id = 'deslike' style='border:none; background-color:red; color:white; width:50px; height:30px; margin-left:10px;'>Deslike</button>";curtida_event(complaints_info); save_curtida(0,user_id_session,complaints_info.ComplaintID,'decrementa');decrement_aprovation(complaints_info,'deslike');});
+}
+
+function save_curtida(like,user_id_session,ComplaintID,option)
+{
+    var a = requests("http://localhost/UNBIX/git/pagina_inicial/curtida.php?session_user="+user_id_session+"&complaint_id="+ComplaintID+"&like="+like+"&option="+option);
 }
 
 function content_keypoint(complaints_info)
@@ -434,7 +568,8 @@ function content_keypoint(complaints_info)
  {
       return "<p>"+complaints_info.descricao+"</p>"+
       "<div id = 'content_keypoint'>"+
-      "<button id = 'reclame' style='border:none; background-color: #4CAF50; color:white; width:70px; height:30px;'>Reclame</button>"+
+      "<button id = 'reclame'>reclame</button>"+
+      "<button id = 'tabela_de_reclamacoes'>tabela de reclamacoes</button>"+
       "</div>";
  }
 
