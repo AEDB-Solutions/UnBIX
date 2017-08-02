@@ -30,8 +30,8 @@ CREATE TABLE `Complaints` (
   `Descricao` varchar(140) NOT NULL,
   `Categoria` enum('Iluminacao','Banheiro','Bebedouro','Infraestrutura','Seguranca','Barulho','Outro') NOT NULL,
   `Emergencia` enum('1','2','3','4','5') DEFAULT NULL,
-  `Likes` int(11) DEFAULT NULL,
-  `Dislikes` int(11) DEFAULT NULL,
+  `Likes` int(11) DEFAULT '0',
+  `Dislikes` int(11) DEFAULT '0',
   `Averiguado` tinyint(4) DEFAULT NULL,
   `Time` bigint(20) DEFAULT NULL,
   `Deleted` tinyint(4) DEFAULT NULL,
@@ -152,7 +152,7 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`Userid`),
   KEY `Curso` (`Curso`),
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`Curso`) REFERENCES `Cursos` (`Cursoid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-25 21:38:21
+-- Dump completed on 2017-08-01 20:04:55
